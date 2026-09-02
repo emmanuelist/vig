@@ -239,9 +239,11 @@ let prev = null;
 function render(s) {
   panel(() => {
     const open = Boolean(s.marketOpen);
-    $("dot").className = "dot" + (open ? " live" : "");
-    $("market").textContent = open
-      ? "market open"
+    const snapshot = s.live === false;
+    $("dot").className = "dot" + (snapshot ? " snap" : open ? " live" : "");
+    $("market").textContent = snapshot
+      ? "snapshot · " + clock(s.capturedAt ?? s.at)
+      : open ? "market open"
       : s.nextOpen ? "closed · opens " + clock(s.nextOpen) : "closed";
     $("account").textContent = s.accountNumber ?? "—";
     tweenNumber($("equity"), Number(s.equity ?? 0), money(0));
@@ -359,9 +361,21 @@ function render(s) {
   prev = s;
 }
 
+/* Live where an agent is running; the committed snapshot where one is not.
+   Which of the two you are looking at is never left to be inferred — the
+   masthead says so, and the payload carries `live` rather than the page
+   guessing from whether a request succeeded. */
+let gotLive = false;
 const es = new EventSource("/api/stream");
 es.onmessage = (e) => {
-  try { render(JSON.parse(e.data)); }
+  try { render(JSON.parse(e.data)); gotLive = true; }
   catch (err) { console.error("bad frame:", err); }
 };
-es.onerror = () => { $("dot").className = "dot"; };
+es.onerror = () => {
+  es.close();
+  if (gotLive) { $("dot").className = "dot"; return; }
+  fetch("/snapshot.json")
+    .then((r) => (r.ok ? r.json() : null))
+    .then((s) => { if (s) render(s); })
+    .catch(() => { $("dot").className = "dot"; });
+};

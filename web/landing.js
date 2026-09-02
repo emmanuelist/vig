@@ -229,19 +229,31 @@ function bindTape() {
      hidden. Give it an accessible name so it is not a decorative circle. */
   const say = (text) => { status.textContent = text; live.setAttribute("aria-label", text); live.title = text; };
 
-  const es = new EventSource("/api/stream");
-  es.onmessage = (e) => {
-    let s;
-    try { s = JSON.parse(e.data); } catch { return; }
+  let gotLive = false;
+  const paint = (s) => {
     if (!s || s.equity === undefined) return;
     $("p-acct").textContent = s.accountNumber ?? "—";
     $("p-eq").textContent = usd(s.equity);
     $("p-res").textContent = usd(s.reserved);
     $("p-unc").textContent = usd(s.uncovered ?? 0);
-    live.className = "tape-live on";
-    say(s.marketOpen ? "market open" : "market closed");
+    if (s.live === false) {
+      live.className = "tape-live snap";
+      say("snapshot · " + new Date(s.capturedAt ?? s.at).toLocaleTimeString("en-US", { hour12: false }));
+    } else {
+      live.className = "tape-live on";
+      say(s.marketOpen ? "market open" : "market closed");
+      gotLive = true;
+    }
   };
-  es.onerror = () => { live.className = "tape-live off"; say("not connected"); };
+
+  const es = new EventSource("/api/stream");
+  es.onmessage = (e) => { try { paint(JSON.parse(e.data)); } catch { /* next frame */ } };
+  es.onerror = () => {
+    es.close();
+    if (gotLive) { live.className = "tape-live off"; say("not connected"); return; }
+    fetch("/snapshot.json").then((r) => (r.ok ? r.json() : null)).then(paint)
+      .catch(() => { live.className = "tape-live off"; say("not connected"); });
+  };
 }
 
 draw();

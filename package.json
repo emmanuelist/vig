@@ -14,7 +14,8 @@
     "film:cut": "bash scripts/film-cut.sh",
     "voice": "tsx scripts/voice.ts",
     "film:music": "bash scripts/film-music.sh",
-    "film:mix": "bash scripts/film-mix.sh"
+    "film:mix": "bash scripts/film-mix.sh",
+    "snapshot": "tsx scripts/snapshot.ts"
   },
   "dependencies": {
     "dotenv": "^17.4.2"

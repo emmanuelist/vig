@@ -87,6 +87,10 @@ body {
    they all share one advance width. Non-negotiable in a blotter. */
 .n { font-family: var(--mono); font-variant-numeric: tabular-nums; letter-spacing: -0.01em; }
 
+/* A snapshot is neither live nor broken; it gets its own state so it can
+   never be mistaken for either. */
+.dot.snap, .tape-live.snap .dot { background: var(--reserved); }
+
 /* ── Wordmark ─────────────────────────────────────────────────────────
    The glyph is the product: two flat floors in brass with the plateau
    between them. It is the payoff of an iron condor at logo scale, which

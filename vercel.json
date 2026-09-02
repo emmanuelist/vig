@@ -1,0 +1,19 @@
+{
+  "$schema": "https://openapi.vercel.sh/vercel.json",
+  "buildCommand": null,
+  "outputDirectory": "web",
+  "cleanUrls": true,
+  "rewrites": [
+    { "source": "/app", "destination": "/app.html" }
+  ],
+  "headers": [
+    {
+      "source": "/snapshot.json",
+      "headers": [{ "key": "cache-control", "value": "public, max-age=0, must-revalidate" }]
+    },
+    {
+      "source": "/(.*)\\.(css|js|svg|png)",
+      "headers": [{ "key": "cache-control", "value": "public, max-age=3600" }]
+    }
+  ]
+}

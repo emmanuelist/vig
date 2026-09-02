@@ -67,9 +67,10 @@ createServer(async (req, res) => {
   }
 
   // / is the landing page; /app is the Cover Sheet. Both live in web/.
+  // Same routing as the deploy: / is the landing page, /app the Cover Sheet.
   const route =
-    url.pathname === "/" ? "landing.html" :
-    url.pathname === "/app" || url.pathname === "/app/" ? "index.html" :
+    url.pathname === "/" ? "index.html" :
+    url.pathname === "/app" || url.pathname === "/app/" ? "app.html" :
     url.pathname.replace(/^\//, "");
   const file = route;
   try {
