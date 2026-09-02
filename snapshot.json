@@ -1,0 +1,2374 @@
+{
+  "at": "2026-09-02T14:51:19.512Z",
+  "marketOpen": true,
+  "nextOpen": "2026-09-03T09:30:00-04:00",
+  "nextClose": "2026-09-02T16:00:00-04:00",
+  "accountNumber": "PA3PLCOVLR4I",
+  "spots": {
+    "SPY": 765.62,
+    "QQQ": 708.27,
+    "IWM": 293.14
+  },
+  "regime": {
+    "standAside": false,
+    "reason": "regime check skipped — no Featherless key configured; mechanical gates still apply",
+    "source": "unavailable",
+    "headlines": [
+      "EXCLUSIVE: Top 12 Most-Searched Tickers in August on Benzinga Pro – SpaceX, Nebius Climb, Palantir Returns",
+      "Stock Market Today: Dow Jones, S&P 500 Futures Rise, Nasdaq 100 Falls as US-Iran Tensions Escalate— DELL, PANW, MDB, AVGO in Focus (UPDATED)",
+      "Ed Yardeni Rejects Bond Panic, Says Dalio and Dimon Are Too 'Pessimistic'",
+      "Stock Market: Will S&P 500 Open Up or Down Today?",
+      "Scott Bessent Calls Japan's BOJ Governor His 'Longtime Friend,' But Peter Schiff Sees a 'Huge Problem' on The Horizon"
+    ]
+  },
+  "equity": 99630.1,
+  "startingEquity": 100000,
+  "pnl": -369.8999999999942,
+  "unrealized": -373,
+  "reserved": 26573,
+  "riskCeiling": 24907.525,
+  "uncovered": 0,
+  "positions": [
+    {
+      "id": "vig-41e1c4e8",
+      "clientOrderId": "vig-41e1c4e8",
+      "orderId": "84000953-eefc-4340-962e-f0a061fdacc8",
+      "underlying": "SPY",
+      "expiry": "2026-09-03",
+      "qty": 5,
+      "width": 5,
+      "symbols": {
+        "shortPut": "SPY260903P00757000",
+        "longPut": "SPY260903P00752000",
+        "shortCall": "SPY260903C00770000",
+        "longCall": "SPY260903C00775000"
+      },
+      "strikes": {
+        "shortPut": 757,
+        "longPut": 752,
+        "shortCall": 770,
+        "longCall": 775
+      },
+      "creditTotal": 289.99999999999994,
+      "maxLossTotal": 2210,
+      "breakevenLow": 756.42,
+      "breakevenHigh": 770.58,
+      "proof": {
+        "argv": [
+          "alpaca",
+          "order",
+          "submit",
+          "--order-class",
+          "mleg",
+          "--qty",
+          "5",
+          "--type",
+          "limit",
+          "--limit-price",
+          "0.57",
+          "--time-in-force",
+          "day",
+          "--client-order-id",
+          "vig-41e1c4e8",
+          "--legs",
+          "[{\"symbol\":\"SPY260903P00757000\",\"side\":\"sell\",\"ratio_qty\":\"1\",\"position_intent\":\"sell_to_open\"},{\"symbol\":\"SPY260903P00752000\",\"side\":\"buy\",\"ratio_qty\":\"1\",\"position_intent\":\"buy_to_open\"},{\"symbol\":\"SPY260903C00770000\",\"side\":\"sell\",\"ratio_qty\":\"1\",\"position_intent\":\"sell_to_open\"},{\"symbol\":\"SPY260903C00775000\",\"side\":\"buy\",\"ratio_qty\":\"1\",\"position_intent\":\"buy_to_open\"}]"
+        ],
+        "preview": {
+          "advanced_instructions": {},
+          "client_order_id": "vig-41e1c4e8",
+          "legs": [
+            {
+              "position_intent": "sell_to_open",
+              "ratio_qty": "1",
+              "side": "sell",
+              "symbol": "SPY260903P00757000"
+            },
+            {
+              "position_intent": "buy_to_open",
+              "ratio_qty": "1",
+              "side": "buy",
+              "symbol": "SPY260903P00752000"
+            },
+            {
+              "position_intent": "sell_to_open",
+              "ratio_qty": "1",
+              "side": "sell",
+              "symbol": "SPY260903C00770000"
+            },
+            {
+              "position_intent": "buy_to_open",
+              "ratio_qty": "1",
+              "side": "buy",
+              "symbol": "SPY260903C00775000"
+            }
+          ],
+          "limit_price": "0.57",
+          "order_class": "mleg",
+          "qty": "5",
+          "time_in_force": "day",
+          "type": "limit"
+        }
+      },
+      "openedAt": "2026-09-02T14:16:29.287Z"
+    },
+    {
+      "id": "vig-6ce2ff84",
+      "clientOrderId": "vig-6ce2ff84",
+      "orderId": "eb12b2e9-b041-46cc-a3b4-a3394da0d8ba",
+      "underlying": "SPY",
+      "expiry": "2026-09-04",
+      "qty": 5,
+      "width": 5,
+      "symbols": {
+        "shortPut": "SPY260904P00754000",
+        "longPut": "SPY260904P00749000",
+        "shortCall": "SPY260904C00773000",
+        "longCall": "SPY260904C00778000"
+      },
+      "strikes": {
+        "shortPut": 754,
+        "longPut": 749,
+        "shortCall": 773,
+        "longCall": 778
+      },
+      "creditTotal": 275.00000000000006,
+      "maxLossTotal": 2225,
+      "breakevenLow": 753.45,
+      "breakevenHigh": 773.55,
+      "proof": {
+        "argv": [
+          "alpaca",
+          "order",
+          "submit",
+          "--order-class",
+          "mleg",
+          "--qty",
+          "5",
+          "--type",
+          "limit",
+          "--limit-price",
+          "0.55",
+          "--time-in-force",
+          "day",
+          "--client-order-id",
+          "vig-6ce2ff84",
+          "--legs",
+          "[{\"symbol\":\"SPY260904P00754000\",\"side\":\"sell\",\"ratio_qty\":\"1\",\"position_intent\":\"sell_to_open\"},{\"symbol\":\"SPY260904P00749000\",\"side\":\"buy\",\"ratio_qty\":\"1\",\"position_intent\":\"buy_to_open\"},{\"symbol\":\"SPY260904C00773000\",\"side\":\"sell\",\"ratio_qty\":\"1\",\"position_intent\":\"sell_to_open\"},{\"symbol\":\"SPY260904C00778000\",\"side\":\"buy\",\"ratio_qty\":\"1\",\"position_intent\":\"buy_to_open\"}]"
+        ],
+        "preview": {
+          "advanced_instructions": {},
+          "client_order_id": "vig-6ce2ff84",
+          "legs": [
+            {
+              "position_intent": "sell_to_open",
+              "ratio_qty": "1",
+              "side": "sell",
+              "symbol": "SPY260904P00754000"
+            },
+            {
+              "position_intent": "buy_to_open",
+              "ratio_qty": "1",
+              "side": "buy",
+              "symbol": "SPY260904P00749000"
+            },
+            {
+              "position_intent": "sell_to_open",
+              "ratio_qty": "1",
+              "side": "sell",
+              "symbol": "SPY260904C00773000"
+            },
+            {
+              "position_intent": "buy_to_open",
+              "ratio_qty": "1",
+              "side": "buy",
+              "symbol": "SPY260904C00778000"
+            }
+          ],
+          "limit_price": "0.55",
+          "order_class": "mleg",
+          "qty": "5",
+          "time_in_force": "day",
+          "type": "limit"
+        }
+      },
+      "openedAt": "2026-09-02T14:16:29.958Z"
+    },
+    {
+      "id": "vig-bc1521c2",
+      "clientOrderId": "vig-bc1521c2",
+      "orderId": "49a33e49-4574-409f-b947-f3a6f5113130",
+      "underlying": "SPY",
+      "expiry": "2026-09-08",
+      "qty": 5,
+      "width": 5,
+      "symbols": {
+        "shortPut": "SPY260908P00751000",
+        "longPut": "SPY260908P00746000",
+        "shortCall": "SPY260908C00775000",
+        "longCall": "SPY260908C00780000"
+      },
+      "strikes": {
+        "shortPut": 751,
+        "longPut": 746,
+        "shortCall": 775,
+        "longCall": 780
+      },
+      "creditTotal": 285.00000000000006,
+      "maxLossTotal": 2215,
+      "breakevenLow": 750.43,
+      "breakevenHigh": 775.57,
+      "proof": {
+        "argv": [
+          "alpaca",
+          "order",
+          "submit",
+          "--order-class",
+          "mleg",
+          "--qty",
+          "5",
+          "--type",
+          "limit",
+          "--limit-price",
+          "0.57",
+          "--time-in-force",
+          "day",
+          "--client-order-id",
+          "vig-bc1521c2",
+          "--legs",
+          "[{\"symbol\":\"SPY260908P00751000\",\"side\":\"sell\",\"ratio_qty\":\"1\",\"position_intent\":\"sell_to_open\"},{\"symbol\":\"SPY260908P00746000\",\"side\":\"buy\",\"ratio_qty\":\"1\",\"position_intent\":\"buy_to_open\"},{\"symbol\":\"SPY260908C00775000\",\"side\":\"sell\",\"ratio_qty\":\"1\",\"position_intent\":\"sell_to_open\"},{\"symbol\":\"SPY260908C00780000\",\"side\":\"buy\",\"ratio_qty\":\"1\",\"position_intent\":\"buy_to_open\"}]"
+        ],
+        "preview": {
+          "advanced_instructions": {},
+          "client_order_id": "vig-bc1521c2",
+          "legs": [
+            {
+              "position_intent": "sell_to_open",
+              "ratio_qty": "1",
+              "side": "sell",
+              "symbol": "SPY260908P00751000"
+            },
+            {
+              "position_intent": "buy_to_open",
+              "ratio_qty": "1",
+              "side": "buy",
+              "symbol": "SPY260908P00746000"
+            },
+            {
+              "position_intent": "sell_to_open",
+              "ratio_qty": "1",
+              "side": "sell",
+              "symbol": "SPY260908C00775000"
+            },
+            {
+              "position_intent": "buy_to_open",
+              "ratio_qty": "1",
+              "side": "buy",
+              "symbol": "SPY260908C00780000"
+            }
+          ],
+          "limit_price": "0.57",
+          "order_class": "mleg",
+          "qty": "5",
+          "time_in_force": "day",
+          "type": "limit"
+        }
+      },
+      "openedAt": "2026-09-02T14:16:30.607Z"
+    },
+    {
+      "id": "vig-6708f4f1",
+      "clientOrderId": "vig-6708f4f1",
+      "orderId": "ee9718df-f65c-4d20-8221-78d70fb94729",
+      "underlying": "SPY",
+      "expiry": "2026-09-04",
+      "qty": 5,
+      "width": 5,
+      "symbols": {
+        "shortPut": "SPY260904P00754000",
+        "longPut": "SPY260904P00749000",
+        "shortCall": "SPY260904C00773000",
+        "longCall": "SPY260904C00778000"
+      },
+      "strikes": {
+        "shortPut": 754,
+        "longPut": 749,
+        "shortCall": 773,
+        "longCall": 778
+      },
+      "creditTotal": 280.00000000000006,
+      "maxLossTotal": 2219.9999999999995,
+      "breakevenLow": 753.44,
+      "breakevenHigh": 773.56,
+      "proof": {
+        "argv": [
+          "alpaca",
+          "order",
+          "submit",
+          "--order-class",
+          "mleg",
+          "--qty",
+          "5",
+          "--type",
+          "limit",
+          "--limit-price",
+          "0.56",
+          "--time-in-force",
+          "day",
+          "--client-order-id",
+          "vig-6708f4f1",
+          "--legs",
+          "[{\"symbol\":\"SPY260904P00754000\",\"side\":\"sell\",\"ratio_qty\":\"1\",\"position_intent\":\"sell_to_open\"},{\"symbol\":\"SPY260904P00749000\",\"side\":\"buy\",\"ratio_qty\":\"1\",\"position_intent\":\"buy_to_open\"},{\"symbol\":\"SPY260904C00773000\",\"side\":\"sell\",\"ratio_qty\":\"1\",\"position_intent\":\"sell_to_open\"},{\"symbol\":\"SPY260904C00778000\",\"side\":\"buy\",\"ratio_qty\":\"1\",\"position_intent\":\"buy_to_open\"}]"
+        ],
+        "preview": {
+          "advanced_instructions": {},
+          "client_order_id": "vig-6708f4f1",
+          "legs": [
+            {
+              "position_intent": "sell_to_open",
+              "ratio_qty": "1",
+              "side": "sell",
+              "symbol": "SPY260904P00754000"
+            },
+            {
+              "position_intent": "buy_to_open",
+              "ratio_qty": "1",
+              "side": "buy",
+              "symbol": "SPY260904P00749000"
+            },
+            {
+              "position_intent": "sell_to_open",
+              "ratio_qty": "1",
+              "side": "sell",
+              "symbol": "SPY260904C00773000"
+            },
+            {
+              "position_intent": "buy_to_open",
+              "ratio_qty": "1",
+              "side": "buy",
+              "symbol": "SPY260904C00778000"
+            }
+          ],
+          "limit_price": "0.56",
+          "order_class": "mleg",
+          "qty": "5",
+          "time_in_force": "day",
+          "type": "limit"
+        }
+      },
+      "openedAt": "2026-09-02T14:17:14.337Z"
+    },
+    {
+      "id": "vig-f7f295d2",
+      "clientOrderId": "vig-f7f295d2",
+      "orderId": "bef6042a-02dc-40c6-9b95-051136044975",
+      "underlying": "SPY",
+      "expiry": "2026-09-08",
+      "qty": 5,
+      "width": 5,
+      "symbols": {
+        "shortPut": "SPY260908P00750000",
+        "longPut": "SPY260908P00745000",
+        "shortCall": "SPY260908C00775000",
+        "longCall": "SPY260908C00780000"
+      },
+      "strikes": {
+        "shortPut": 750,
+        "longPut": 745,
+        "shortCall": 775,
+        "longCall": 780
+      },
+      "creditTotal": 309.99999999999994,
+      "maxLossTotal": 2190,
+      "breakevenLow": 749.38,
+      "breakevenHigh": 775.62,
+      "proof": {
+        "argv": [
+          "alpaca",
+          "order",
+          "submit",
+          "--order-class",
+          "mleg",
+          "--qty",
+          "5",
+          "--type",
+          "limit",
+          "--limit-price",
+          "0.61",
+          "--time-in-force",
+          "day",
+          "--client-order-id",
+          "vig-f7f295d2",
+          "--legs",
+          "[{\"symbol\":\"SPY260908P00750000\",\"side\":\"sell\",\"ratio_qty\":\"1\",\"position_intent\":\"sell_to_open\"},{\"symbol\":\"SPY260908P00745000\",\"side\":\"buy\",\"ratio_qty\":\"1\",\"position_intent\":\"buy_to_open\"},{\"symbol\":\"SPY260908C00775000\",\"side\":\"sell\",\"ratio_qty\":\"1\",\"position_intent\":\"sell_to_open\"},{\"symbol\":\"SPY260908C00780000\",\"side\":\"buy\",\"ratio_qty\":\"1\",\"position_intent\":\"buy_to_open\"}]"
+        ],
+        "preview": {
+          "advanced_instructions": {},
+          "client_order_id": "vig-f7f295d2",
+          "legs": [
+            {
+              "position_intent": "sell_to_open",
+              "ratio_qty": "1",
+              "side": "sell",
+              "symbol": "SPY260908P00750000"
+            },
+            {
+              "position_intent": "buy_to_open",
+              "ratio_qty": "1",
+              "side": "buy",
+              "symbol": "SPY260908P00745000"
+            },
+            {
+              "position_intent": "sell_to_open",
+              "ratio_qty": "1",
+              "side": "sell",
+              "symbol": "SPY260908C00775000"
+            },
+            {
+              "position_intent": "buy_to_open",
+              "ratio_qty": "1",
+              "side": "buy",
+              "symbol": "SPY260908C00780000"
+            }
+          ],
+          "limit_price": "0.61",
+          "order_class": "mleg",
+          "qty": "5",
+          "time_in_force": "day",
+          "type": "limit"
+        }
+      },
+      "openedAt": "2026-09-02T14:17:15.028Z"
+    },
+    {
+      "id": "vig-e1a82eab",
+      "clientOrderId": "vig-e1a82eab",
+      "orderId": "c5df4fa7-6ba9-48bd-b70a-8de630489a01",
+      "underlying": "QQQ",
+      "expiry": "2026-09-03",
+      "qty": 5,
+      "width": 5,
+      "symbols": {
+        "shortPut": "QQQ260903P00698000",
+        "longPut": "QQQ260903P00693000",
+        "shortCall": "QQQ260903C00716000",
+        "longCall": "QQQ260903C00721000"
+      },
+      "strikes": {
+        "shortPut": 698,
+        "longPut": 693,
+        "shortCall": 716,
+        "longCall": 721
+      },
+      "creditTotal": 305.00000000000006,
+      "maxLossTotal": 2194.9999999999995,
+      "breakevenLow": 697.39,
+      "breakevenHigh": 716.61,
+      "proof": {
+        "argv": [
+          "alpaca",
+          "order",
+          "submit",
+          "--order-class",
+          "mleg",
+          "--qty",
+          "5",
+          "--type",
+          "limit",
+          "--limit-price",
+          "0.61",
+          "--time-in-force",
+          "day",
+          "--client-order-id",
+          "vig-e1a82eab",
+          "--legs",
+          "[{\"symbol\":\"QQQ260903P00698000\",\"side\":\"sell\",\"ratio_qty\":\"1\",\"position_intent\":\"sell_to_open\"},{\"symbol\":\"QQQ260903P00693000\",\"side\":\"buy\",\"ratio_qty\":\"1\",\"position_intent\":\"buy_to_open\"},{\"symbol\":\"QQQ260903C00716000\",\"side\":\"sell\",\"ratio_qty\":\"1\",\"position_intent\":\"sell_to_open\"},{\"symbol\":\"QQQ260903C00721000\",\"side\":\"buy\",\"ratio_qty\":\"1\",\"position_intent\":\"buy_to_open\"}]"
+        ],
+        "preview": {
+          "advanced_instructions": {},
+          "client_order_id": "vig-e1a82eab",
+          "legs": [
+            {
+              "position_intent": "sell_to_open",
+              "ratio_qty": "1",
+              "side": "sell",
+              "symbol": "QQQ260903P00698000"
+            },
+            {
+              "position_intent": "buy_to_open",
+              "ratio_qty": "1",
+              "side": "buy",
+              "symbol": "QQQ260903P00693000"
+            },
+            {
+              "position_intent": "sell_to_open",
+              "ratio_qty": "1",
+              "side": "sell",
+              "symbol": "QQQ260903C00716000"
+            },
+            {
+              "position_intent": "buy_to_open",
+              "ratio_qty": "1",
+              "side": "buy",
+              "symbol": "QQQ260903C00721000"
+            }
+          ],
+          "limit_price": "0.61",
+          "order_class": "mleg",
+          "qty": "5",
+          "time_in_force": "day",
+          "type": "limit"
+        }
+      },
+      "openedAt": "2026-09-02T14:17:18.343Z"
+    },
+    {
+      "id": "vig-c1fdafdc",
+      "clientOrderId": "vig-c1fdafdc",
+      "orderId": "3acf4b61-50c3-492e-827d-ca9fd63de486",
+      "underlying": "QQQ",
+      "expiry": "2026-09-03",
+      "qty": 5,
+      "width": 5,
+      "symbols": {
+        "shortPut": "QQQ260903P00698000",
+        "longPut": "QQQ260903P00693000",
+        "shortCall": "QQQ260903C00716000",
+        "longCall": "QQQ260903C00721000"
+      },
+      "strikes": {
+        "shortPut": 698,
+        "longPut": 693,
+        "shortCall": 716,
+        "longCall": 721
+      },
+      "creditTotal": 299.99999999999994,
+      "maxLossTotal": 2200.0000000000005,
+      "breakevenLow": 697.4,
+      "breakevenHigh": 716.6,
+      "proof": {
+        "argv": [
+          "alpaca",
+          "order",
+          "submit",
+          "--order-class",
+          "mleg",
+          "--qty",
+          "5",
+          "--type",
+          "limit",
+          "--limit-price",
+          "0.59",
+          "--time-in-force",
+          "day",
+          "--client-order-id",
+          "vig-c1fdafdc",
+          "--legs",
+          "[{\"symbol\":\"QQQ260903P00698000\",\"side\":\"sell\",\"ratio_qty\":\"1\",\"position_intent\":\"sell_to_open\"},{\"symbol\":\"QQQ260903P00693000\",\"side\":\"buy\",\"ratio_qty\":\"1\",\"position_intent\":\"buy_to_open\"},{\"symbol\":\"QQQ260903C00716000\",\"side\":\"sell\",\"ratio_qty\":\"1\",\"position_intent\":\"sell_to_open\"},{\"symbol\":\"QQQ260903C00721000\",\"side\":\"buy\",\"ratio_qty\":\"1\",\"position_intent\":\"buy_to_open\"}]"
+        ],
+        "preview": {
+          "advanced_instructions": {},
+          "client_order_id": "vig-c1fdafdc",
+          "legs": [
+            {
+              "position_intent": "sell_to_open",
+              "ratio_qty": "1",
+              "side": "sell",
+              "symbol": "QQQ260903P00698000"
+            },
+            {
+              "position_intent": "buy_to_open",
+              "ratio_qty": "1",
+              "side": "buy",
+              "symbol": "QQQ260903P00693000"
+            },
+            {
+              "position_intent": "sell_to_open",
+              "ratio_qty": "1",
+              "side": "sell",
+              "symbol": "QQQ260903C00716000"
+            },
+            {
+              "position_intent": "buy_to_open",
+              "ratio_qty": "1",
+              "side": "buy",
+              "symbol": "QQQ260903C00721000"
+            }
+          ],
+          "limit_price": "0.59",
+          "order_class": "mleg",
+          "qty": "5",
+          "time_in_force": "day",
+          "type": "limit"
+        }
+      },
+      "openedAt": "2026-09-02T14:18:28.598Z"
+    },
+    {
+      "id": "vig-2630ba45",
+      "clientOrderId": "vig-2630ba45",
+      "orderId": "18e5b6b6-8efb-4de3-91b2-286779283134",
+      "underlying": "QQQ",
+      "expiry": "2026-09-04",
+      "qty": 5,
+      "width": 5,
+      "symbols": {
+        "shortPut": "QQQ260904P00694000",
+        "longPut": "QQQ260904P00689000",
+        "shortCall": "QQQ260904C00719000",
+        "longCall": "QQQ260904C00724000"
+      },
+      "strikes": {
+        "shortPut": 694,
+        "longPut": 689,
+        "shortCall": 719,
+        "longCall": 724
+      },
+      "creditTotal": 365,
+      "maxLossTotal": 2134.9999999999995,
+      "breakevenLow": 693.27,
+      "breakevenHigh": 719.73,
+      "proof": {
+        "argv": [
+          "alpaca",
+          "order",
+          "submit",
+          "--order-class",
+          "mleg",
+          "--qty",
+          "5",
+          "--type",
+          "limit",
+          "--limit-price",
+          "0.73",
+          "--time-in-force",
+          "day",
+          "--client-order-id",
+          "vig-2630ba45",
+          "--legs",
+          "[{\"symbol\":\"QQQ260904P00694000\",\"side\":\"sell\",\"ratio_qty\":\"1\",\"position_intent\":\"sell_to_open\"},{\"symbol\":\"QQQ260904P00689000\",\"side\":\"buy\",\"ratio_qty\":\"1\",\"position_intent\":\"buy_to_open\"},{\"symbol\":\"QQQ260904C00719000\",\"side\":\"sell\",\"ratio_qty\":\"1\",\"position_intent\":\"sell_to_open\"},{\"symbol\":\"QQQ260904C00724000\",\"side\":\"buy\",\"ratio_qty\":\"1\",\"position_intent\":\"buy_to_open\"}]"
+        ],
+        "preview": {
+          "advanced_instructions": {},
+          "client_order_id": "vig-2630ba45",
+          "legs": [
+            {
+              "position_intent": "sell_to_open",
+              "ratio_qty": "1",
+              "side": "sell",
+              "symbol": "QQQ260904P00694000"
+            },
+            {
+              "position_intent": "buy_to_open",
+              "ratio_qty": "1",
+              "side": "buy",
+              "symbol": "QQQ260904P00689000"
+            },
+            {
+              "position_intent": "sell_to_open",
+              "ratio_qty": "1",
+              "side": "sell",
+              "symbol": "QQQ260904C00719000"
+            },
+            {
+              "position_intent": "buy_to_open",
+              "ratio_qty": "1",
+              "side": "buy",
+              "symbol": "QQQ260904C00724000"
+            }
+          ],
+          "limit_price": "0.73",
+          "order_class": "mleg",
+          "qty": "5",
+          "time_in_force": "day",
+          "type": "limit"
+        }
+      },
+      "openedAt": "2026-09-02T14:18:29.405Z"
+    },
+    {
+      "id": "vig-ae4b2553",
+      "clientOrderId": "vig-ae4b2553",
+      "orderId": "31675cf2-1fb2-4ced-8d8f-a6e11a0737d7",
+      "underlying": "QQQ",
+      "expiry": "2026-09-08",
+      "qty": 5,
+      "width": 5,
+      "symbols": {
+        "shortPut": "QQQ260908P00689000",
+        "longPut": "QQQ260908P00684000",
+        "shortCall": "QQQ260908C00723000",
+        "longCall": "QQQ260908C00728000"
+      },
+      "strikes": {
+        "shortPut": 689,
+        "longPut": 684,
+        "shortCall": 723,
+        "longCall": 728
+      },
+      "creditTotal": 295,
+      "maxLossTotal": 2205,
+      "breakevenLow": 688.41,
+      "breakevenHigh": 723.59,
+      "proof": {
+        "argv": [
+          "alpaca",
+          "order",
+          "submit",
+          "--order-class",
+          "mleg",
+          "--qty",
+          "5",
+          "--type",
+          "limit",
+          "--limit-price",
+          "0.59",
+          "--time-in-force",
+          "day",
+          "--client-order-id",
+          "vig-ae4b2553",
+          "--legs",
+          "[{\"symbol\":\"QQQ260908P00689000\",\"side\":\"sell\",\"ratio_qty\":\"1\",\"position_intent\":\"sell_to_open\"},{\"symbol\":\"QQQ260908P00684000\",\"side\":\"buy\",\"ratio_qty\":\"1\",\"position_intent\":\"buy_to_open\"},{\"symbol\":\"QQQ260908C00723000\",\"side\":\"sell\",\"ratio_qty\":\"1\",\"position_intent\":\"sell_to_open\"},{\"symbol\":\"QQQ260908C00728000\",\"side\":\"buy\",\"ratio_qty\":\"1\",\"position_intent\":\"buy_to_open\"}]"
+        ],
+        "preview": {
+          "advanced_instructions": {},
+          "client_order_id": "vig-ae4b2553",
+          "legs": [
+            {
+              "position_intent": "sell_to_open",
+              "ratio_qty": "1",
+              "side": "sell",
+              "symbol": "QQQ260908P00689000"
+            },
+            {
+              "position_intent": "buy_to_open",
+              "ratio_qty": "1",
+              "side": "buy",
+              "symbol": "QQQ260908P00684000"
+            },
+            {
+              "position_intent": "sell_to_open",
+              "ratio_qty": "1",
+              "side": "sell",
+              "symbol": "QQQ260908C00723000"
+            },
+            {
+              "position_intent": "buy_to_open",
+              "ratio_qty": "1",
+              "side": "buy",
+              "symbol": "QQQ260908C00728000"
+            }
+          ],
+          "limit_price": "0.59",
+          "order_class": "mleg",
+          "qty": "5",
+          "time_in_force": "day",
+          "type": "limit"
+        }
+      },
+      "openedAt": "2026-09-02T14:18:30.187Z"
+    },
+    {
+      "id": "vig-39034f45",
+      "clientOrderId": "vig-39034f45",
+      "orderId": "859725fd-eca5-460e-b3f2-2022489f502e",
+      "underlying": "QQQ",
+      "expiry": "2026-09-04",
+      "qty": 5,
+      "width": 5,
+      "symbols": {
+        "shortPut": "QQQ260904P00694000",
+        "longPut": "QQQ260904P00689000",
+        "shortCall": "QQQ260904C00720000",
+        "longCall": "QQQ260904C00725000"
+      },
+      "strikes": {
+        "shortPut": 694,
+        "longPut": 689,
+        "shortCall": 720,
+        "longCall": 725
+      },
+      "creditTotal": 345,
+      "maxLossTotal": 2155.0000000000005,
+      "breakevenLow": 693.31,
+      "breakevenHigh": 720.69,
+      "proof": {
+        "argv": [
+          "alpaca",
+          "order",
+          "submit",
+          "--order-class",
+          "mleg",
+          "--qty",
+          "5",
+          "--type",
+          "limit",
+          "--limit-price",
+          "0.69",
+          "--time-in-force",
+          "day",
+          "--client-order-id",
+          "vig-39034f45",
+          "--legs",
+          "[{\"symbol\":\"QQQ260904P00694000\",\"side\":\"sell\",\"ratio_qty\":\"1\",\"position_intent\":\"sell_to_open\"},{\"symbol\":\"QQQ260904P00689000\",\"side\":\"buy\",\"ratio_qty\":\"1\",\"position_intent\":\"buy_to_open\"},{\"symbol\":\"QQQ260904C00720000\",\"side\":\"sell\",\"ratio_qty\":\"1\",\"position_intent\":\"sell_to_open\"},{\"symbol\":\"QQQ260904C00725000\",\"side\":\"buy\",\"ratio_qty\":\"1\",\"position_intent\":\"buy_to_open\"}]"
+        ],
+        "preview": {
+          "advanced_instructions": {},
+          "client_order_id": "vig-39034f45",
+          "legs": [
+            {
+              "position_intent": "sell_to_open",
+              "ratio_qty": "1",
+              "side": "sell",
+              "symbol": "QQQ260904P00694000"
+            },
+            {
+              "position_intent": "buy_to_open",
+              "ratio_qty": "1",
+              "side": "buy",
+              "symbol": "QQQ260904P00689000"
+            },
+            {
+              "position_intent": "sell_to_open",
+              "ratio_qty": "1",
+              "side": "sell",
+              "symbol": "QQQ260904C00720000"
+            },
+            {
+              "position_intent": "buy_to_open",
+              "ratio_qty": "1",
+              "side": "buy",
+              "symbol": "QQQ260904C00725000"
+            }
+          ],
+          "limit_price": "0.69",
+          "order_class": "mleg",
+          "qty": "5",
+          "time_in_force": "day",
+          "type": "limit"
+        }
+      },
+      "openedAt": "2026-09-02T14:19:41.749Z"
+    },
+    {
+      "id": "vig-1d3ad277",
+      "clientOrderId": "vig-1d3ad277",
+      "orderId": "221371e9-4dc5-47b7-ab7b-c9d3a33357be",
+      "underlying": "QQQ",
+      "expiry": "2026-09-08",
+      "qty": 5,
+      "width": 5,
+      "symbols": {
+        "shortPut": "QQQ260908P00690000",
+        "longPut": "QQQ260908P00685000",
+        "shortCall": "QQQ260908C00723000",
+        "longCall": "QQQ260908C00728000"
+      },
+      "strikes": {
+        "shortPut": 690,
+        "longPut": 685,
+        "shortCall": 723,
+        "longCall": 728
+      },
+      "creditTotal": 355.00000000000006,
+      "maxLossTotal": 2145,
+      "breakevenLow": 689.29,
+      "breakevenHigh": 723.71,
+      "proof": {
+        "argv": [
+          "alpaca",
+          "order",
+          "submit",
+          "--order-class",
+          "mleg",
+          "--qty",
+          "5",
+          "--type",
+          "limit",
+          "--limit-price",
+          "0.71",
+          "--time-in-force",
+          "day",
+          "--client-order-id",
+          "vig-1d3ad277",
+          "--legs",
+          "[{\"symbol\":\"QQQ260908P00690000\",\"side\":\"sell\",\"ratio_qty\":\"1\",\"position_intent\":\"sell_to_open\"},{\"symbol\":\"QQQ260908P00685000\",\"side\":\"buy\",\"ratio_qty\":\"1\",\"position_intent\":\"buy_to_open\"},{\"symbol\":\"QQQ260908C00723000\",\"side\":\"sell\",\"ratio_qty\":\"1\",\"position_intent\":\"sell_to_open\"},{\"symbol\":\"QQQ260908C00728000\",\"side\":\"buy\",\"ratio_qty\":\"1\",\"position_intent\":\"buy_to_open\"}]"
+        ],
+        "preview": {
+          "advanced_instructions": {},
+          "client_order_id": "vig-1d3ad277",
+          "legs": [
+            {
+              "position_intent": "sell_to_open",
+              "ratio_qty": "1",
+              "side": "sell",
+              "symbol": "QQQ260908P00690000"
+            },
+            {
+              "position_intent": "buy_to_open",
+              "ratio_qty": "1",
+              "side": "buy",
+              "symbol": "QQQ260908P00685000"
+            },
+            {
+              "position_intent": "sell_to_open",
+              "ratio_qty": "1",
+              "side": "sell",
+              "symbol": "QQQ260908C00723000"
+            },
+            {
+              "position_intent": "buy_to_open",
+              "ratio_qty": "1",
+              "side": "buy",
+              "symbol": "QQQ260908C00728000"
+            }
+          ],
+          "limit_price": "0.71",
+          "order_class": "mleg",
+          "qty": "5",
+          "time_in_force": "day",
+          "type": "limit"
+        }
+      },
+      "openedAt": "2026-09-02T14:19:42.402Z"
+    },
+    {
+      "id": "vig-90e25b9e",
+      "clientOrderId": "vig-90e25b9e",
+      "orderId": "0cfa9f91-804f-4139-bc33-ed022f423113",
+      "underlying": "IWM",
+      "expiry": "2026-09-08",
+      "qty": 14,
+      "width": 2,
+      "symbols": {
+        "shortPut": "IWM260908P00286000",
+        "longPut": "IWM260908P00284000",
+        "shortCall": "IWM260908C00300000",
+        "longCall": "IWM260908C00302000"
+      },
+      "strikes": {
+        "shortPut": 286,
+        "longPut": 284,
+        "shortCall": 300,
+        "longCall": 302
+      },
+      "creditTotal": 321.99999999999994,
+      "maxLossTotal": 2478,
+      "breakevenLow": 285.77,
+      "breakevenHigh": 300.23,
+      "proof": {
+        "argv": [
+          "alpaca",
+          "order",
+          "submit",
+          "--order-class",
+          "mleg",
+          "--qty",
+          "14",
+          "--type",
+          "limit",
+          "--limit-price",
+          "0.22",
+          "--time-in-force",
+          "day",
+          "--client-order-id",
+          "vig-90e25b9e",
+          "--legs",
+          "[{\"symbol\":\"IWM260908P00286000\",\"side\":\"sell\",\"ratio_qty\":\"1\",\"position_intent\":\"sell_to_open\"},{\"symbol\":\"IWM260908P00284000\",\"side\":\"buy\",\"ratio_qty\":\"1\",\"position_intent\":\"buy_to_open\"},{\"symbol\":\"IWM260908C00300000\",\"side\":\"sell\",\"ratio_qty\":\"1\",\"position_intent\":\"sell_to_open\"},{\"symbol\":\"IWM260908C00302000\",\"side\":\"buy\",\"ratio_qty\":\"1\",\"position_intent\":\"buy_to_open\"}]"
+        ],
+        "preview": {
+          "advanced_instructions": {},
+          "client_order_id": "vig-90e25b9e",
+          "legs": [
+            {
+              "position_intent": "sell_to_open",
+              "ratio_qty": "1",
+              "side": "sell",
+              "symbol": "IWM260908P00286000"
+            },
+            {
+              "position_intent": "buy_to_open",
+              "ratio_qty": "1",
+              "side": "buy",
+              "symbol": "IWM260908P00284000"
+            },
+            {
+              "position_intent": "sell_to_open",
+              "ratio_qty": "1",
+              "side": "sell",
+              "symbol": "IWM260908C00300000"
+            },
+            {
+              "position_intent": "buy_to_open",
+              "ratio_qty": "1",
+              "side": "buy",
+              "symbol": "IWM260908C00302000"
+            }
+          ],
+          "limit_price": "0.22",
+          "order_class": "mleg",
+          "qty": "14",
+          "time_in_force": "day",
+          "type": "limit"
+        }
+      },
+      "openedAt": "2026-09-02T14:19:44.952Z"
+    }
+  ],
+  "settled": [],
+  "decisions": [
+    {
+      "bucket": "SPY:2026-09-03",
+      "action": "refused",
+      "reason": "thin-credit",
+      "detail": "credit is 9.2% of width, under the 10% floor",
+      "condor": {
+        "underlying": "SPY",
+        "expiry": "2026-09-03",
+        "width": 5,
+        "qty": 5,
+        "shortPut": {
+          "symbol": "SPY260903P00758000",
+          "expiry": "2026-09-03",
+          "right": "P",
+          "strike": 758,
+          "bid": 0.46,
+          "ask": 0.47,
+          "mid": 0.46499999999999997,
+          "spread": 0.009999999999999953,
+          "delta": -0.1335,
+          "quotedAt": "2026-09-02T14:51:13.15225351Z"
+        },
+        "longPut": {
+          "symbol": "SPY260903P00753000",
+          "expiry": "2026-09-03",
+          "right": "P",
+          "strike": 753,
+          "bid": 0.17,
+          "ask": 0.18,
+          "mid": 0.175,
+          "spread": 0.009999999999999981,
+          "delta": -0.0527,
+          "quotedAt": "2026-09-02T14:51:12.807261168Z"
+        },
+        "shortCall": {
+          "symbol": "SPY260903C00772000",
+          "expiry": "2026-09-03",
+          "right": "C",
+          "strike": 772,
+          "bid": 0.24,
+          "ask": 0.25,
+          "mid": 0.245,
+          "spread": 0.010000000000000009,
+          "delta": 0.1025,
+          "quotedAt": "2026-09-02T14:51:13.194210919Z"
+        },
+        "longCall": {
+          "symbol": "SPY260903C00777000",
+          "expiry": "2026-09-03",
+          "right": "C",
+          "strike": 777,
+          "bid": 0.05,
+          "ask": 0.06,
+          "mid": 0.055,
+          "spread": 0.009999999999999995,
+          "delta": 0.0252,
+          "quotedAt": "2026-09-02T14:51:13.01877696Z"
+        },
+        "creditPerShare": 0.46,
+        "creditTotal": 230,
+        "maxLossPerShare": 4.54,
+        "maxLossTotal": 2270,
+        "breakevenLow": 757.54,
+        "breakevenHigh": 772.46
+      }
+    },
+    {
+      "bucket": "SPY:2026-09-04",
+      "action": "refused",
+      "reason": "bucket-full",
+      "detail": "SPY 2026-09-04 already holds $4445; another would concentrate past $5978",
+      "condor": {
+        "underlying": "SPY",
+        "expiry": "2026-09-04",
+        "width": 5,
+        "qty": 5,
+        "shortPut": {
+          "symbol": "SPY260904P00755000",
+          "expiry": "2026-09-04",
+          "right": "P",
+          "strike": 755,
+          "bid": 0.56,
+          "ask": 0.57,
+          "mid": 0.565,
+          "spread": 0.009999999999999898,
+          "delta": -0.1225,
+          "quotedAt": "2026-09-02T14:51:14.213265912Z"
+        },
+        "longPut": {
+          "symbol": "SPY260904P00750000",
+          "expiry": "2026-09-04",
+          "right": "P",
+          "strike": 750,
+          "bid": 0.23,
+          "ask": 0.24,
+          "mid": 0.235,
+          "spread": 0.009999999999999981,
+          "delta": -0.0553,
+          "quotedAt": "2026-09-02T14:51:14.313580071Z"
+        },
+        "shortCall": {
+          "symbol": "SPY260904C00774000",
+          "expiry": "2026-09-04",
+          "right": "C",
+          "strike": 774,
+          "bid": 0.39,
+          "ask": 0.4,
+          "mid": 0.395,
+          "spread": 0.010000000000000009,
+          "delta": 0.1168,
+          "quotedAt": "2026-09-02T14:51:12.583825389Z"
+        },
+        "longCall": {
+          "symbol": "SPY260904C00779000",
+          "expiry": "2026-09-04",
+          "right": "C",
+          "strike": 779,
+          "bid": 0.04,
+          "ask": 0.09,
+          "mid": 0.065,
+          "spread": 0.049999999999999996,
+          "delta": 0.0255,
+          "quotedAt": "2026-09-02T14:51:13.196520927Z"
+        },
+        "creditPerShare": 0.6200000000000001,
+        "creditTotal": 310.00000000000006,
+        "maxLossPerShare": 4.38,
+        "maxLossTotal": 2190,
+        "breakevenLow": 754.38,
+        "breakevenHigh": 774.62
+      }
+    },
+    {
+      "bucket": "SPY:2026-09-08",
+      "action": "refused",
+      "reason": "bucket-full",
+      "detail": "SPY 2026-09-08 already holds $4405; another would concentrate past $5978",
+      "condor": {
+        "underlying": "SPY",
+        "expiry": "2026-09-08",
+        "width": 5,
+        "qty": 5,
+        "shortPut": {
+          "symbol": "SPY260908P00752000",
+          "expiry": "2026-09-08",
+          "right": "P",
+          "strike": 752,
+          "bid": 0.73,
+          "ask": 0.79,
+          "mid": 0.76,
+          "spread": 0.06000000000000005,
+          "delta": -0.124,
+          "quotedAt": "2026-09-02T14:51:13.519773764Z"
+        },
+        "longPut": {
+          "symbol": "SPY260908P00747000",
+          "expiry": "2026-09-08",
+          "right": "P",
+          "strike": 747,
+          "bid": 0.41,
+          "ask": 0.43,
+          "mid": 0.42,
+          "spread": 0.020000000000000018,
+          "delta": -0.0714,
+          "quotedAt": "2026-09-02T14:51:14.252739947Z"
+        },
+        "shortCall": {
+          "symbol": "SPY260908C00776000",
+          "expiry": "2026-09-08",
+          "right": "C",
+          "strike": 776,
+          "bid": 0.41,
+          "ask": 0.47,
+          "mid": 0.43999999999999995,
+          "spread": 0.06,
+          "delta": 0.1118,
+          "quotedAt": "2026-09-02T14:51:14.28691596Z"
+        },
+        "longCall": {
+          "symbol": "SPY260908C00781000",
+          "expiry": "2026-09-08",
+          "right": "C",
+          "strike": 781,
+          "bid": 0.11,
+          "ask": 0.12,
+          "mid": 0.11499999999999999,
+          "spread": 0.009999999999999995,
+          "delta": 0.0354,
+          "quotedAt": "2026-09-02T14:51:14.282206331Z"
+        },
+        "creditPerShare": 0.59,
+        "creditTotal": 295,
+        "maxLossPerShare": 4.41,
+        "maxLossTotal": 2205,
+        "breakevenLow": 751.41,
+        "breakevenHigh": 776.59
+      }
+    },
+    {
+      "bucket": "QQQ:2026-09-03",
+      "action": "refused",
+      "reason": "bucket-full",
+      "detail": "QQQ 2026-09-03 already holds $4395; another would concentrate past $5978",
+      "condor": {
+        "underlying": "QQQ",
+        "expiry": "2026-09-03",
+        "width": 5,
+        "qty": 5,
+        "shortPut": {
+          "symbol": "QQQ260903P00698000",
+          "expiry": "2026-09-03",
+          "right": "P",
+          "strike": 698,
+          "bid": 0.55,
+          "ask": 0.56,
+          "mid": 0.555,
+          "spread": 0.010000000000000009,
+          "delta": -0.1239,
+          "quotedAt": "2026-09-02T14:51:14.881199844Z"
+        },
+        "longPut": {
+          "symbol": "QQQ260903P00693000",
+          "expiry": "2026-09-03",
+          "right": "P",
+          "strike": 693,
+          "bid": 0.2,
+          "ask": 0.25,
+          "mid": 0.225,
+          "spread": 0.04999999999999999,
+          "delta": -0.0546,
+          "quotedAt": "2026-09-02T14:51:15.088854982Z"
+        },
+        "shortCall": {
+          "symbol": "QQQ260903C00716000",
+          "expiry": "2026-09-03",
+          "right": "C",
+          "strike": 716,
+          "bid": 0.42,
+          "ask": 0.43,
+          "mid": 0.425,
+          "spread": 0.010000000000000009,
+          "delta": 0.1273,
+          "quotedAt": "2026-09-02T14:51:15.032599033Z"
+        },
+        "longCall": {
+          "symbol": "QQQ260903C00721000",
+          "expiry": "2026-09-03",
+          "right": "C",
+          "strike": 721,
+          "bid": 0.05,
+          "ask": 0.06,
+          "mid": 0.055,
+          "spread": 0.009999999999999995,
+          "delta": 0.0233,
+          "quotedAt": "2026-09-02T14:51:15.275658663Z"
+        },
+        "creditPerShare": 0.66,
+        "creditTotal": 330,
+        "maxLossPerShare": 4.34,
+        "maxLossTotal": 2170,
+        "breakevenLow": 697.34,
+        "breakevenHigh": 716.66
+      }
+    },
+    {
+      "bucket": "QQQ:2026-09-04",
+      "action": "refused",
+      "reason": "bucket-full",
+      "detail": "QQQ 2026-09-04 already holds $4290; another would concentrate past $5978",
+      "condor": {
+        "underlying": "QQQ",
+        "expiry": "2026-09-04",
+        "width": 5,
+        "qty": 5,
+        "shortPut": {
+          "symbol": "QQQ260904P00694000",
+          "expiry": "2026-09-04",
+          "right": "P",
+          "strike": 694,
+          "bid": 0.65,
+          "ask": 0.66,
+          "mid": 0.655,
+          "spread": 0.010000000000000009,
+          "delta": -0.1118,
+          "quotedAt": "2026-09-02T14:51:16.444143098Z"
+        },
+        "longPut": {
+          "symbol": "QQQ260904P00689000",
+          "expiry": "2026-09-04",
+          "right": "P",
+          "strike": 689,
+          "bid": 0.34,
+          "ask": 0.35,
+          "mid": 0.345,
+          "spread": 0.009999999999999953,
+          "delta": -0.0618,
+          "quotedAt": "2026-09-02T14:51:16.11817912Z"
+        },
+        "shortCall": {
+          "symbol": "QQQ260904C00719000",
+          "expiry": "2026-09-04",
+          "right": "C",
+          "strike": 719,
+          "bid": 0.53,
+          "ask": 0.54,
+          "mid": 0.535,
+          "spread": 0.010000000000000009,
+          "delta": 0.1212,
+          "quotedAt": "2026-09-02T14:51:14.748630629Z"
+        },
+        "longCall": {
+          "symbol": "QQQ260904C00724000",
+          "expiry": "2026-09-04",
+          "right": "C",
+          "strike": 724,
+          "bid": 0.15,
+          "ask": 0.16,
+          "mid": 0.155,
+          "spread": 0.010000000000000009,
+          "delta": 0.0426,
+          "quotedAt": "2026-09-02T14:51:15.690023722Z"
+        },
+        "creditPerShare": 0.67,
+        "creditTotal": 335,
+        "maxLossPerShare": 4.33,
+        "maxLossTotal": 2165,
+        "breakevenLow": 693.33,
+        "breakevenHigh": 719.67
+      }
+    },
+    {
+      "bucket": "QQQ:2026-09-08",
+      "action": "refused",
+      "reason": "bucket-full",
+      "detail": "QQQ 2026-09-08 already holds $4350; another would concentrate past $5978",
+      "condor": {
+        "underlying": "QQQ",
+        "expiry": "2026-09-08",
+        "width": 5,
+        "qty": 5,
+        "shortPut": {
+          "symbol": "QQQ260908P00690000",
+          "expiry": "2026-09-08",
+          "right": "P",
+          "strike": 690,
+          "bid": 1,
+          "ask": 1.02,
+          "mid": 1.01,
+          "spread": 0.020000000000000018,
+          "delta": -0.123,
+          "quotedAt": "2026-09-02T14:51:15.756766278Z"
+        },
+        "longPut": {
+          "symbol": "QQQ260908P00685000",
+          "expiry": "2026-09-08",
+          "right": "P",
+          "strike": 685,
+          "bid": 0.62,
+          "ask": 0.68,
+          "mid": 0.65,
+          "spread": 0.06000000000000005,
+          "delta": -0.0814,
+          "quotedAt": "2026-09-02T14:51:16.08824269Z"
+        },
+        "shortCall": {
+          "symbol": "QQQ260908C00722000",
+          "expiry": "2026-09-08",
+          "right": "C",
+          "strike": 722,
+          "bid": 0.64,
+          "ask": 0.71,
+          "mid": 0.675,
+          "spread": 0.06999999999999995,
+          "delta": 0.1221,
+          "quotedAt": "2026-09-02T14:51:16.302967654Z"
+        },
+        "longCall": {
+          "symbol": "QQQ260908C00727000",
+          "expiry": "2026-09-08",
+          "right": "C",
+          "strike": 727,
+          "bid": 0.2,
+          "ask": 0.26,
+          "mid": 0.23,
+          "spread": 0.06,
+          "delta": 0.0504,
+          "quotedAt": "2026-09-02T14:51:16.731601247Z"
+        },
+        "creditPerShare": 0.7,
+        "creditTotal": 350,
+        "maxLossPerShare": 4.3,
+        "maxLossTotal": 2150,
+        "breakevenLow": 689.3,
+        "breakevenHigh": 722.7
+      }
+    },
+    {
+      "bucket": "IWM:2026-09-03",
+      "action": "refused",
+      "reason": "book-full",
+      "detail": "$26573 already reserved; this would take the book past its $24908 ceiling",
+      "condor": {
+        "underlying": "IWM",
+        "expiry": "2026-09-03",
+        "width": 2,
+        "qty": 14,
+        "shortPut": {
+          "symbol": "IWM260903P00289000",
+          "expiry": "2026-09-03",
+          "right": "P",
+          "strike": 289,
+          "bid": 0.19,
+          "ask": 0.2,
+          "mid": 0.195,
+          "spread": 0.010000000000000009,
+          "delta": -0.1138,
+          "quotedAt": "2026-09-02T14:51:17.953892678Z"
+        },
+        "longPut": {
+          "symbol": "IWM260903P00287000",
+          "expiry": "2026-09-03",
+          "right": "P",
+          "strike": 287,
+          "bid": 0.09,
+          "ask": 0.1,
+          "mid": 0.095,
+          "spread": 0.010000000000000009,
+          "delta": -0.0562,
+          "quotedAt": "2026-09-02T14:51:17.169250359Z"
+        },
+        "shortCall": {
+          "symbol": "IWM260903C00296000",
+          "expiry": "2026-09-03",
+          "right": "C",
+          "strike": 296,
+          "bid": 0.16,
+          "ask": 0.21,
+          "mid": 0.185,
+          "spread": 0.04999999999999999,
+          "delta": 0.1405,
+          "quotedAt": "2026-09-02T14:51:18.084261661Z"
+        },
+        "longCall": {
+          "symbol": "IWM260903C00298000",
+          "expiry": "2026-09-03",
+          "right": "C",
+          "strike": 298,
+          "bid": 0.02,
+          "ask": 0.03,
+          "mid": 0.025,
+          "spread": 0.009999999999999998,
+          "delta": 0.0267,
+          "quotedAt": "2026-09-02T14:51:17.379624447Z"
+        },
+        "creditPerShare": 0.22,
+        "creditTotal": 308,
+        "maxLossPerShare": 1.78,
+        "maxLossTotal": 2492,
+        "breakevenLow": 288.78,
+        "breakevenHigh": 296.22
+      }
+    },
+    {
+      "bucket": "IWM:2026-09-04",
+      "action": "unpriceable",
+      "reason": "no-wing",
+      "detail": "no put at 285.5 to cap the put side"
+    },
+    {
+      "bucket": "IWM:2026-09-08",
+      "action": "refused",
+      "reason": "thin-credit",
+      "detail": "credit is 10.0% of width, under the 10% floor",
+      "condor": {
+        "underlying": "IWM",
+        "expiry": "2026-09-08",
+        "width": 2,
+        "qty": 13,
+        "shortPut": {
+          "symbol": "IWM260908P00285000",
+          "expiry": "2026-09-08",
+          "right": "P",
+          "strike": 285,
+          "bid": 0.36,
+          "ask": 0.37,
+          "mid": 0.365,
+          "spread": 0.010000000000000009,
+          "delta": -0.1086,
+          "quotedAt": "2026-09-02T14:51:12.628816645Z"
+        },
+        "longPut": {
+          "symbol": "IWM260908P00283000",
+          "expiry": "2026-09-08",
+          "right": "P",
+          "strike": 283,
+          "bid": 0.24,
+          "ask": 0.27,
+          "mid": 0.255,
+          "spread": 0.030000000000000027,
+          "delta": -0.076,
+          "quotedAt": "2026-09-02T14:51:17.168387093Z"
+        },
+        "shortCall": {
+          "symbol": "IWM260908C00299000",
+          "expiry": "2026-09-08",
+          "right": "C",
+          "strike": 299,
+          "bid": 0.26,
+          "ask": 0.32,
+          "mid": 0.29000000000000004,
+          "spread": 0.06,
+          "delta": 0.1229,
+          "quotedAt": "2026-09-02T14:51:17.702979281Z"
+        },
+        "longCall": {
+          "symbol": "IWM260908C00301000",
+          "expiry": "2026-09-08",
+          "right": "C",
+          "strike": 301,
+          "bid": 0.14,
+          "ask": 0.15,
+          "mid": 0.14500000000000002,
+          "spread": 0.009999999999999981,
+          "delta": 0.0665,
+          "quotedAt": "2026-09-02T14:51:17.604088808Z"
+        },
+        "creditPerShare": 0.19999999999999998,
+        "creditTotal": 260,
+        "maxLossPerShare": 1.8,
+        "maxLossTotal": 2340,
+        "breakevenLow": 284.8,
+        "breakevenHigh": 299.2
+      }
+    }
+  ],
+  "legs": [
+    {
+      "asset_class": "us_option",
+      "asset_id": "eea1ad45-65f2-4947-a8e2-35dde13c04fd",
+      "asset_marginable": true,
+      "avg_entry_price": "0.24",
+      "change_today": "1",
+      "cost_basis": "-336",
+      "current_price": "0.2",
+      "exchange": "",
+      "lastday_price": "0.1",
+      "market_value": "-280",
+      "qty": "-14",
+      "qty_available": "-14",
+      "side": "short",
+      "symbol": "IWM260908C00300000",
+      "unrealized_intraday_pl": "56",
+      "unrealized_intraday_plpc": "0.16667",
+      "unrealized_pl": "56",
+      "unrealized_plpc": "0.16667",
+      "usd": {
+        "avg_entry_price": "",
+        "cost_basis": ""
+      }
+    },
+    {
+      "asset_class": "us_option",
+      "asset_id": "b8964516-3458-4ec2-a903-640d838d72d3",
+      "asset_marginable": true,
+      "avg_entry_price": "0.12",
+      "change_today": "0.6",
+      "cost_basis": "168",
+      "current_price": "0.08",
+      "exchange": "",
+      "lastday_price": "0.05",
+      "market_value": "112",
+      "qty": "14",
+      "qty_available": "14",
+      "side": "long",
+      "symbol": "IWM260908C00302000",
+      "unrealized_intraday_pl": "-56",
+      "unrealized_intraday_plpc": "-0.33333",
+      "unrealized_pl": "-56",
+      "unrealized_plpc": "-0.33333",
+      "usd": {
+        "avg_entry_price": "",
+        "cost_basis": ""
+      }
+    },
+    {
+      "asset_class": "us_option",
+      "asset_id": "42b316e8-9edb-4fc3-8ea9-1ee0c03beb68",
+      "asset_marginable": true,
+      "avg_entry_price": "0.29",
+      "change_today": "-0.66667",
+      "cost_basis": "406",
+      "current_price": "0.27",
+      "exchange": "",
+      "lastday_price": "0.81",
+      "market_value": "378",
+      "qty": "14",
+      "qty_available": "14",
+      "side": "long",
+      "symbol": "IWM260908P00284000",
+      "unrealized_intraday_pl": "-28",
+      "unrealized_intraday_plpc": "-0.06897",
+      "unrealized_pl": "-28",
+      "unrealized_plpc": "-0.06897",
+      "usd": {
+        "avg_entry_price": "",
+        "cost_basis": ""
+      }
+    },
+    {
+      "asset_class": "us_option",
+      "asset_id": "21609854-a5d7-4fea-abdf-3828a0404514",
+      "asset_marginable": true,
+      "avg_entry_price": "0.39",
+      "change_today": "-0.60714",
+      "cost_basis": "-546",
+      "current_price": "0.44",
+      "exchange": "",
+      "lastday_price": "1.12",
+      "market_value": "-616",
+      "qty": "-14",
+      "qty_available": "-14",
+      "side": "short",
+      "symbol": "IWM260908P00286000",
+      "unrealized_intraday_pl": "-70",
+      "unrealized_intraday_plpc": "-0.12821",
+      "unrealized_pl": "-70",
+      "unrealized_plpc": "-0.12821",
+      "usd": {
+        "avg_entry_price": "",
+        "cost_basis": ""
+      }
+    },
+    {
+      "asset_class": "us_option",
+      "asset_id": "ed1732f6-63f0-49a7-b23a-eff797b0563d",
+      "asset_marginable": true,
+      "avg_entry_price": "0.435",
+      "change_today": "-0.48052",
+      "cost_basis": "-435",
+      "current_price": "0.4",
+      "exchange": "",
+      "lastday_price": "0.77",
+      "market_value": "-400",
+      "qty": "-10",
+      "qty_available": "-10",
+      "side": "short",
+      "symbol": "QQQ260903C00716000",
+      "unrealized_intraday_pl": "35",
+      "unrealized_intraday_plpc": "0.08046",
+      "unrealized_pl": "35",
+      "unrealized_plpc": "0.08046",
+      "usd": {
+        "avg_entry_price": "",
+        "cost_basis": ""
+      }
+    },
+    {
+      "asset_class": "us_option",
+      "asset_id": "5d29bafd-ce19-46e8-a63c-03089213e145",
+      "asset_marginable": true,
+      "avg_entry_price": "0.1",
+      "change_today": "-0.61111",
+      "cost_basis": "100",
+      "current_price": "0.07",
+      "exchange": "",
+      "lastday_price": "0.18",
+      "market_value": "70",
+      "qty": "10",
+      "qty_available": "10",
+      "side": "long",
+      "symbol": "QQQ260903C00721000",
+      "unrealized_intraday_pl": "-30",
+      "unrealized_intraday_plpc": "-0.3",
+      "unrealized_pl": "-30",
+      "unrealized_plpc": "-0.3",
+      "usd": {
+        "avg_entry_price": "",
+        "cost_basis": ""
+      }
+    },
+    {
+      "asset_class": "us_option",
+      "asset_id": "d809fc95-2dec-430b-a6b9-1ef98e2f54da",
+      "asset_marginable": true,
+      "avg_entry_price": "0.24",
+      "change_today": "-0.6",
+      "cost_basis": "240",
+      "current_price": "0.22",
+      "exchange": "",
+      "lastday_price": "0.55",
+      "market_value": "220",
+      "qty": "10",
+      "qty_available": "10",
+      "side": "long",
+      "symbol": "QQQ260903P00693000",
+      "unrealized_intraday_pl": "-20",
+      "unrealized_intraday_plpc": "-0.08333",
+      "unrealized_pl": "-20",
+      "unrealized_plpc": "-0.08333",
+      "usd": {
+        "avg_entry_price": "",
+        "cost_basis": ""
+      }
+    },
+    {
+      "asset_class": "us_option",
+      "asset_id": "c6b8e772-df4d-41b6-bbfd-9e2a8b441c02",
+      "asset_marginable": true,
+      "avg_entry_price": "0.56",
+      "change_today": "-0.5",
+      "cost_basis": "-560",
+      "current_price": "0.54",
+      "exchange": "",
+      "lastday_price": "1.08",
+      "market_value": "-540",
+      "qty": "-10",
+      "qty_available": "-10",
+      "side": "short",
+      "symbol": "QQQ260903P00698000",
+      "unrealized_intraday_pl": "20",
+      "unrealized_intraday_plpc": "0.03571",
+      "unrealized_pl": "20",
+      "unrealized_plpc": "0.03571",
+      "usd": {
+        "avg_entry_price": "",
+        "cost_basis": ""
+      }
+    },
+    {
+      "asset_class": "us_option",
+      "asset_id": "6b045562-84c9-47d1-b280-bc77694e5e38",
+      "asset_marginable": true,
+      "avg_entry_price": "0.59",
+      "change_today": "-0.4023",
+      "cost_basis": "-295",
+      "current_price": "0.52",
+      "exchange": "",
+      "lastday_price": "0.87",
+      "market_value": "-260",
+      "qty": "-5",
+      "qty_available": "-5",
+      "side": "short",
+      "symbol": "QQQ260904C00719000",
+      "unrealized_intraday_pl": "35",
+      "unrealized_intraday_plpc": "0.11864",
+      "unrealized_pl": "35",
+      "unrealized_plpc": "0.11864",
+      "usd": {
+        "avg_entry_price": "",
+        "cost_basis": ""
+      }
+    },
+    {
+      "asset_class": "us_option",
+      "asset_id": "23c23d0c-6aa1-4d86-9398-642f77021ab2",
+      "asset_marginable": true,
+      "avg_entry_price": "0.5",
+      "change_today": "-0.44444",
+      "cost_basis": "-250",
+      "current_price": "0.4",
+      "exchange": "",
+      "lastday_price": "0.72",
+      "market_value": "-200",
+      "qty": "-5",
+      "qty_available": "-5",
+      "side": "short",
+      "symbol": "QQQ260904C00720000",
+      "unrealized_intraday_pl": "50",
+      "unrealized_intraday_plpc": "0.2",
+      "unrealized_pl": "50",
+      "unrealized_plpc": "0.2",
+      "usd": {
+        "avg_entry_price": "",
+        "cost_basis": ""
+      }
+    },
+    {
+      "asset_class": "us_option",
+      "asset_id": "fde8351e-3daf-436a-afde-f52257723e68",
+      "asset_marginable": true,
+      "avg_entry_price": "0.18",
+      "change_today": "-0.51852",
+      "cost_basis": "90",
+      "current_price": "0.13",
+      "exchange": "",
+      "lastday_price": "0.27",
+      "market_value": "65",
+      "qty": "5",
+      "qty_available": "5",
+      "side": "long",
+      "symbol": "QQQ260904C00724000",
+      "unrealized_intraday_pl": "-25",
+      "unrealized_intraday_plpc": "-0.27778",
+      "unrealized_pl": "-25",
+      "unrealized_plpc": "-0.27778",
+      "usd": {
+        "avg_entry_price": "",
+        "cost_basis": ""
+      }
+    },
+    {
+      "asset_class": "us_option",
+      "asset_id": "12788a18-2007-4eda-86b1-e2d0df7b2efc",
+      "asset_marginable": true,
+      "avg_entry_price": "0.15",
+      "change_today": "-0.52381",
+      "cost_basis": "75",
+      "current_price": "0.1",
+      "exchange": "",
+      "lastday_price": "0.21",
+      "market_value": "50",
+      "qty": "5",
+      "qty_available": "5",
+      "side": "long",
+      "symbol": "QQQ260904C00725000",
+      "unrealized_intraday_pl": "-25",
+      "unrealized_intraday_plpc": "-0.33333",
+      "unrealized_pl": "-25",
+      "unrealized_plpc": "-0.33333",
+      "usd": {
+        "avg_entry_price": "",
+        "cost_basis": ""
+      }
+    },
+    {
+      "asset_class": "us_option",
+      "asset_id": "2ce3b408-a738-4338-a5f3-a31b5d87961c",
+      "asset_marginable": true,
+      "avg_entry_price": "0.395",
+      "change_today": "-0.49296",
+      "cost_basis": "395",
+      "current_price": "0.36",
+      "exchange": "",
+      "lastday_price": "0.71",
+      "market_value": "360",
+      "qty": "10",
+      "qty_available": "10",
+      "side": "long",
+      "symbol": "QQQ260904P00689000",
+      "unrealized_intraday_pl": "-35",
+      "unrealized_intraday_plpc": "-0.08861",
+      "unrealized_pl": "-35",
+      "unrealized_plpc": "-0.08861",
+      "usd": {
+        "avg_entry_price": "",
+        "cost_basis": ""
+      }
+    },
+    {
+      "asset_class": "us_option",
+      "asset_id": "9108a58c-4fe7-4e8a-a681-4348e1b09574",
+      "asset_marginable": true,
+      "avg_entry_price": "0.7",
+      "change_today": "-0.41379",
+      "cost_basis": "-700",
+      "current_price": "0.68",
+      "exchange": "",
+      "lastday_price": "1.16",
+      "market_value": "-680",
+      "qty": "-10",
+      "qty_available": "-10",
+      "side": "short",
+      "symbol": "QQQ260904P00694000",
+      "unrealized_intraday_pl": "20",
+      "unrealized_intraday_plpc": "0.02857",
+      "unrealized_pl": "20",
+      "unrealized_plpc": "0.02857",
+      "usd": {
+        "avg_entry_price": "",
+        "cost_basis": ""
+      }
+    },
+    {
+      "asset_class": "us_option",
+      "asset_id": "73883b0c-a951-4f78-9b07-3cbbaf23bee7",
+      "asset_marginable": true,
+      "avg_entry_price": "0.63",
+      "change_today": "-0.34884",
+      "cost_basis": "-630",
+      "current_price": "0.56",
+      "exchange": "",
+      "lastday_price": "0.86",
+      "market_value": "-560",
+      "qty": "-10",
+      "qty_available": "-10",
+      "side": "short",
+      "symbol": "QQQ260908C00723000",
+      "unrealized_intraday_pl": "70",
+      "unrealized_intraday_plpc": "0.11111",
+      "unrealized_pl": "70",
+      "unrealized_plpc": "0.11111",
+      "usd": {
+        "avg_entry_price": "",
+        "cost_basis": ""
+      }
+    },
+    {
+      "asset_class": "us_option",
+      "asset_id": "0c5b4b85-4ab7-415f-abb2-3de036dd851e",
+      "asset_marginable": true,
+      "avg_entry_price": "0.24",
+      "change_today": "-0.4375",
+      "cost_basis": "240",
+      "current_price": "0.18",
+      "exchange": "",
+      "lastday_price": "0.32",
+      "market_value": "180",
+      "qty": "10",
+      "qty_available": "10",
+      "side": "long",
+      "symbol": "QQQ260908C00728000",
+      "unrealized_intraday_pl": "-60",
+      "unrealized_intraday_plpc": "-0.25",
+      "unrealized_pl": "-60",
+      "unrealized_plpc": "-0.25",
+      "usd": {
+        "avg_entry_price": "",
+        "cost_basis": ""
+      }
+    },
+    {
+      "asset_class": "us_option",
+      "asset_id": "62a2fa6c-85aa-40a6-8268-9f75a0a07f80",
+      "asset_marginable": true,
+      "avg_entry_price": "0.66",
+      "change_today": "-0.37234",
+      "cost_basis": "330",
+      "current_price": "0.59",
+      "exchange": "",
+      "lastday_price": "0.94",
+      "market_value": "295",
+      "qty": "5",
+      "qty_available": "5",
+      "side": "long",
+      "symbol": "QQQ260908P00684000",
+      "unrealized_intraday_pl": "-35",
+      "unrealized_intraday_plpc": "-0.10606",
+      "unrealized_pl": "-35",
+      "unrealized_plpc": "-0.10606",
+      "usd": {
+        "avg_entry_price": "",
+        "cost_basis": ""
+      }
+    },
+    {
+      "asset_class": "us_option",
+      "asset_id": "cc7e3ea3-102e-4e1d-897a-b83f1499e03f",
+      "asset_marginable": true,
+      "avg_entry_price": "0.69",
+      "change_today": "-0.37255",
+      "cost_basis": "345",
+      "current_price": "0.64",
+      "exchange": "",
+      "lastday_price": "1.02",
+      "market_value": "320",
+      "qty": "5",
+      "qty_available": "5",
+      "side": "long",
+      "symbol": "QQQ260908P00685000",
+      "unrealized_intraday_pl": "-25",
+      "unrealized_intraday_plpc": "-0.07246",
+      "unrealized_pl": "-25",
+      "unrealized_plpc": "-0.07246",
+      "usd": {
+        "avg_entry_price": "",
+        "cost_basis": ""
+      }
+    },
+    {
+      "asset_class": "us_option",
+      "asset_id": "8cbd8523-96db-4f72-b2b1-3bdee3899b68",
+      "asset_marginable": true,
+      "avg_entry_price": "0.94",
+      "change_today": "-0.33571",
+      "cost_basis": "-470",
+      "current_price": "0.93",
+      "exchange": "",
+      "lastday_price": "1.4",
+      "market_value": "-465",
+      "qty": "-5",
+      "qty_available": "-5",
+      "side": "short",
+      "symbol": "QQQ260908P00689000",
+      "unrealized_intraday_pl": "5",
+      "unrealized_intraday_plpc": "0.01064",
+      "unrealized_pl": "5",
+      "unrealized_plpc": "0.01064",
+      "usd": {
+        "avg_entry_price": "",
+        "cost_basis": ""
+      }
+    },
+    {
+      "asset_class": "us_option",
+      "asset_id": "41704527-9d8c-4043-9019-97fe3b173108",
+      "asset_marginable": true,
+      "avg_entry_price": "1",
+      "change_today": "-0.31507",
+      "cost_basis": "-500",
+      "current_price": "1",
+      "exchange": "",
+      "lastday_price": "1.46",
+      "market_value": "-500",
+      "qty": "-5",
+      "qty_available": "-5",
+      "side": "short",
+      "symbol": "QQQ260908P00690000",
+      "unrealized_intraday_pl": "0",
+      "unrealized_intraday_plpc": "0",
+      "unrealized_pl": "0",
+      "unrealized_plpc": "0",
+      "usd": {
+        "avg_entry_price": "",
+        "cost_basis": ""
+      }
+    },
+    {
+      "asset_class": "us_option",
+      "asset_id": "36c89a55-0ab0-4a9d-85f5-a4b0cf2b8f1e",
+      "asset_marginable": true,
+      "avg_entry_price": "0.33",
+      "change_today": "0.89286",
+      "cost_basis": "-165",
+      "current_price": "0.53",
+      "exchange": "",
+      "lastday_price": "0.28",
+      "market_value": "-265",
+      "qty": "-5",
+      "qty_available": "-5",
+      "side": "short",
+      "symbol": "SPY260903C00770000",
+      "unrealized_intraday_pl": "-100",
+      "unrealized_intraday_plpc": "-0.60606",
+      "unrealized_pl": "-100",
+      "unrealized_plpc": "-0.60606",
+      "usd": {
+        "avg_entry_price": "",
+        "cost_basis": ""
+      }
+    },
+    {
+      "asset_class": "us_option",
+      "asset_id": "91a588f9-8776-44cd-bd32-c71bd31c4909",
+      "asset_marginable": true,
+      "avg_entry_price": "0.04",
+      "change_today": "1",
+      "cost_basis": "20",
+      "current_price": "0.06",
+      "exchange": "",
+      "lastday_price": "0.03",
+      "market_value": "30",
+      "qty": "5",
+      "qty_available": "5",
+      "side": "long",
+      "symbol": "SPY260903C00775000",
+      "unrealized_intraday_pl": "10",
+      "unrealized_intraday_plpc": "0.5",
+      "unrealized_pl": "10",
+      "unrealized_plpc": "0.5",
+      "usd": {
+        "avg_entry_price": "",
+        "cost_basis": ""
+      }
+    },
+    {
+      "asset_class": "us_option",
+      "asset_id": "424f5fd4-e19b-4f58-95b0-c3d2cf33ad5a",
+      "asset_marginable": true,
+      "avg_entry_price": "0.16",
+      "change_today": "-0.80952",
+      "cost_basis": "80",
+      "current_price": "0.12",
+      "exchange": "",
+      "lastday_price": "0.63",
+      "market_value": "60",
+      "qty": "5",
+      "qty_available": "5",
+      "side": "long",
+      "symbol": "SPY260903P00752000",
+      "unrealized_intraday_pl": "-20",
+      "unrealized_intraday_plpc": "-0.25",
+      "unrealized_pl": "-20",
+      "unrealized_plpc": "-0.25",
+      "usd": {
+        "avg_entry_price": "",
+        "cost_basis": ""
+      }
+    },
+    {
+      "asset_class": "us_option",
+      "asset_id": "64cef04c-14f9-4a52-baf2-a68c36232a00",
+      "asset_marginable": true,
+      "avg_entry_price": "0.45",
+      "change_today": "-0.73913",
+      "cost_basis": "-225",
+      "current_price": "0.36",
+      "exchange": "",
+      "lastday_price": "1.38",
+      "market_value": "-180",
+      "qty": "-5",
+      "qty_available": "-5",
+      "side": "short",
+      "symbol": "SPY260903P00757000",
+      "unrealized_intraday_pl": "45",
+      "unrealized_intraday_plpc": "0.2",
+      "unrealized_pl": "45",
+      "unrealized_plpc": "0.2",
+      "usd": {
+        "avg_entry_price": "",
+        "cost_basis": ""
+      }
+    },
+    {
+      "asset_class": "us_option",
+      "asset_id": "80a7d31c-5f32-48fa-aecd-9969f3a8f529",
+      "asset_marginable": true,
+      "avg_entry_price": "0.375",
+      "change_today": "0.625",
+      "cost_basis": "-375",
+      "current_price": "0.52",
+      "exchange": "",
+      "lastday_price": "0.32",
+      "market_value": "-520",
+      "qty": "-10",
+      "qty_available": "-10",
+      "side": "short",
+      "symbol": "SPY260904C00773000",
+      "unrealized_intraday_pl": "-145",
+      "unrealized_intraday_plpc": "-0.38667",
+      "unrealized_pl": "-145",
+      "unrealized_plpc": "-0.38667",
+      "usd": {
+        "avg_entry_price": "",
+        "cost_basis": ""
+      }
+    },
+    {
+      "asset_class": "us_option",
+      "asset_id": "dcfa0271-607d-4af8-9462-e9e69c07d040",
+      "asset_marginable": true,
+      "avg_entry_price": "0.07",
+      "change_today": "0.5",
+      "cost_basis": "70",
+      "current_price": "0.09",
+      "exchange": "",
+      "lastday_price": "0.06",
+      "market_value": "90",
+      "qty": "10",
+      "qty_available": "10",
+      "side": "long",
+      "symbol": "SPY260904C00778000",
+      "unrealized_intraday_pl": "20",
+      "unrealized_intraday_plpc": "0.28571",
+      "unrealized_pl": "20",
+      "unrealized_plpc": "0.28571",
+      "usd": {
+        "avg_entry_price": "",
+        "cost_basis": ""
+      }
+    },
+    {
+      "asset_class": "us_option",
+      "asset_id": "84df882a-2b5d-4027-908a-81729b2b622f",
+      "asset_marginable": true,
+      "avg_entry_price": "0.28",
+      "change_today": "-0.71429",
+      "cost_basis": "280",
+      "current_price": "0.22",
+      "exchange": "",
+      "lastday_price": "0.77",
+      "market_value": "220",
+      "qty": "10",
+      "qty_available": "10",
+      "side": "long",
+      "symbol": "SPY260904P00749000",
+      "unrealized_intraday_pl": "-60",
+      "unrealized_intraday_plpc": "-0.21429",
+      "unrealized_pl": "-60",
+      "unrealized_plpc": "-0.21429",
+      "usd": {
+        "avg_entry_price": "",
+        "cost_basis": ""
+      }
+    },
+    {
+      "asset_class": "us_option",
+      "asset_id": "2738dabb-0a84-4468-90f5-6d019443084b",
+      "asset_marginable": true,
+      "avg_entry_price": "0.57",
+      "change_today": "-0.66667",
+      "cost_basis": "-570",
+      "current_price": "0.47",
+      "exchange": "",
+      "lastday_price": "1.41",
+      "market_value": "-470",
+      "qty": "-10",
+      "qty_available": "-10",
+      "side": "short",
+      "symbol": "SPY260904P00754000",
+      "unrealized_intraday_pl": "100",
+      "unrealized_intraday_plpc": "0.17544",
+      "unrealized_pl": "100",
+      "unrealized_plpc": "0.17544",
+      "usd": {
+        "avg_entry_price": "",
+        "cost_basis": ""
+      }
+    },
+    {
+      "asset_class": "us_option",
+      "asset_id": "c056074d-a353-404e-97d4-db73820fecb5",
+      "asset_marginable": true,
+      "avg_entry_price": "0.435",
+      "change_today": "0.51282",
+      "cost_basis": "-435",
+      "current_price": "0.59",
+      "exchange": "",
+      "lastday_price": "0.39",
+      "market_value": "-590",
+      "qty": "-10",
+      "qty_available": "-10",
+      "side": "short",
+      "symbol": "SPY260908C00775000",
+      "unrealized_intraday_pl": "-155",
+      "unrealized_intraday_plpc": "-0.35632",
+      "unrealized_pl": "-155",
+      "unrealized_plpc": "-0.35632",
+      "usd": {
+        "avg_entry_price": "",
+        "cost_basis": ""
+      }
+    },
+    {
+      "asset_class": "us_option",
+      "asset_id": "537cb629-a657-46c7-83b3-e9463272881b",
+      "asset_marginable": true,
+      "avg_entry_price": "0.1",
+      "change_today": "0.44444",
+      "cost_basis": "100",
+      "current_price": "0.13",
+      "exchange": "",
+      "lastday_price": "0.09",
+      "market_value": "130",
+      "qty": "10",
+      "qty_available": "10",
+      "side": "long",
+      "symbol": "SPY260908C00780000",
+      "unrealized_intraday_pl": "30",
+      "unrealized_intraday_plpc": "0.3",
+      "unrealized_pl": "30",
+      "unrealized_plpc": "0.3",
+      "usd": {
+        "avg_entry_price": "",
+        "cost_basis": ""
+      }
+    },
+    {
+      "asset_class": "us_option",
+      "asset_id": "b0499d16-2f51-400a-a6ce-4b60d12d8d58",
+      "asset_marginable": true,
+      "avg_entry_price": "0.42",
+      "change_today": "-0.61538",
+      "cost_basis": "210",
+      "current_price": "0.35",
+      "exchange": "",
+      "lastday_price": "0.91",
+      "market_value": "175",
+      "qty": "5",
+      "qty_available": "5",
+      "side": "long",
+      "symbol": "SPY260908P00745000",
+      "unrealized_intraday_pl": "-35",
+      "unrealized_intraday_plpc": "-0.16667",
+      "unrealized_pl": "-35",
+      "unrealized_plpc": "-0.16667",
+      "usd": {
+        "avg_entry_price": "",
+        "cost_basis": ""
+      }
+    },
+    {
+      "asset_class": "us_option",
+      "asset_id": "e405e83b-647d-489a-8aee-adc702fcb57c",
+      "asset_marginable": true,
+      "avg_entry_price": "0.46",
+      "change_today": "-0.61",
+      "cost_basis": "230",
+      "current_price": "0.39",
+      "exchange": "",
+      "lastday_price": "1",
+      "market_value": "195",
+      "qty": "5",
+      "qty_available": "5",
+      "side": "long",
+      "symbol": "SPY260908P00746000",
+      "unrealized_intraday_pl": "-35",
+      "unrealized_intraday_plpc": "-0.15217",
+      "unrealized_pl": "-35",
+      "unrealized_plpc": "-0.15217",
+      "usd": {
+        "avg_entry_price": "",
+        "cost_basis": ""
+      }
+    },
+    {
+      "asset_class": "us_option",
+      "asset_id": "d4e78e2d-2cbd-4e90-b347-9d76caa9aa91",
+      "asset_marginable": true,
+      "avg_entry_price": "0.7",
+      "change_today": "-0.56944",
+      "cost_basis": "-350",
+      "current_price": "0.62",
+      "exchange": "",
+      "lastday_price": "1.44",
+      "market_value": "-310",
+      "qty": "-5",
+      "qty_available": "-5",
+      "side": "short",
+      "symbol": "SPY260908P00750000",
+      "unrealized_intraday_pl": "40",
+      "unrealized_intraday_plpc": "0.11429",
+      "unrealized_pl": "40",
+      "unrealized_plpc": "0.11429",
+      "usd": {
+        "avg_entry_price": "",
+        "cost_basis": ""
+      }
+    },
+    {
+      "asset_class": "us_option",
+      "asset_id": "75dbc76d-c866-4d51-b31c-70c44f682eb9",
+      "asset_marginable": true,
+      "avg_entry_price": "0.79",
+      "change_today": "-0.56875",
+      "cost_basis": "-395",
+      "current_price": "0.69",
+      "exchange": "",
+      "lastday_price": "1.6",
+      "market_value": "-345",
+      "qty": "-5",
+      "qty_available": "-5",
+      "side": "short",
+      "symbol": "SPY260908P00751000",
+      "unrealized_intraday_pl": "50",
+      "unrealized_intraday_plpc": "0.12658",
+      "unrealized_pl": "50",
+      "unrealized_plpc": "0.12658",
+      "usd": {
+        "avg_entry_price": "",
+        "cost_basis": ""
+      }
+    }
+  ],
+  "live": false,
+  "capturedAt": "2026-09-02T14:51:49.636Z"
+}

@@ -1,0 +1,113 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Vig — it never takes a position it can't cover</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="icon" href="/favicon-32.png" sizes="32x32">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<meta name="theme-color" content="#0a0a0c">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Vig — it never takes a position it can't cover">
+<meta property="og:description" content="An autonomous options agent on Alpaca. Every structure's maximum loss is computed and reserved before the order is submitted.">
+<meta property="og:image" content="/og.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Vig — it never takes a position it can't cover">
+<meta name="twitter:description" content="An autonomous options agent on Alpaca. Loss bounded and reserved before the order exists.">
+<meta name="twitter:image" content="/og.png">
+<link rel="stylesheet" href="/tokens.css">
+<link rel="stylesheet" href="/style.css">
+</head>
+<body>
+<div class="wrap">
+
+  <header class="mast">
+    <span class="mark"><svg class="glyph" viewBox="0 0 40 24" fill="none" aria-hidden="true"><path d="M1 18H8" stroke="var(--reserved)" stroke-width="2.6" stroke-linecap="square"/><path d="M32 18H39" stroke="var(--reserved)" stroke-width="2.6" stroke-linecap="square"/><path d="M8 18L14 6H26L32 18" stroke="var(--credit)" stroke-width="2.2" stroke-linejoin="round"/></svg><span>Vig</span></span>
+    <span class="claim">It never takes a position it can&rsquo;t cover.</span>
+    <div class="meta">
+      <span class="status"><i class="dot" id="dot"></i><b id="market">—</b></span>
+      <span>account <b class="n" id="account">—</b></span>
+      <span>equity <b class="n" id="equity">—</b></span>
+      <span>P&amp;L <b class="n" id="pnl">—</b></span>
+    </div>
+  </header>
+
+  <hr class="rule">
+
+  <!-- The thesis as an object. This figure is the product. -->
+  <div class="cover" id="cover">
+    <div class="hero">
+      <div class="label">Uncovered exposure</div>
+      <div class="zero n"><span class="cur">$</span><span id="uncovered">0</span></div>
+      <div class="against">
+        <div><span class="k">Structures</span><span class="v" id="hero-open">—</span></div>
+        <div class="equation">
+          <div><span class="k">Worst case</span><span class="v" id="hero-worst">—</span></div>
+          <div class="eq" aria-hidden="true">=</div>
+          <div><span class="k">Reserved</span><span class="v" id="hero-res" style="color:var(--reserved)">—</span></div>
+        </div>
+      </div>
+      <p class="note">
+        Every open structure has its maximum loss computed and reserved before the
+        order reaches the broker. An order that would not be covered is never sent.
+      </p>
+    </div>
+    <div class="ledger">
+      <div class="row">
+        <span class="k">Premium collected</span>
+        <span class="v credit n" id="credit">—</span>
+      </div>
+      <div class="row">
+        <span class="k">Capital reserved</span>
+        <span class="v reserved n" id="reserved">—</span>
+      </div>
+      <div>
+        <div class="meter"><i id="meter-fill"></i></div>
+        <div class="meter-legend">
+          <span>against a <span class="n" id="ceiling">—</span> ceiling</span>
+          <span class="n" id="ceiling-pct">—</span>
+        </div>
+      </div>
+      <div class="row">
+        <span class="k">Open structures</span>
+        <span class="v n" id="open-count">—</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="regime" id="regime" hidden>
+    <span class="verdict" id="regime-verdict">—</span>
+    <span class="reason" id="regime-reason"></span>
+    <span class="src" id="regime-src"></span>
+  </div>
+
+  <section>
+    <h2>Open structures <span class="count" id="pos-count"></span></h2>
+    <div class="empty" id="pos-empty"></div>
+    <div id="positions"></div>
+  </section>
+
+  <section id="settled-section" hidden>
+    <h2>Settled <span class="count" id="settled-count"></span></h2>
+    <div id="settled"></div>
+  </section>
+
+  <section>
+    <h2>Decisions this tick <span class="count" id="dec-count"></span></h2>
+    <div class="decisions" id="decisions"></div>
+  </section>
+
+  <footer>
+    <span>Alpaca paper trading · no real capital</span>
+    <span>Every value read from the account via the Alpaca CLI</span>
+    <span>updated <span class="n" id="updated">—</span></span>
+  </footer>
+
+</div>
+<script type="module" src="/app.js"></script>
+</body>
+</html>
