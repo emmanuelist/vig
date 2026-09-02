@@ -3,9 +3,26 @@
    surface and the landing page load. Everything below is app-only. */
 
 /* ── Masthead ─────────────────────────────────────────────────────── */
-.wrap { max-width: 1180px; margin: 0 auto; padding: 28px 24px 64px; }
+.wrap { max-width: 1180px; margin: 0 auto; padding: 0 24px 64px; }
+.wrap > section:first-of-type, .cover { margin-top: 20px; }
 
-.mast { display: flex; align-items: baseline; gap: 16px; flex-wrap: wrap; margin-bottom: 4px; }
+.mast {
+  position: sticky; top: 0; z-index: 30;
+  display: flex; align-items: baseline; gap: 16px; flex-wrap: wrap;
+  margin: 0 -24px 4px; padding: 14px 24px;
+  /* Translucent and blurred, so equity, P&L and market state stay legible
+     while twelve structures scroll underneath. Applied here and to nothing
+     else: glass marks an elevated surface, it is not a texture. */
+  background: color-mix(in oklab, var(--ground) 82%, transparent);
+  backdrop-filter: blur(10px) saturate(120%);
+  -webkit-backdrop-filter: blur(10px) saturate(120%);
+  border-bottom: 1px solid var(--hair);
+}
+@supports not (backdrop-filter: blur(1px)) {
+  /* No blur available: fall back to an opaque bar rather than letting text
+     sit on whatever is scrolling behind it. */
+  .mast { background: var(--ground); }
+}
 .mark {
   font-family: var(--sans); font-weight: 700; font-size: var(--t-6);
   letter-spacing: 0.18em; text-transform: uppercase;
@@ -24,75 +41,70 @@
 .dot { width: 6px; height: 6px; border-radius: 50%; background: var(--ink-mute); }
 .dot.live { background: var(--credit); box-shadow: 0 0 0 3px var(--credit-lo); }
 
-hr.rule { border: 0; border-top: 1px solid var(--hair); margin: 18px 0 24px; }
+hr.rule { display: none; }
 
 /* ── The Cover Sheet ──────────────────────────────────────────────────
-   The hero, and the thesis as an object. Uncovered exposure is the number
-   the product exists to display, so it is set larger than anything else on
-   the page and never moves. If it is ever not zero, the agent is broken.
+   A grid of cells, one quantity each, rather than two columns with rows
+   stacked inside them. Six independent figures were sharing two boxes;
+   now each holds its own, and the two that must be equal sit adjacent so
+   the identity reads without a sentence explaining it.
    ------------------------------------------------------------------- */
 .cover {
-  display: grid; grid-template-columns: minmax(0, 1.15fr) minmax(0, 1fr);
-  gap: 0; border: 1px solid var(--hair); background: var(--panel);
+  display: grid; gap: 12px;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
 }
-.cover > * + * { border-left: 1px solid var(--hair); }
+.cell {
+  border: 1px solid var(--hair); background: var(--panel);
+  padding: 22px 24px; display: flex; flex-direction: column; gap: 10px;
+  min-width: 0;
+}
+.cell.span-2 { grid-column: span 2; }
+/* Brass and green own whole cells here, which is the scale this world
+   intends for them: a field of the colour, not a rule in it. */
+.cell.brass {
+  background: linear-gradient(160deg,
+    color-mix(in oklab, var(--reserved) 14%, var(--panel)),
+    color-mix(in oklab, var(--reserved) 5%, var(--panel)));
+  border-color: var(--reserved);
+}
+.cell.green {
+  background: linear-gradient(160deg,
+    color-mix(in oklab, var(--credit) 12%, var(--panel)),
+    color-mix(in oklab, var(--credit) 4%, var(--panel)));
+  border-color: color-mix(in oklab, var(--credit) 55%, transparent);
+}
+.cell .label {
+  font-size: var(--t-1); letter-spacing: 0.16em; text-transform: uppercase;
+  color: var(--ink-mute);
+}
+.cell.brass .label { color: color-mix(in oklab, var(--reserved) 58%, var(--ink)); }
+.cell.green .label { color: color-mix(in oklab, var(--credit) 58%, var(--ink)); }
+.cell .fig {
+  font-family: var(--mono); font-size: clamp(26px, 2.6vw, 40px);
+  line-height: 1; letter-spacing: -0.035em; margin-top: auto;
+}
+.cell .fig.sm { font-size: clamp(20px, 1.9vw, 27px); }
+.cell.brass .fig { color: var(--reserved); }
+.cell.green .fig { color: var(--credit); }
 
-.hero { padding: 32px 34px 30px; }
-.hero .label {
-  font-size: var(--t-2); letter-spacing: 0.16em; text-transform: uppercase;
-  color: var(--ink-mute); margin-bottom: 10px;
-}
+.cell.hero { justify-content: flex-start; }
 .hero .zero {
-  font-family: var(--mono); font-size: clamp(64px, 10.5vw, 132px); line-height: 0.88;
-  font-weight: 500; letter-spacing: -0.055em; color: var(--ink);
+  font-family: var(--mono); font-size: clamp(58px, 8.5vw, 104px); line-height: 0.9;
+  font-weight: 500; letter-spacing: -0.05em; color: var(--ink); margin-top: 4px;
 }
 .hero .zero .cur {
   color: var(--ink-mute); font-size: 0.38em; vertical-align: 0.62em;
   margin-right: -0.02em; letter-spacing: 0;
 }
-.hero .against {
-  margin-top: 14px; padding-top: 12px; border-top: 1px solid var(--hair);
-  display: flex; gap: 26px; flex-wrap: wrap;
-}
-.hero .against > div { display: flex; flex-direction: column; gap: 2px; }
-/* The pair is one idea, so it travels as one unit. Left to wrap independently
-   the equals sign orphans onto its own line and the equation stops reading. */
-.hero .against .equation { flex-direction: row; align-items: flex-end; gap: 26px; }
-.hero .against .equation > div { display: flex; flex-direction: column; gap: 2px; }
-/* The two figures either side of this are always identical, and that identity
-   is the entire product. Stating it as an equation says so without a sentence. */
-.hero .against .eq {
-  padding-bottom: 1px; color: var(--ink-mute);
-  font-family: var(--mono); font-size: var(--t-5); margin: 0 -14px;
-}
-.hero .against .k {
-  font-size: var(--t-1); letter-spacing: 0.12em; text-transform: uppercase; color: var(--ink-mute);
-}
-.hero .against .v { font-family: var(--mono); font-size: var(--t-5); }
-.hero .note { margin-top: 14px; color: var(--ink-dim); font-size: var(--t-3); max-width: 46ch; }
+.hero .note { margin-top: auto; color: var(--ink-dim); font-size: var(--t-3); max-width: 46ch; }
 
-.ledger {
-  padding: 26px 30px; display: grid; gap: 18px; align-content: start;
-  background:
-    linear-gradient(180deg,
-      color-mix(in oklab, var(--reserved) 12%, var(--panel)),
-      color-mix(in oklab, var(--reserved) 5%, var(--panel)));
+.meter-cell { justify-content: space-between; }
+.meter-row { display: flex; align-items: center; gap: 18px; }
+.meter-row .fig { margin-top: 0; flex: none; }
+.meter {
+  flex: 1; height: 9px; background: var(--raised);
+  border: 1px solid var(--hair); position: relative; overflow: hidden;
 }
-.cover > .ledger { border-left-color: var(--reserved); }
-.ledger .row .k { color: color-mix(in oklab, var(--reserved) 50%, var(--ink)); }
-.ledger .meter-legend { color: color-mix(in oklab, var(--reserved) 44%, var(--ink)); }
-.row { display: flex; align-items: baseline; justify-content: space-between; gap: 16px; }
-.row .k { color: var(--ink-mute); font-size: var(--t-2); letter-spacing: 0.1em; text-transform: uppercase; }
-.row .v { font-family: var(--mono); font-size: clamp(var(--t-5), 1.9vw, 26px); letter-spacing: -0.02em; }
-.v.credit { color: var(--credit); }
-.v.reserved { color: var(--reserved); }
-.v.loss { color: var(--breached); }
-
-/* Reserved against the ceiling. A meter, because the question is always
-   "how much of the allowance is gone", never "what is the raw number". */
-.meter { height: 9px; background: var(--raised); border: 1px solid var(--hair); position: relative; }
-/* Scaled, not resized. Animating width relayouts the meter on every frame;
-   a horizontal scale from the left edge is composited and reads identically. */
 .meter i {
   position: absolute; inset: 0 auto 0 0; display: block;
   width: 100%; transform-origin: left center; transform: scaleX(0);
@@ -104,14 +116,14 @@ hr.rule { border: 0; border-top: 1px solid var(--hair); margin: 18px 0 24px; }
   background: repeating-linear-gradient(
     -45deg, var(--reserved) 0 6px, color-mix(in oklab, var(--reserved) 55%, var(--ground)) 6px 12px);
 }
-.meter-legend .over { color: var(--reserved); }
 @media (prefers-reduced-motion: reduce) { .meter i { transition: none; } }
 .meter-legend {
   display: flex; justify-content: space-between;
-  color: var(--ink-mute); font-size: var(--t-2); margin-top: 7px;
+  color: var(--ink-mute); font-size: var(--t-2);
   font-family: var(--sans); font-variant-numeric: normal;
 }
 .meter-legend .n { font-family: var(--sans); letter-spacing: 0; }
+.meter-legend .over { color: var(--reserved); }
 
 /* ── Regime ───────────────────────────────────────────────────────────
    The one judgement in the system that is not arithmetic, so it is stated
@@ -343,7 +355,14 @@ footer {
    glance, so it is what survives. Position cards drop their inline number
    cluster to a wrapped row rather than shrinking the type.
    ------------------------------------------------------------------- */
+@media (max-width: 1040px) {
+  .cover { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+
 @media (max-width: 860px) {
+  .cover { grid-template-columns: 1fr; }
+  .cell.span-2 { grid-column: span 1; }
+  .mast { margin: 0 -16px 4px; padding: 12px 16px; }
   .wrap { padding: 20px 16px 48px; }
   .cover { grid-template-columns: 1fr; }
   .cover > * + * { border-left: 0; border-top: 1px solid var(--hair); }

@@ -39,42 +39,50 @@
   <hr class="rule">
 
   <!-- The thesis as an object. This figure is the product. -->
+  <!-- ── The Cover Sheet ──────────────────────────────────────────────
+       Six independent quantities, so six cells rather than two columns
+       with rows stacked inside them. The figure the product exists to
+       show holds the largest cell; the worst case and the reserve sit
+       side by side because their being equal is the whole argument. -->
   <div class="cover" id="cover">
-    <div class="hero">
+    <div class="cell hero span-2">
       <div class="label">Uncovered exposure</div>
       <div class="zero n"><span class="cur">$</span><span id="uncovered">0</span></div>
-      <div class="against">
-        <div><span class="k">Structures</span><span class="v" id="hero-open">—</span></div>
-        <div class="equation">
-          <div><span class="k">Worst case</span><span class="v" id="hero-worst">—</span></div>
-          <div class="eq" aria-hidden="true">=</div>
-          <div><span class="k">Reserved</span><span class="v" id="hero-res" style="color:var(--reserved)">—</span></div>
-        </div>
-      </div>
       <p class="note">
         Every open structure has its maximum loss computed and reserved before the
         order reaches the broker. An order that would not be covered is never sent.
       </p>
     </div>
-    <div class="ledger">
-      <div class="row">
-        <span class="k">Premium collected</span>
-        <span class="v credit n" id="credit">—</span>
-      </div>
-      <div class="row">
-        <span class="k">Capital reserved</span>
-        <span class="v reserved n" id="reserved">—</span>
-      </div>
-      <div>
+
+    <div class="cell">
+      <div class="label">Worst case if all breach</div>
+      <div class="fig n" id="hero-worst">—</div>
+    </div>
+
+    <div class="cell brass">
+      <div class="label">Already reserved</div>
+      <div class="fig n" id="hero-res">—</div>
+    </div>
+
+    <div class="cell green">
+      <div class="label">Premium collected</div>
+      <div class="fig n" id="credit">—</div>
+    </div>
+
+    <div class="cell">
+      <div class="label">Open structures</div>
+      <div class="fig n" id="hero-open">—</div>
+    </div>
+
+    <div class="cell span-2 meter-cell">
+      <div class="label">Capital reserved against the ceiling</div>
+      <div class="meter-row">
+        <span class="fig n sm" id="reserved">—</span>
         <div class="meter"><i id="meter-fill"></i></div>
-        <div class="meter-legend">
-          <span>against a <span class="n" id="ceiling">—</span> ceiling</span>
-          <span class="n" id="ceiling-pct">—</span>
-        </div>
       </div>
-      <div class="row">
-        <span class="k">Open structures</span>
-        <span class="v n" id="open-count">—</span>
+      <div class="meter-legend">
+        <span>ceiling <span class="n" id="ceiling">—</span></span>
+        <span class="n" id="ceiling-pct">—</span>
       </div>
     </div>
   </div>
