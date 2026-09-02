@@ -246,12 +246,12 @@ function bindTape() {
     }
   };
 
-  const es = new EventSource("/api/stream");
+  const es = new EventSource("api/stream");
   es.onmessage = (e) => { try { paint(JSON.parse(e.data)); } catch { /* next frame */ } };
   es.onerror = () => {
     es.close();
     if (gotLive) { live.className = "tape-live off"; say("not connected"); return; }
-    fetch("/snapshot.json").then((r) => (r.ok ? r.json() : null)).then(paint)
+    fetch("snapshot.json").then((r) => (r.ok ? r.json() : null)).then(paint)
       .catch(() => { live.className = "tape-live off"; say("not connected"); });
   };
 }
