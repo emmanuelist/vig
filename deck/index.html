@@ -1,0 +1,140 @@
+<!doctype html>
+<html lang="en"><head>
+<meta charset="utf-8">
+<title>Vig — deck</title>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --ground:#0a0a0c;--panel:#101014;--hair:#21212a;--hair-lit:#31313d;
+  --ink:#ece9e3;--ink-dim:#918d85;--ink-mute:#7d7a74;
+  --reserved:#d8b26a;--credit:#86b06b;--breached:#c8574a;
+  --paper:#ece9e3;--paper-ink:#14140f;
+  --mono:"IBM Plex Mono",monospace;--sans:Archivo,sans-serif;
+}
+*{margin:0;box-sizing:border-box}
+body{background:#000;font-family:var(--sans);-webkit-font-smoothing:antialiased}
+.slide{
+  width:1920px;height:1080px;background:var(--ground);color:var(--ink);
+  padding:96px 110px;position:relative;overflow:hidden;
+  display:flex;flex-direction:column;margin-bottom:40px;
+}
+.slide.paper{background:var(--paper);color:var(--paper-ink)}
+.n{font-family:var(--mono);font-variant-numeric:tabular-nums;letter-spacing:-.02em}
+.mark{display:flex;align-items:center;gap:16px;font-size:26px;font-weight:700;letter-spacing:.2em;text-transform:uppercase}
+.mark svg{width:52px;height:32px}
+h1{font-size:132px;line-height:.92;letter-spacing:-.05em;font-weight:700;max-width:15ch}
+h2{font-size:76px;line-height:1;letter-spacing:-.04em;font-weight:700;max-width:19ch}
+p{font-size:31px;line-height:1.5;color:var(--ink-dim);max-width:52ch;margin-top:30px}
+.paper p{color:#4a4740}
+.foot{margin-top:auto;display:flex;justify-content:space-between;align-items:baseline;
+  font-size:20px;color:var(--ink-mute);letter-spacing:.1em;text-transform:uppercase}
+.paper .foot{color:#6b6860}
+.big{font-family:var(--mono);font-size:210px;line-height:1;letter-spacing:-.05em;font-weight:500}
+.cur{color:var(--ink-mute);font-size:.42em;vertical-align:.62em}
+.row{display:flex;gap:80px;margin-top:52px}
+.stat .k{font-size:18px;letter-spacing:.15em;text-transform:uppercase;color:var(--ink-mute)}
+.stat .v{font-family:var(--mono);font-size:62px;letter-spacing:-.03em;margin-top:10px}
+.eq{align-self:flex-end;padding-bottom:16px;font-family:var(--mono);font-size:56px;color:var(--ink-mute)}
+.gates{margin-top:46px;width:100%}
+.gates li{list-style:none;display:grid;grid-template-columns:80px 320px 1fr;gap:32px;
+  padding:19px 0;border-bottom:1px solid rgba(216,178,106,.28);align-items:baseline}
+.gates li:first-child{border-top:1px solid rgba(216,178,106,.28)}
+.gates .i{font-family:var(--mono);font-size:21px;color:rgba(216,178,106,.6)}
+.gates b{font-family:var(--mono);font-weight:500;color:var(--reserved);font-size:28px}
+.gates span{color:#c2b394;font-size:25px}
+pre{font-family:var(--mono);font-size:25px;line-height:1.75;color:var(--ink-dim);
+  background:#07070a;border:1px solid var(--hair);border-left:2px solid var(--reserved);
+  padding:38px 42px;margin-top:44px;white-space:pre}
+pre .c{color:var(--reserved)}
+svg.payoff{width:100%;height:330px;margin-top:40px}
+.cap{margin-top:26px;display:flex;justify-content:space-between;font-size:25px;color:var(--ink-mute)}
+.cap b{font-family:var(--mono);font-weight:500}
+.cap .w b{color:var(--credit)} .cap .l b{color:var(--reserved)}
+.reserve-band{background:linear-gradient(180deg,rgba(216,178,106,.13),rgba(216,178,106,.06))}
+</style></head><body>
+
+<!-- 1 -->
+<section class="slide">
+  <div class="mark"><svg viewBox="0 0 40 24" fill="none">
+    <path d="M1 18H8" stroke="#d8b26a" stroke-width="2.6"/><path d="M32 18H39" stroke="#d8b26a" stroke-width="2.6"/>
+    <path d="M8 18L14 6H26L32 18" stroke="#86b06b" stroke-width="2.2" stroke-linejoin="round"/></svg>Vig</div>
+  <h1 style="margin-top:150px">It never takes a position it can’t cover.</h1>
+  <p>An autonomous options agent on Alpaca. Every structure’s maximum loss is computed and set aside <em style="color:var(--ink);font-style:normal">before</em> the order is submitted.</p>
+  <div class="foot"><span>Alpaca AI Trading Agents Hackathon</span><span>Paper account PA3PLCOVLR4I</span></div>
+</section>
+
+<!-- 2 -->
+<section class="slide">
+  <h2 style="margin-top:120px">Most trading agents can tell you what they bought.</h2>
+  <p style="font-size:40px;color:var(--ink);max-width:40ch;margin-top:44px">Very few can tell you what it costs them if it goes against them — <em style="color:var(--reserved);font-style:normal">before</em> they buy it.</p>
+  <p>Give an autonomous agent a brokerage account and it will place trades. That part is solved. The unanswered question is what happens when it is wrong.</p>
+  <div class="foot"><span>The problem</span><span>02</span></div>
+</section>
+
+<!-- 3 -->
+<section class="slide">
+  <h2>The flat floors are the claim.</h2>
+  <svg class="payoff" viewBox="0 0 1700 330" preserveAspectRatio="none">
+    <rect x="0" y="232" width="1700" height="98" fill="#d8b26a" opacity=".2"/>
+    <line x1="0" y1="150" x2="1700" y2="150" stroke="#31313d" stroke-width="2" stroke-dasharray="6 7"/>
+    <rect x="560" y="60" width="580" height="172" fill="#86b06b" opacity=".12"/>
+    <path d="M0 232H360" stroke="#d8b26a" stroke-width="7"/><path d="M1340 232H1700" stroke="#d8b26a" stroke-width="7"/>
+    <path d="M360 232L560 60H1140L1340 232" stroke="#86b06b" stroke-width="5" fill="none" stroke-linejoin="round"/>
+  </svg>
+  <div class="cap"><span class="w">keeps the credit while price stays between the short strikes — <b>$3,727</b> collected</span>
+  <span class="l">loss cannot deepen past the floor — <b>$26,573</b> reserved</span></div>
+  <p style="margin-top:34px">An iron condor is four legs, which is exactly Alpaca’s <span class="n" style="color:var(--reserved)">--legs</span> limit. Only one side can ever be breached, so the maximum loss is width minus credit — known before the order exists.</p>
+  <div class="foot"><span>The structure</span><span>03</span></div>
+</section>
+
+<!-- 4 -->
+<section class="slide">
+  <h2>The proof and the order are the same request.</h2>
+  <pre><span class="c">alpaca</span> order submit --order-class mleg --qty 5
+  --type limit --limit-price 0.53
+  --client-order-id vig-3f9a1c22
+  --legs [ 4 legs ]        <span class="c">--dry-run</span>   ← renders it
+  --legs [ 4 legs ]                     ← then sends it</pre>
+  <p>Execution runs entirely through the Alpaca CLI. Every order is submitted twice: once rendered without sending, then again as the identical command. Each structure carries its receipt, and the receipt is the command.</p>
+  <div class="foot"><span>The mechanism</span><span>04</span></div>
+</section>
+
+<!-- 5 -->
+<section class="slide reserve-band">
+  <h2>Eight gates. Every one can say no.</h2>
+  <ul class="gates">
+    <li><span class="i">01</span><b>illiquid</b><span>any leg’s bid/ask wider than $0.15</span></li>
+    <li><span class="i">02</span><b>thin-credit</b><span>credit under 10% of width</span></li>
+    <li><span class="i">03</span><b>position-too-large</b><span>one structure risking more than 5% of equity</span></li>
+    <li><span class="i">04</span><b>bucket-full</b><span>one underlying and expiry past 6% of equity</span></li>
+    <li><span class="i">05</span><b>book-full</b><span>total reserved past the 25% ceiling</span></li>
+    <li><span class="i">06</span><b>no-wing</b><span>the protective strike does not exist</span></li>
+    <li><span class="i">07</span><b>inverted</b><span>short strikes crossed; loss no longer bounded</span></li>
+    <li><span class="i">08</span><b>regime</b><span>the newswire says today is a bad day to be short premium</span></li>
+  </ul>
+  <div class="foot"><span>The gates</span><span>05</span></div>
+</section>
+
+<!-- 6 -->
+<section class="slide">
+  <div style="font-size:22px;letter-spacing:.16em;text-transform:uppercase;color:var(--ink-mute)">Uncovered exposure</div>
+  <div class="big"><span class="cur">$</span>0</div>
+  <div class="row">
+    <div class="stat"><div class="k">Structures open</div><div class="v">12</div></div>
+    <div class="stat"><div class="k">Worst case if all breach</div><div class="v">$26,573</div></div>
+    <div class="eq">=</div>
+    <div class="stat"><div class="k">Already reserved</div><div class="v" style="color:var(--reserved)">$26,573</div></div>
+  </div>
+  <p style="margin-top:52px">They match because they have to. Live on a paper account across SPY, QQQ and IWM — every figure read through the Alpaca CLI, none of it mocked.</p>
+  <div class="foot"><span>The result</span><span>06</span></div>
+</section>
+
+<!-- 7 -->
+<section class="slide paper">
+  <h2>What this does not claim.</h2>
+  <p style="font-size:33px;margin-top:44px">Paper trading, and roughly two and a half sessions of it. That is not a sample size from which an edge can be inferred, and none is claimed. Selling premium wins often and loses occasionally larger; that skew is real, and the ceilings bound what it can cost rather than pretending it away.</p>
+  <p style="font-size:41px;color:var(--paper-ink);margin-top:52px">What is checkable is narrower. Every position is covered before it exists.</p>
+  <div class="foot"><span>The limits</span><span>07</span></div>
+</section>
+
+</body></html>

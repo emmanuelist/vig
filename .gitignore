@@ -44,6 +44,9 @@ build/
 *.tsbuildinfo
 coverage/
 
+# Deck frames are rendered from deck/index.html; the assembled PDF ships.
+deck/slide-*.png
+
 # ── OS ───────────────────────────────────────────────────────────────
 .DS_Store
 Thumbs.db
