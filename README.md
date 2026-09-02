@@ -10,8 +10,9 @@ order is never sent.
 | | |
 |---|---|
 | **Alpaca paper account** | `PA3PLCOVLR4I` · UUID `687ede83-6811-4d04-9644-e71debbec71e` |
-| **Live Cover Sheet** | _TODO: deployed URL_ |
-| **Demo video** | _TODO_ |
+| **Live** | [vig-rapifklbh-emmanuel-pauls-projects.vercel.app](https://vig-rapifklbh-emmanuel-pauls-projects.vercel.app) — landing, with the Cover Sheet at `/app` |
+| **Repository** | [github.com/emmanuelist/vig](https://github.com/emmanuelist/vig) |
+| **Demo video** | _recorded once the competition window closes_ |
 | **Alpaca CLI** | `0.0.14` (alpha preview) |
 | **Environment** | Paper trading only. No real capital. |
 
@@ -34,6 +35,11 @@ Cover Sheet claim a position was covered before it existed rather than after.
 receipts/receipts.jsonl   # every CLI invocation: argv, exit code, response, duration
 receipts/ledger.json      # every structure: strikes, credit, and the loss reserved against it
 ```
+
+The deployed copy has no agent behind it, so it serves a committed snapshot of
+real account state and labels it as one, with the time it was taken. `live:
+false` travels inside the payload; a snapshot is never rendered as though it
+were live. Run the agent locally and the same pages stream.
 
 These are written at runtime and are not tracked in git — they grow for as long
 as the agent runs, and they hold live account activity. A snapshot covering the
