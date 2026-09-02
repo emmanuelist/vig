@@ -5,135 +5,158 @@
 <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
 <style>
 :root{
-  --ground:#0a0a0c;--panel:#101014;--hair:#21212a;--hair-lit:#31313d;
-  --ink:#ece9e3;--ink-dim:#918d85;--ink-mute:#7d7a74;
-  --reserved:#d8b26a;--credit:#86b06b;--breached:#c8574a;
+  --ground:#0a0a0c;--cell:#101014;--raised:#16161b;--hair:#26262f;
+  --ink:#ece9e3;--dim:#918d85;--mute:#7d7a74;
+  --brass:#d8b26a;--credit:#86b06b;--breach:#c8574a;
   --paper:#ece9e3;--paper-ink:#14140f;
   --mono:"IBM Plex Mono",monospace;--sans:Archivo,sans-serif;
+  --gap:18px;
 }
 *{margin:0;box-sizing:border-box}
 body{background:#000;font-family:var(--sans);-webkit-font-smoothing:antialiased}
-.slide{
-  width:1920px;height:1080px;background:var(--ground);color:var(--ink);
-  padding:96px 110px;position:relative;overflow:hidden;
-  display:flex;flex-direction:column;margin-bottom:40px;
-}
-.slide.paper{background:var(--paper);color:var(--paper-ink)}
-.n{font-family:var(--mono);font-variant-numeric:tabular-nums;letter-spacing:-.02em}
-.mark{display:flex;align-items:center;gap:16px;font-size:26px;font-weight:700;letter-spacing:.2em;text-transform:uppercase}
-.mark svg{width:52px;height:32px}
-h1{font-size:132px;line-height:.92;letter-spacing:-.05em;font-weight:700;max-width:15ch}
-h2{font-size:76px;line-height:1;letter-spacing:-.04em;font-weight:700;max-width:19ch}
-p{font-size:31px;line-height:1.5;color:var(--ink-dim);max-width:52ch;margin-top:30px}
-.paper p{color:#4a4740}
-.foot{margin-top:auto;display:flex;justify-content:space-between;align-items:baseline;
-  font-size:20px;color:var(--ink-mute);letter-spacing:.1em;text-transform:uppercase}
-.paper .foot{color:#6b6860}
-.big{font-family:var(--mono);font-size:210px;line-height:1;letter-spacing:-.05em;font-weight:500}
-.cur{color:var(--ink-mute);font-size:.42em;vertical-align:.62em}
-.row{display:flex;gap:80px;margin-top:52px}
-.stat .k{font-size:18px;letter-spacing:.15em;text-transform:uppercase;color:var(--ink-mute)}
-.stat .v{font-family:var(--mono);font-size:62px;letter-spacing:-.03em;margin-top:10px}
-.eq{align-self:flex-end;padding-bottom:16px;font-family:var(--mono);font-size:56px;color:var(--ink-mute)}
-.gates{margin-top:46px;width:100%}
-.gates li{list-style:none;display:grid;grid-template-columns:80px 320px 1fr;gap:32px;
-  padding:19px 0;border-bottom:1px solid rgba(216,178,106,.28);align-items:baseline}
-.gates li:first-child{border-top:1px solid rgba(216,178,106,.28)}
-.gates .i{font-family:var(--mono);font-size:21px;color:rgba(216,178,106,.6)}
-.gates b{font-family:var(--mono);font-weight:500;color:var(--reserved);font-size:28px}
-.gates span{color:#c2b394;font-size:25px}
-pre{font-family:var(--mono);font-size:25px;line-height:1.75;color:var(--ink-dim);
-  background:#07070a;border:1px solid var(--hair);border-left:2px solid var(--reserved);
-  padding:38px 42px;margin-top:44px;white-space:pre}
-pre .c{color:var(--reserved)}
-svg.payoff{width:100%;height:330px;margin-top:40px}
-.cap{margin-top:26px;display:flex;justify-content:space-between;font-size:25px;color:var(--ink-mute)}
-.cap b{font-family:var(--mono);font-weight:500}
-.cap .w b{color:var(--credit)} .cap .l b{color:var(--reserved)}
-.reserve-band{background:linear-gradient(180deg,rgba(216,178,106,.13),rgba(216,178,106,.06))}
+.slide{width:1920px;height:1080px;background:var(--ground);padding:56px;margin-bottom:40px;
+  display:grid;gap:var(--gap);color:var(--ink);position:relative}
+.n{font-family:var(--mono);font-variant-numeric:tabular-nums;letter-spacing:-.03em}
+
+/* A cell holds exactly one idea. Square corners: this world has no radius. */
+.c{background:var(--cell);border:1px solid var(--hair);padding:38px 42px;
+   display:flex;flex-direction:column;justify-content:space-between;overflow:hidden;position:relative}
+.c.brass{background:linear-gradient(160deg,rgba(216,178,106,.15),rgba(216,178,106,.05));border-color:var(--brass)}
+.c.green{background:linear-gradient(160deg,rgba(134,176,107,.13),rgba(134,176,107,.04));border-color:rgba(134,176,107,.5)}
+.c.paper{background:var(--paper);color:var(--paper-ink);border-color:var(--paper)}
+.c.bare{background:transparent;border-color:transparent;padding:0}
+/* A tall cell with space-between strands its figure at the floor. Centred
+   content keeps the number the optical subject of the cell it owns. */
+.c.mid{justify-content:center;gap:22px}
+.c.mid .v{margin-top:0}
+
+.k{font-size:15px;letter-spacing:.19em;text-transform:uppercase;color:var(--mute)}
+.c.brass .k{color:#c8a86a}.c.green .k{color:#9dbd86}.c.paper .k{color:#6b6860}
+.v{font-family:var(--mono);font-size:76px;line-height:1;letter-spacing:-.045em;margin-top:auto}
+.v.sm{font-size:52px}.v.xl{font-size:150px}
+.v.brass{color:var(--brass)}.v.green{color:var(--credit)}
+.lead{font-size:29px;line-height:1.42;color:var(--dim);margin-top:20px}
+.c.paper .lead{color:#4a4740}
+h1{font-size:104px;line-height:.94;letter-spacing:-.05em;font-weight:700}
+h2{font-size:56px;line-height:1.02;letter-spacing:-.04em;font-weight:700}
+.mark{display:flex;align-items:center;gap:14px;font-size:22px;font-weight:700;letter-spacing:.2em;text-transform:uppercase}
+.mark svg{width:46px;height:28px}
+
+.gates{display:grid;grid-template-columns:repeat(4,1fr);gap:var(--gap);grid-column:1/-1}
+.gate{background:linear-gradient(160deg,rgba(216,178,106,.13),rgba(216,178,106,.04));
+  border:1px solid rgba(216,178,106,.45);padding:26px 28px;display:flex;flex-direction:column;gap:10px}
+.gate .i{font-family:var(--mono);font-size:15px;color:rgba(216,178,106,.65)}
+.gate b{font-family:var(--mono);font-weight:500;color:var(--brass);font-size:25px;letter-spacing:-.01em}
+.gate span{font-size:19px;color:#c2b394;line-height:1.35}
+
+pre{font-family:var(--mono);font-size:22px;line-height:1.8;color:var(--dim);white-space:pre;margin-top:auto}
+pre .c2{color:var(--brass)}
+svg.payoff{width:100%;height:100%}
+.eqrow{display:flex;align-items:baseline;gap:26px;margin-top:auto}
+.eqrow .sign{font-family:var(--mono);font-size:56px;color:var(--mute)}
+.foot{position:absolute;left:56px;right:56px;bottom:24px;display:flex;justify-content:space-between;
+  font-size:15px;letter-spacing:.16em;text-transform:uppercase;color:#4b4843}
 </style></head><body>
 
-<!-- 1 -->
-<section class="slide">
-  <div class="mark"><svg viewBox="0 0 40 24" fill="none">
-    <path d="M1 18H8" stroke="#d8b26a" stroke-width="2.6"/><path d="M32 18H39" stroke="#d8b26a" stroke-width="2.6"/>
-    <path d="M8 18L14 6H26L32 18" stroke="#86b06b" stroke-width="2.2" stroke-linejoin="round"/></svg>Vig</div>
-  <h1 style="margin-top:150px">It never takes a position it can’t cover.</h1>
-  <p>An autonomous options agent on Alpaca. Every structure’s maximum loss is computed and set aside <em style="color:var(--ink);font-style:normal">before</em> the order is submitted.</p>
-  <div class="foot"><span>Alpaca AI Trading Agents Hackathon</span><span>Paper account PA3PLCOVLR4I</span></div>
+<!-- 01 title -->
+<section class="slide" style="grid-template-columns:1.85fr 1fr;grid-template-rows:auto 1fr auto">
+  <div class="c bare" style="grid-column:1/-1"><div class="mark">
+    <svg viewBox="0 0 40 24" fill="none"><path d="M1 18H8" stroke="#d8b26a" stroke-width="2.6"/><path d="M32 18H39" stroke="#d8b26a" stroke-width="2.6"/><path d="M8 18L14 6H26L32 18" stroke="#86b06b" stroke-width="2.2" stroke-linejoin="round"/></svg>Vig</div></div>
+  <div class="c" style="justify-content:center"><h1>It never takes a position it can’t cover.</h1>
+    <p class="lead" style="max-width:44ch">An autonomous options agent on Alpaca. Every structure’s maximum loss is computed and reserved <em style="color:var(--ink);font-style:normal">before</em> the order is submitted.</p></div>
+  <div class="c brass mid"><div class="k">Uncovered exposure</div><div class="v xl">$0</div></div>
+  <div class="c bare" style="grid-column:1/-1;flex-direction:row;justify-content:space-between;color:#4b4843;font-size:15px;letter-spacing:.16em;text-transform:uppercase">
+    <span>Alpaca AI Trading Agents Hackathon</span><span>Paper account PA3PLCOVLR4I</span></div>
 </section>
 
-<!-- 2 -->
-<section class="slide">
-  <h2 style="margin-top:120px">Most trading agents can tell you what they bought.</h2>
-  <p style="font-size:40px;color:var(--ink);max-width:40ch;margin-top:44px">Very few can tell you what it costs them if it goes against them — <em style="color:var(--reserved);font-style:normal">before</em> they buy it.</p>
-  <p>Give an autonomous agent a brokerage account and it will place trades. That part is solved. The unanswered question is what happens when it is wrong.</p>
+<!-- 02 problem -->
+<section class="slide" style="grid-template-columns:1fr 1fr 1fr;grid-template-rows:1.5fr 1fr">
+  <div class="c" style="grid-column:1/3"><div class="k">The unanswered question</div>
+    <h2 style="margin-top:26px">Most trading agents can tell you what they bought.</h2>
+    <p class="lead" style="font-size:34px;color:var(--ink);max-width:34ch">Very few can tell you what it costs them if it goes against them — <em style="color:var(--brass);font-style:normal">before</em> they buy it.</p></div>
+  <div class="c"><div class="k">Given an account</div><div class="v sm">an agent<br>will trade</div>
+    <p class="lead" style="font-size:22px">That part is solved.</p></div>
+  <div class="c"><div class="k">What is not shown</div><div class="v sm green">the downside</div></div>
+  <div class="c"><div class="k">What Vig shows</div><div class="v sm brass">before the order</div></div>
+  <div class="c"><div class="k">Checkable</div><div class="v sm">every position</div></div>
   <div class="foot"><span>The problem</span><span>02</span></div>
 </section>
 
-<!-- 3 -->
-<section class="slide">
-  <h2>The flat floors are the claim.</h2>
-  <svg class="payoff" viewBox="0 0 1700 330" preserveAspectRatio="none">
-    <rect x="0" y="232" width="1700" height="98" fill="#d8b26a" opacity=".2"/>
-    <line x1="0" y1="150" x2="1700" y2="150" stroke="#31313d" stroke-width="2" stroke-dasharray="6 7"/>
-    <rect x="560" y="60" width="580" height="172" fill="#86b06b" opacity=".12"/>
-    <path d="M0 232H360" stroke="#d8b26a" stroke-width="7"/><path d="M1340 232H1700" stroke="#d8b26a" stroke-width="7"/>
-    <path d="M360 232L560 60H1140L1340 232" stroke="#86b06b" stroke-width="5" fill="none" stroke-linejoin="round"/>
-  </svg>
-  <div class="cap"><span class="w">keeps the credit while price stays between the short strikes — <b>$3,727</b> collected</span>
-  <span class="l">loss cannot deepen past the floor — <b>$26,573</b> reserved</span></div>
-  <p style="margin-top:34px">An iron condor is four legs, which is exactly Alpaca’s <span class="n" style="color:var(--reserved)">--legs</span> limit. Only one side can ever be breached, so the maximum loss is width minus credit — known before the order exists.</p>
+<!-- 03 structure -->
+<section class="slide" style="grid-template-columns:1fr 1fr 1fr 1fr;grid-template-rows:auto 1.6fr">
+  <div class="c bare" style="grid-column:1/-1"><h2>The flat floors are the claim.</h2></div>
+  <div class="c" style="grid-column:1/4;padding:34px 40px">
+    <svg class="payoff" viewBox="0 0 1300 380" preserveAspectRatio="none">
+      <rect x="0" y="270" width="1300" height="110" fill="#d8b26a" opacity=".2"/>
+      <line x1="0" y1="176" x2="1300" y2="176" stroke="#31313d" stroke-width="2" stroke-dasharray="6 7"/>
+      <rect x="430" y="72" width="440" height="198" fill="#86b06b" opacity=".12"/>
+      <path d="M0 270H270" stroke="#d8b26a" stroke-width="7"/><path d="M1030 270H1300" stroke="#d8b26a" stroke-width="7"/>
+      <path d="M270 270L430 72H870L1030 270" stroke="#86b06b" stroke-width="5" fill="none" stroke-linejoin="round"/>
+    </svg></div>
+  <div class="c green"><div class="k">Kept inside the range</div><div class="v">$3,727</div></div>
+  <div class="c brass" style="grid-column:4"><div class="k">Loss cannot deepen past</div><div class="v">$26,573</div></div>
+  <div class="c bare" style="grid-column:1/4"><p class="lead" style="font-size:25px">Four legs, which is exactly Alpaca’s <span class="n" style="color:var(--brass)">--legs</span> limit. Only one side can ever be breached, so maximum loss is width minus credit — known before the order exists.</p></div>
   <div class="foot"><span>The structure</span><span>03</span></div>
 </section>
 
-<!-- 4 -->
-<section class="slide">
-  <h2>The proof and the order are the same request.</h2>
-  <pre><span class="c">alpaca</span> order submit --order-class mleg --qty 5
+<!-- 04 mechanism -->
+<section class="slide" style="grid-template-columns:1.5fr 1fr;grid-template-rows:auto 1fr auto">
+  <div class="c bare" style="grid-column:1/-1"><h2>The proof and the order are the same request.</h2></div>
+  <div class="c" style="grid-row:2/4"><div class="k">One command, sent twice</div>
+<pre><span class="c2">alpaca</span> order submit
+  --order-class mleg --qty 5
   --type limit --limit-price 0.53
   --client-order-id vig-3f9a1c22
-  --legs [ 4 legs ]        <span class="c">--dry-run</span>   ← renders it
-  --legs [ 4 legs ]                     ← then sends it</pre>
-  <p>Execution runs entirely through the Alpaca CLI. Every order is submitted twice: once rendered without sending, then again as the identical command. Each structure carries its receipt, and the receipt is the command.</p>
+  --legs [ 4 legs ]
+
+  <span class="c2">--dry-run</span>   renders it
+             then sends it</pre></div>
+  <div class="c brass"><div class="k">Rendered, not sent</div><div class="v sm">--dry-run</div>
+    <p class="lead" style="font-size:21px;color:#c8a86a">The exact request body, before anything reaches the market.</p></div>
+  <div class="c green"><div class="k">Sent, unchanged</div><div class="v sm">identical argv</div>
+    <p class="lead" style="font-size:21px;color:#9dbd86">Each structure carries its receipt, and the receipt is the command.</p></div>
   <div class="foot"><span>The mechanism</span><span>04</span></div>
 </section>
 
-<!-- 5 -->
-<section class="slide reserve-band">
-  <h2>Eight gates. Every one can say no.</h2>
-  <ul class="gates">
-    <li><span class="i">01</span><b>illiquid</b><span>any leg’s bid/ask wider than $0.15</span></li>
-    <li><span class="i">02</span><b>thin-credit</b><span>credit under 10% of width</span></li>
-    <li><span class="i">03</span><b>position-too-large</b><span>one structure risking more than 5% of equity</span></li>
-    <li><span class="i">04</span><b>bucket-full</b><span>one underlying and expiry past 6% of equity</span></li>
-    <li><span class="i">05</span><b>book-full</b><span>total reserved past the 25% ceiling</span></li>
-    <li><span class="i">06</span><b>no-wing</b><span>the protective strike does not exist</span></li>
-    <li><span class="i">07</span><b>inverted</b><span>short strikes crossed; loss no longer bounded</span></li>
-    <li><span class="i">08</span><b>regime</b><span>the newswire says today is a bad day to be short premium</span></li>
-  </ul>
+<!-- 05 gates -->
+<section class="slide" style="grid-template-rows:auto auto 1fr">
+  <div class="c bare"><h2>Eight gates. Every one can say no.</h2></div>
+  <div class="c bare"><p class="lead" style="max-width:70ch">A structure reaches the broker only after clearing all of them. The refusals are shown beside the fills, because an agent that only reports what it did is hiding half its judgement.</p></div>
+  <div class="gates">
+    <div class="gate"><span class="i">01</span><b>illiquid</b><span>any leg wider than $0.15</span></div>
+    <div class="gate"><span class="i">02</span><b>thin-credit</b><span>credit under 10% of width</span></div>
+    <div class="gate"><span class="i">03</span><b>position-too-large</b><span>one structure over 5% of equity</span></div>
+    <div class="gate"><span class="i">04</span><b>bucket-full</b><span>one underlying and expiry over 6%</span></div>
+    <div class="gate"><span class="i">05</span><b>book-full</b><span>total reserved past the 25% ceiling</span></div>
+    <div class="gate"><span class="i">06</span><b>no-wing</b><span>the protective strike does not exist</span></div>
+    <div class="gate"><span class="i">07</span><b>inverted</b><span>short strikes crossed</span></div>
+    <div class="gate"><span class="i">08</span><b>regime</b><span>the newswire says stand aside</span></div>
+  </div>
   <div class="foot"><span>The gates</span><span>05</span></div>
 </section>
 
-<!-- 6 -->
-<section class="slide">
-  <div style="font-size:22px;letter-spacing:.16em;text-transform:uppercase;color:var(--ink-mute)">Uncovered exposure</div>
-  <div class="big"><span class="cur">$</span>0</div>
-  <div class="row">
-    <div class="stat"><div class="k">Structures open</div><div class="v">12</div></div>
-    <div class="stat"><div class="k">Worst case if all breach</div><div class="v">$26,573</div></div>
-    <div class="eq">=</div>
-    <div class="stat"><div class="k">Already reserved</div><div class="v" style="color:var(--reserved)">$26,573</div></div>
-  </div>
-  <p style="margin-top:52px">They match because they have to. Live on a paper account across SPY, QQQ and IWM — every figure read through the Alpaca CLI, none of it mocked.</p>
+<!-- 06 result -->
+<section class="slide" style="grid-template-columns:1.3fr 1fr 1fr;grid-template-rows:1.4fr 1fr auto">
+  <div class="c brass mid" style="grid-row:1/3"><div class="k">Uncovered exposure</div><div class="v xl" style="font-size:190px">$0</div>
+    <p class="lead" style="font-size:23px;color:#c8a86a">An order that would not be covered is never sent.</p></div>
+  <div class="c"><div class="k">Worst case if all breach</div><div class="v">$26,573</div></div>
+  <div class="c brass"><div class="k">Already reserved</div><div class="v brass">$26,573</div></div>
+  <div class="c"><div class="k">Open structures</div><div class="v">12</div></div>
+  <div class="c green"><div class="k">Premium collected</div><div class="v green">$3,727</div></div>
+  <div class="c bare" style="grid-column:1/-1"><p class="lead" style="font-size:25px">They match because they have to. Live on a paper account across SPY, QQQ and IWM — every figure read through the Alpaca CLI, none of it mocked.</p></div>
   <div class="foot"><span>The result</span><span>06</span></div>
 </section>
 
-<!-- 7 -->
-<section class="slide paper">
-  <h2>What this does not claim.</h2>
-  <p style="font-size:33px;margin-top:44px">Paper trading, and roughly two and a half sessions of it. That is not a sample size from which an edge can be inferred, and none is claimed. Selling premium wins often and loses occasionally larger; that skew is real, and the ceilings bound what it can cost rather than pretending it away.</p>
-  <p style="font-size:41px;color:var(--paper-ink);margin-top:52px">What is checkable is narrower. Every position is covered before it exists.</p>
+<!-- 07 limits -->
+<section class="slide" style="grid-template-columns:1fr 1fr 1fr;grid-template-rows:1.4fr 1fr">
+  <div class="c paper" style="grid-column:1/3"><div class="k">What this does not claim</div>
+    <h2 style="margin-top:24px;color:var(--paper-ink)">Two and a half sessions prove nothing.</h2>
+    <p class="lead" style="font-size:26px">That is not a sample size from which an edge can be inferred, and none is claimed. Selling premium wins often and loses occasionally larger; the ceilings bound what that can cost rather than pretending it away.</p></div>
+  <div class="c"><div class="k">Environment</div><div class="v sm">paper only</div></div>
+  <div class="c"><div class="k">Skew</div><div class="v sm">negative,<br>and stated</div></div>
+  <div class="c"><div class="k">Underlyings</div><div class="v sm">correlated</div></div>
+  <div class="c green" style="grid-column:2/4"><div class="k">What is checkable</div>
+    <div class="v sm green" style="font-size:44px">Every position is covered before it exists.</div></div>
   <div class="foot"><span>The limits</span><span>07</span></div>
 </section>
 
