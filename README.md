@@ -10,7 +10,8 @@ order is never sent.
 | | |
 |---|---|
 | **Alpaca paper account** | `PA3PLCOVLR4I` · UUID `687ede83-6811-4d04-9644-e71debbec71e` |
-| **Live** | **[vig-alpaca.vercel.app](https://vig-alpaca.vercel.app)** — the Cover Sheet is at [`/app`](https://vig-alpaca.vercel.app/app) |
+| **Live** | **[emmanuelist.github.io/vig](https://emmanuelist.github.io/vig/)** — the Cover Sheet is at [`/app.html`](https://emmanuelist.github.io/vig/app.html) |
+| **Mirror** | [vig-pgsi4aaoy-emmanuel-pauls-projects.vercel.app](https://vig-pgsi4aaoy-emmanuel-pauls-projects.vercel.app) |
 | **Repository** | [github.com/emmanuelist/vig](https://github.com/emmanuelist/vig) |
 | **Demo video** | _recorded once the competition window closes_ |
 | **Alpaca CLI** | `0.0.14` (alpha preview) |
