@@ -135,7 +135,7 @@ async function main() {
   writeFileSync("film/timing.json", JSON.stringify(timing, null, 2));
   console.log(`\n  film/narration.mp3  (${dur("film/narration.mp3").toFixed(1)}s, target ${cursor.toFixed(1)}s)`);
   console.log("  film/timing.json    sentence timings for the captions");
-  if (!existsSync("film/cleave-silent.mp4")) console.log("  (run npm run film && npm run film:cut, then npm run film:mix)");
+  if (!existsSync("film/vig-silent.mp4")) console.log("  (run npm run film && npm run film:cut, then npm run film:mix)");
 }
 
 main().catch((e) => { console.error("\nvoice failed:", e.message ?? e); process.exit(1); });

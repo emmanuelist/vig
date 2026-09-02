@@ -18,13 +18,17 @@ export type Card = {
 };
 
 export const THEME = {
-  ground: "#08090b",
-  ink: "#e8ebf0",
-  dim: "#8b93a1",
-  accent: "#4fd1c5",
-  mono: '"Azeret Mono", ui-monospace, Menlo, monospace',
-  sans: '"Instrument Sans", ui-sans-serif, system-ui, sans-serif',
-  fonts: "https://fonts.googleapis.com/css2?family=Azeret+Mono:wght@300;400;500&family=Instrument+Sans:wght@400;500&display=swap",
+  ground: "#0a0a0c",
+  ink: "#ece9e3",
+  dim: "#918d85",
+  /* Brass, the colour this product uses for capital standing behind a
+     position. The card opens the film, so it opens in the product's palette
+     rather than in whatever the pipeline was last used for. */
+  accent: "#d8b26a",
+  credit: "#86b06b",
+  mono: '"IBM Plex Mono", ui-monospace, Menlo, monospace',
+  sans: 'Archivo, ui-sans-serif, system-ui, sans-serif',
+  fonts: "https://fonts.googleapis.com/css2?family=Archivo:wght@400;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap",
 };
 
 export function cardHTML(c: Card): string {
@@ -37,26 +41,30 @@ export function cardHTML(c: Card): string {
   html,body{height:100%;margin:0;background:${t.ground};overflow:hidden}
   body{display:grid;place-items:center;font-family:${t.sans};color:${t.ink}}
   .w{max-width:60ch;padding:0 60px;text-align:center}
-  .k{font-family:${t.mono};font-size:11px;letter-spacing:.22em;text-transform:uppercase;
-     color:${t.accent};opacity:0;animation:up .7s cubic-bezier(.2,.7,.2,1) .15s forwards}
-  h1{font-family:${t.mono};font-weight:400;letter-spacing:-.045em;line-height:1.1;
-     font-size:clamp(30px,4.6vw,54px);margin:16px 0 0;opacity:0;
+  .glyph{width:76px;height:46px;display:block;margin:0 auto;opacity:0;
+     animation:up .7s cubic-bezier(.2,.7,.2,1) .1s forwards}
+  .k{font-family:${t.sans};font-size:11px;letter-spacing:.22em;text-transform:uppercase;
+     color:${t.dim};opacity:0;margin-top:34px;
+     animation:up .7s cubic-bezier(.2,.7,.2,1) .9s forwards}
+  h1{font-family:${t.sans};font-weight:700;letter-spacing:-.05em;line-height:1;
+     font-size:clamp(46px,7vw,86px);margin:26px 0 0;opacity:0;
      animation:up .85s cubic-bezier(.2,.7,.2,1) .32s forwards}
-  p{font-size:17px;color:${t.dim};margin:20px 0 0;opacity:0;
+  p{font-size:19px;color:${t.dim};margin:22px 0 0;opacity:0;
     animation:up .8s cubic-bezier(.2,.7,.2,1) .58s forwards}
-  .r{height:1px;background:${t.accent};margin:34px auto 0;width:0;opacity:.5;
-     animation:grow 1.1s cubic-bezier(.2,.7,.2,1) .75s forwards}
   @keyframes up{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
-  @keyframes grow{to{width:180px}}
   /* A faint field, so a card is not a flat colour next to a lit product. */
   body::before{content:"";position:fixed;inset:0;pointer-events:none;
-    background:radial-gradient(120% 80% at 50% 45%,rgba(79,209,197,.055),transparent 60%)}
+    background:radial-gradient(120% 80% at 50% 46%,rgba(216,178,106,.05),transparent 60%)}
 </style>
 <div class="w">
-  ${c.kicker ? `<div class="k">${c.kicker}</div>` : ""}
+  <svg class="glyph" viewBox="0 0 40 24" fill="none" aria-hidden="true">
+    <path d="M1 18H8" stroke="${t.accent}" stroke-width="2.6" stroke-linecap="square"/>
+    <path d="M32 18H39" stroke="${t.accent}" stroke-width="2.6" stroke-linecap="square"/>
+    <path d="M8 18L14 6H26L32 18" stroke="${t.credit}" stroke-width="2.2" stroke-linejoin="round"/>
+  </svg>
   <h1>${c.title}</h1>
   ${c.subtitle ? `<p>${c.subtitle}</p>` : ""}
-  <div class="r"></div>
+  ${c.kicker ? `<div class="k">${c.kicker}</div>` : ""}
 </div>`;
 }
 

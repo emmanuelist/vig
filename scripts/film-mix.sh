@@ -6,7 +6,7 @@
 # Video is the master; audio is padded or trimmed to it.
 set -euo pipefail
 cd "$(dirname "$0")/.."
-V=film/cleave-silent.mp4
+V=film/vig-silent.mp4
 N=film/narration.mp3
 M=film/music.mp3
 [ -f "$V" ] || { echo "No $V - run npm run film && npm run film:cut"; exit 1; }
@@ -25,8 +25,8 @@ ffmpeg -y -loglevel error -i "$V" -i "$N" -i "$M" \
     [bedraw][key]sidechaincompress=threshold=0.09:ratio=3.2:attack=25:release=520:makeup=1[bed]; \
     [voice][bed]amix=inputs=2:normalize=0:weights=1 0.85,\
          loudnorm=I=-15:TP=-1.5:LRA=11[a]" \
-  -map 0:v -map "[a]" -shortest -c:v copy -c:a aac -b:a 192k film/cleave-demo.mp4
+  -map 0:v -map "[a]" -shortest -c:v copy -c:a aac -b:a 192k film/vig-demo.mp4
 
-d=$(ffprobe -v error -show_entries format=duration -of csv=p=0 film/cleave-demo.mp4)
-printf "\n  film/cleave-demo.mp4  (%.0f:%02.0f)\n" "$(echo "$d/60" | bc)" "$(echo "$d%60" | bc)"
+d=$(ffprobe -v error -show_entries format=duration -of csv=p=0 film/vig-demo.mp4)
+printf "\n  film/vig-demo.mp4  (%.0f:%02.0f)\n" "$(echo "$d/60" | bc)" "$(echo "$d%60" | bc)"
 echo "  Voice normalised to -16 LUFS, bed ducked beneath it, mix at -15 LUFS."

@@ -36,8 +36,13 @@ function windowFor(segment: string, planned: number): number {
   } catch { return planned; }
 }
 
-const APP = process.env.APP_URL ?? "http://localhost:5174";
-const SITE = process.env.SITE_URL ?? APP;
+/* Two surfaces, two URLs. Routing moved the Cover Sheet to /app, and every
+   segment was still pointed at the root — so segments narrating the sheet
+   ("each open structure is drawn as its own payoff") were filmed over the
+   landing page. The narration must be over the thing it describes. */
+const LANDING = process.env.APP_URL ?? "http://localhost:5174/";
+const SHEET = process.env.SHEET_URL ?? "http://localhost:5174/app";
+const SITE = process.env.SITE_URL ?? LANDING;
 const TX = "https://shannon-explorer.somnia.network/tx/0xb785b4f03a6f0fcc68be476ad4dd617dd667ef21d6d3fac1531d91cb1116afd3";
 const OUT = "film";
 const W = 1440, H = 900;
@@ -201,21 +206,21 @@ async function main() {
 
   // 1. The question. Held at the top, still, while the narration poses it.
   await segment("01-open", windowFor("01-open", 26), async (p) => {
-    await p.goto(APP, { waitUntil: "domcontentloaded" });
+    await p.goto(LANDING, { waitUntil: "domcontentloaded" });
     await untilPainted(p, 500);
     await wait(1800);
   });
 
   // 2. The Cover Sheet. The figure, then the equality under it.
   await segment("02-cover", windowFor("02-cover", 44), async (p) => {
-    await p.goto(APP, { waitUntil: "domcontentloaded" });
+    await p.goto(SHEET, { waitUntil: "domcontentloaded" });
     await untilPainted(p, 500);
     await wait(1500);
   });
 
   // 3. A structure, drawn as its own payoff.
   await segment("03-structure", windowFor("03-structure", 46), async (p) => {
-    await p.goto(APP, { waitUntil: "domcontentloaded" });
+    await p.goto(SHEET, { waitUntil: "domcontentloaded" });
     await untilPainted(p, 500);
     await wait(1200);
     void p.evaluate(choreograph([[1.0, "#positions .pos:first-child", 0.28]])).catch(() => {});
@@ -225,7 +230,7 @@ async function main() {
   //    capital transfer and a real refusal can land inside the window rather
   //    than being described over a static page.
   await segment("04-decision", windowFor("04-decision", 42), async (p) => {
-    await p.goto(APP, { waitUntil: "domcontentloaded" });
+    await p.goto(SHEET, { waitUntil: "domcontentloaded" });
     await untilPainted(p, 500);
     await wait(1200);
     // The receipt has to be on screen before the cursor is sent to click it,
@@ -239,12 +244,12 @@ async function main() {
 
   // 5. The limits, and the claim again. Back where we started.
   await segment("05-limits", windowFor("05-limits", 38), async (p) => {
-    await p.goto(APP, { waitUntil: "domcontentloaded" });
+    await p.goto(LANDING, { waitUntil: "domcontentloaded" });
     await untilPainted(p, 500);
     await wait(1200);
     void p.evaluate(choreograph([
-      [1.0, "footer", 0.55],
-      [15.0, ".cover", 0.06],
+      [1.0, ".band.plain", 0.16],
+      [20.0, ".hero", 0.02],
     ])).catch(() => {});
   });
 

@@ -56,7 +56,7 @@ graph = ";".join(filt)
 subprocess.run(["ffmpeg","-y","-loglevel","error", *inputs,
                 "-filter_complex", graph, "-map", "[out]",
                 "-c:v","libx264","-preset","slow","-crf","18",
-                os.path.join(out,"cleave-silent.mp4")], check=True)
+                os.path.join(out,"vig-silent.mp4")], check=True)
 segs = sorted(d for d in os.listdir(out) if d[0].isdigit() and os.path.isdir(os.path.join(out,d)))
 m = {s: round(d - (xf if i < len(norm)-1 else 0), 3) for i,(s,d) in enumerate(zip(segs,dur))}
 json.dump(m, open(os.path.join(out,"segments.json"),"w"), indent=2)
@@ -77,9 +77,9 @@ json.dump(m, open(os.path.join(out, "segments.json"), "w"), indent=2)
 print("  manifest: " + ", ".join(f"{k} {v:.1f}s" for k, v in m.items()))
 PYEOF
   echo "Concatenating"
-  ffmpeg -y -loglevel error -f concat -safe 0 -i "$OUT/list.txt" -c copy "$OUT/cleave-silent.mp4"
+  ffmpeg -y -loglevel error -f concat -safe 0 -i "$OUT/list.txt" -c copy "$OUT/vig-silent.mp4"
 fi
 
-d=$(ffprobe -v error -show_entries format=duration -of csv=p=0 "$OUT/cleave-silent.mp4")
-printf "\n  %s  (%.1fs)\n" "$OUT/cleave-silent.mp4" "$d"
+d=$(ffprobe -v error -show_entries format=duration -of csv=p=0 "$OUT/vig-silent.mp4")
+printf "\n  %s  (%.1fs)\n" "$OUT/vig-silent.mp4" "$d"
 echo "  Next: npm run voice && npm run film:mix"

@@ -38,10 +38,11 @@ export const MOVES: Record<string, Move[]> = {
   // refusal. Everywhere else the shot plays flat — a push-in on every move is
   // nausea, and it spends the emphasis the four real moments need.
 
+  // Filmed on the landing page, so these are landing selectors.
   "01-open": [
     { at: 4.0, sel: ".mark" },
-    { at: 11.0, sel: "#positions .pos:first-child, #pos-empty", label: "an agent with a live account" },
-    { at: 18.5, sel: "#reserved", label: "but what does it cost if it's wrong?" },
+    { at: 10.5, sel: "#p-eq", label: "a live brokerage account" },
+    { at: 18.0, sel: "#p-unc", label: "but what does it cost when it's wrong?" },
   ],
 
   "02-cover": [
@@ -74,10 +75,11 @@ export const MOVES: Record<string, Move[]> = {
     { at: 35.0, sel: "#decisions", zoom: 1 },
   ],
 
+  // Closes on the landing page's reversed band, where this copy lives.
   "05-limits": [
-    { at: 6.0, sel: "footer" },
-    { at: 16.0, sel: ".hero .zero" },
-    { at: 28.0, sel: ".claim", label: "" },
+    { at: 6.0, sel: ".band.plain h2" },
+    { at: 17.0, sel: ".band.plain p:last-of-type" },
+    { at: 26.0, sel: "h1" },
   ],
 };
 
