@@ -131,6 +131,26 @@ the expensive way:
   expired, not far-out-of-the-money. It is the only reliable liveness signal in
   the payload.
 
+## Index options: evaluated, declined
+
+Alpaca launched index options on the Trading API on 2 September 2026, mid-event.
+They are attractive for this strategy on paper: SPX and XSP are cash settled and
+**European-style, so a short leg cannot be assigned before expiration**, which
+removes the assignment mechanics that American-style equity options carry.
+
+They are not used here, for a measured reason. Alpaca's chain returns quotes for
+index options but **no greeks** — verified on 2 September: 400 of 400 SPX
+contracts carried a live bid and none carried a delta; XSP returned 188 bids and
+zero deltas. Strike selection in `src/condor.ts` is delta-based, so adopting
+them would mean replacing the risk model's selection criterion with an untested
+one, on an underlying this agent has never traded, inside the last day of the
+competition.
+
+Worth stating plainly: assignment was never a hole in the claim. On a defined-risk
+spread the long wing still caps the loss when the short leg is assigned, so the
+position stays covered — early assignment is a capital-mechanics nuisance, not an
+uncovered loss. European exercise would have removed the nuisance, not a risk.
+
 ## Limits, stated plainly
 
 - **Paper trading only.** Results are hypothetical and do not represent real trading.
