@@ -5,3 +5,10 @@ film
 receipts
 .impeccable
 .playwright-mcp
+
+# Runtime state, rewritten every tick. The deploy serves snapshot.json, which
+# is committed, timestamped and declares itself a snapshot. Shipping both would
+# put two data files on a static host where only one of them is honest about
+# what it is. Gitignoring this is not enough: Vercel deploys the working
+# directory, not the git tree.
+web/state.json
