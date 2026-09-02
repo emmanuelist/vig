@@ -366,7 +366,7 @@ function render(s) {
    masthead says so, and the payload carries `live` rather than the page
    guessing from whether a request succeeded. */
 let gotLive = false;
-const es = new EventSource("/api/stream");
+const es = new EventSource("api/stream");
 es.onmessage = (e) => {
   try { render(JSON.parse(e.data)); gotLive = true; }
   catch (err) { console.error("bad frame:", err); }
@@ -374,7 +374,7 @@ es.onmessage = (e) => {
 es.onerror = () => {
   es.close();
   if (gotLive) { $("dot").className = "dot"; return; }
-  fetch("/snapshot.json")
+  fetch("snapshot.json")
     .then((r) => (r.ok ? r.json() : null))
     .then((s) => { if (s) render(s); })
     .catch(() => { $("dot").className = "dot"; });
