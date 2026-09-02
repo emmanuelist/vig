@@ -11,7 +11,7 @@ order is never sent.
 |---|---|
 | **Alpaca paper account** | `PA3PLCOVLR4I` · UUID `687ede83-6811-4d04-9644-e71debbec71e` |
 | **Live** | **[emmanuelist.github.io/vig](https://emmanuelist.github.io/vig/)** — the Cover Sheet is at [`/app.html`](https://emmanuelist.github.io/vig/app.html) |
-| **Mirror** | [vig-emmanuel-pauls-projects.vercel.app](https://vig-emmanuel-pauls-projects.vercel.app) — the Cover Sheet is at [`/app`](https://vig-emmanuel-pauls-projects.vercel.app/app) |
+| **Mirror** | [vig-six.vercel.app](https://vig-six.vercel.app) — the Cover Sheet is at [`/app`](https://vig-six.vercel.app/app) |
 | **Repository** | [github.com/emmanuelist/vig](https://github.com/emmanuelist/vig) |
 | **Demo video** | _recorded once the competition window closes_ |
 | **Alpaca CLI** | `0.0.14` (alpha preview) |
