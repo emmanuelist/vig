@@ -1,0 +1,28 @@
+{
+  "name": "vig",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "It never takes a position it can't cover.",
+  "scripts": {
+    "doctor": "tsx scripts/doctor.ts",
+    "chain": "tsx scripts/chain.ts",
+    "agent": "tsx src/agent.ts",
+    "serve": "tsx scripts/serve.ts",
+    "typecheck": "tsc --noEmit",
+    "film": "tsx scripts/film.ts",
+    "film:cut": "bash scripts/film-cut.sh",
+    "voice": "tsx scripts/voice.ts",
+    "film:music": "bash scripts/film-music.sh",
+    "film:mix": "bash scripts/film-mix.sh"
+  },
+  "dependencies": {
+    "dotenv": "^17.4.2"
+  },
+  "devDependencies": {
+    "@types/node": "^26.2.0",
+    "playwright": "^1.62.1",
+    "tsx": "^4",
+    "typescript": "^5"
+  }
+}

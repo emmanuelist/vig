@@ -1,0 +1,49 @@
+# ── Dependencies ─────────────────────────────────────────────────────
+node_modules/
+
+# ── Credentials ──────────────────────────────────────────────────────
+# ALPACA_API_KEY, ALPACA_SECRET_KEY, ELEVENLABS_API_KEY and
+# FEATHERLESS_API_KEY live in .env. .env.example documents the shape
+# without the values and is the one variant that ships.
+.env
+.env.*
+!.env.example
+
+# ── Runtime state ────────────────────────────────────────────────────
+# Written by the agent every tick and true only for the instant it was
+# written. The Alpaca account is the source of truth, not this file.
+web/state.json
+
+# Receipt log and position ledger: real account activity, append-only,
+# growing for as long as the agent runs. A snapshot of the competition
+# window is committed under evidence/ with the submission instead.
+receipts/
+
+# ── Generated media ──────────────────────────────────────────────────
+# Recorded segments, per-sentence narration and the final mix. Tens of
+# megabytes, all regenerable from scripts/ and scripts/narration.ts.
+film/
+
+# ── Working artifacts ────────────────────────────────────────────────
+# Browser-automation captures taken while building, and the design-review
+# evidence packet. Both are process, not product; the review verdicts that
+# mattered are recorded in DESIGN.md and the surface brief.
+.playwright-mcp/
+.impeccable/review/
+.impeccable/mocks/
+
+# Internal competitive notes: event research and a read on other entrants.
+# Working material, and not for a public repo.
+see.md
+
+# ── Build and tooling output ─────────────────────────────────────────
+dist/
+build/
+.vercel/
+*.log
+*.tsbuildinfo
+coverage/
+
+# ── OS ───────────────────────────────────────────────────────────────
+.DS_Store
+Thumbs.db
