@@ -1,0 +1,215 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-09-02T00:00:00Z",
+  "title": "Design System: Vig",
+  "extensions": {
+    "colorMeta": {
+      "reserved": {
+        "role": "primary",
+        "displayName": "Reserved Brass",
+        "canonical": "#d8b26a",
+        "tonalRamp": ["#241a08", "#3d2d12", "#5b431c", "#7c5d29", "#a07c3e", "#c39c58", "#d8b26a", "#eed9b4"]
+      },
+      "credit": {
+        "role": "secondary",
+        "displayName": "Collected Green",
+        "canonical": "#86b06b",
+        "tonalRamp": ["#131c0d", "#22321a", "#334a26", "#456434", "#5a7f45", "#6f9856", "#86b06b", "#c1d9b1"]
+      },
+      "breached": {
+        "role": "tertiary",
+        "displayName": "Breached Red",
+        "canonical": "#c8574a",
+        "tonalRamp": ["#2a0f0b", "#431a14", "#5f271f", "#7d372c", "#9c473a", "#b64f42", "#c8574a", "#e6a89f"]
+      },
+      "working": {
+        "role": "tertiary",
+        "displayName": "Working Blue-Grey",
+        "canonical": "#6b8caf",
+        "tonalRamp": ["#0f161d", "#1a2531", "#273747", "#364a5e", "#476076", "#5a768f", "#6b8caf", "#b3c5d8"]
+      },
+      "ground": {
+        "role": "neutral",
+        "displayName": "Ground",
+        "canonical": "#0a0a0c",
+        "tonalRamp": ["#0a0a0c", "#101014", "#16161b", "#21212a", "#31313d", "#5f5c56", "#918d85", "#ece9e3"]
+      },
+      "panel": { "role": "neutral", "displayName": "Panel", "canonical": "#101014" },
+      "raised": { "role": "neutral", "displayName": "Raised", "canonical": "#16161b" },
+      "hair": { "role": "neutral", "displayName": "Hairline", "canonical": "#21212a" },
+      "hair-lit": { "role": "neutral", "displayName": "Lit Hairline", "canonical": "#31313d" },
+      "ink": { "role": "neutral", "displayName": "Bone Ink", "canonical": "#ece9e3" },
+      "ink-dim": { "role": "neutral", "displayName": "Dim Ink", "canonical": "#918d85" },
+      "ink-mute": { "role": "neutral", "displayName": "Mute Ink", "canonical": "#5f5c56" },
+      "reserved-lo": { "role": "neutral", "displayName": "Reserved Wash", "canonical": "#d8b26a14" },
+      "credit-lo": { "role": "neutral", "displayName": "Collected Wash", "canonical": "#86b06b14" }
+    },
+    "typographyMeta": {
+      "display": { "displayName": "Display Figure", "purpose": "The single uncovered-exposure figure on the Cover Sheet. Mono, tabular, never used for words." },
+      "headline": { "displayName": "Claim", "purpose": "The landing claim sentence only, capped at 15ch." },
+      "title": { "displayName": "Band Heading", "purpose": "Landing band headings, capped at 22ch." },
+      "body": { "displayName": "Body", "purpose": "Running prose. 68ch on landing, 46ch in the Cover Sheet hero note." },
+      "quantity": { "displayName": "Quantity", "purpose": "Every figure in ledger, position card, decisions list and tape. Tabular mono, always." },
+      "label": { "displayName": "Label", "purpose": "Keys, units, section headings, tags. Uppercase Archivo, 0.08-0.16em tracking." },
+      "mark": { "displayName": "Wordmark", "purpose": "The Vig wordmark. The only place tracking exceeds 0.16em." }
+    },
+    "shadows": [
+      { "name": "knob-lift", "value": "0 2px 10px rgba(0,0,0,.55)", "purpose": "The scrub knob only. It must read as a physical grabbable object above the rail." },
+      { "name": "capital-in-flight", "value": "0 6px 22px rgba(216,178,106,.28)", "purpose": "The brass capital chip while it travels from equity into the reserve meter. Exists for ~1s per opened structure." },
+      { "name": "live-halo", "value": "0 0 0 3px var(--credit-lo)", "purpose": "Ring around the live-market dot. A halo, not elevation." }
+    ],
+    "motion": [
+      { "name": "ease-settle", "value": "cubic-bezier(.22,.61,.36,1)", "purpose": "Default arrival easing: meter fill (0.5s), card enter (0.62s), path draw (0.9s), decision pulse (0.9s)." },
+      { "name": "ease-out-expo", "value": "p => 1 - Math.pow(2, -10 * p)", "purpose": "Number tweens (850ms). Fast commit, long settle - a sum of money arriving and coming to rest." },
+      { "name": "ease-arc", "value": "cubic-bezier(.34,.02,.24,1)", "purpose": "Capital chip travelling on a lifted arc from equity to the reserve meter (1100ms). An arc reads as an object with weight; a straight line reads as a UI transition." },
+      { "name": "ease-ui", "value": "ease, .18s", "purpose": "Button and knob hover/active state changes." },
+      { "name": "ease-state", "value": "ease, .45s", "purpose": "Breach recolour across position card border, curve stroke, corridor fill, spot line and dot." },
+      { "name": "spring-snap", "value": "linear(0,.006,.026,.06,.106,.166,.24,.328,.43,.546,.677,.72,.766,.813,.86,.905,.945,.977,1,1.012,1.017,1.015,1.01,1.005,1.001,1)", "purpose": "Slight overshoot for elements that snap into place rather than settle." },
+      { "name": "stagger", "value": "70ms per index", "purpose": "Card batch entry, so a group of arrivals reads as a sequence." }
+    ],
+    "breakpoints": [
+      { "name": "app-stack", "value": "860px" },
+      { "name": "landing-stack", "value": "820px" },
+      { "name": "landing-compact", "value": "560px" }
+    ]
+  },
+  "components": [
+    {
+      "name": "Primary CTA",
+      "kind": "button",
+      "refersTo": "cta-primary",
+      "description": "The single brass action on the landing page. Brass fill, ground text, zero radius.",
+      "html": "<a class=\"ds-cta\" href=\"/app\">Open the Cover Sheet</a>",
+      "css": ".ds-cta { display: inline-flex; align-items: center; padding: 11px 20px; text-decoration: none; background: var(--reserved, #d8b26a); color: var(--ground, #0a0a0c); font-family: var(--sans, Archivo, sans-serif); font-weight: 600; font-size: 12.5px; letter-spacing: 0.02em; border: 1px solid var(--reserved, #d8b26a); border-radius: 0; transition: background .18s ease, color .18s ease, transform .18s ease; } .ds-cta:hover { background: #e6c489; transform: translateY(-1px); } .ds-cta:active { transform: none; } .ds-cta:focus-visible { outline: 1px solid var(--reserved, #d8b26a); outline-offset: 3px; }"
+    },
+    {
+      "name": "Ghost CTA",
+      "kind": "button",
+      "refersTo": "cta-ghost",
+      "description": "Secondary action. Never gains a background; hover raises ink and border only.",
+      "html": "<a class=\"ds-cta-ghost\" href=\"#how\">How it works</a>",
+      "css": ".ds-cta-ghost { display: inline-flex; align-items: center; padding: 11px 20px; text-decoration: none; background: none; color: var(--ink-dim, #918d85); font-family: var(--sans, Archivo, sans-serif); font-weight: 600; font-size: 12.5px; letter-spacing: 0.02em; border: 1px solid var(--hair-lit, #31313d); border-radius: 0; transition: color .18s ease, border-color .18s ease; } .ds-cta-ghost:hover { color: var(--ink, #ece9e3); border-color: var(--ink-mute, #5f5c56); } .ds-cta-ghost:focus-visible { outline: 1px solid var(--reserved, #d8b26a); outline-offset: 3px; }"
+    },
+    {
+      "name": "State Tag",
+      "kind": "chip",
+      "refersTo": "tag-covered",
+      "description": "Outlined uppercase state marker. Outline and label always take the same state colour; never filled.",
+      "html": "<span class=\"ds-tag ds-tag-covered\">covered</span> <span class=\"ds-tag ds-tag-settled\">settled</span> <span class=\"ds-tag\">pending</span>",
+      "css": ".ds-tag { display: inline-block; font-family: var(--sans, Archivo, sans-serif); font-size: 10px; letter-spacing: 0.1em; text-transform: uppercase; padding: 2px 7px; border: 1px solid var(--hair-lit, #31313d); color: var(--ink-dim, #918d85); border-radius: 0; } .ds-tag-covered { color: var(--reserved, #d8b26a); border-color: var(--reserved, #d8b26a); } .ds-tag-settled { color: var(--credit, #86b06b); border-color: var(--credit, #86b06b); }"
+    },
+    {
+      "name": "Reserve Meter",
+      "kind": "custom",
+      "refersTo": "meter-track",
+      "description": "Capital reserved against its ceiling. Fill is scaled from the left edge, never resized. At zero it recolours to lit hairline so empty reads as empty.",
+      "html": "<div class=\"ds-meter\"><i style=\"transform: scaleX(0.42)\"></i></div><div class=\"ds-meter-legend\"><span>against a $25,000 ceiling</span><span>42.0% used</span></div>",
+      "css": ".ds-meter { height: 6px; background: var(--raised, #16161b); border: 1px solid var(--hair, #21212a); position: relative; border-radius: 0; } .ds-meter i { position: absolute; inset: 0 auto 0 0; display: block; width: 100%; transform-origin: left center; background: var(--reserved, #d8b26a); transition: transform .5s cubic-bezier(.22,.61,.36,1); } .ds-meter i[data-empty=\"true\"] { background: var(--hair-lit, #31313d); } .ds-meter-legend { display: flex; justify-content: space-between; color: var(--ink-mute, #5f5c56); font-family: var(--sans, Archivo, sans-serif); font-size: 10.5px; margin-top: 7px; font-variant-numeric: normal; } @media (prefers-reduced-motion: reduce) { .ds-meter i { transition: none; } }"
+    },
+    {
+      "name": "Position Card",
+      "kind": "card",
+      "refersTo": "panel-surface",
+      "description": "One iron condor. Symbol and expiry left, state tag, number cluster pushed right. A single .breach class recolours border, curve, corridor, spot line and capital figure together.",
+      "html": "<article class=\"ds-pos\"><div class=\"ds-pos-head\"><span class=\"ds-sym\">SPY</span><span class=\"ds-exp\">2026-09-04</span><span class=\"ds-tag ds-tag-covered\">covered</span><div class=\"ds-pos-nums\"><div><span class=\"ds-k\">credit</span><span class=\"ds-v ds-credit\">$365</span></div><div><span class=\"ds-k\">reserved</span><span class=\"ds-v ds-res\">$2,135</span></div></div></div><div class=\"ds-floors\"><span class=\"ds-win\">max win <b>$365</b></span><span class=\"ds-cap\">max loss <b>$2,135</b></span></div></article>",
+      "css": ".ds-pos { border: 1px solid var(--hair, #21212a); background: var(--panel, #101014); padding: 16px 18px; border-radius: 0; transition: border-color .45s ease; } .ds-pos.breach { border-color: var(--breached, #c8574a); } .ds-pos-head { display: flex; align-items: baseline; gap: 12px; margin-bottom: 14px; flex-wrap: wrap; } .ds-sym { font-family: var(--mono, monospace); font-size: 14px; letter-spacing: 0.02em; color: var(--ink, #ece9e3); } .ds-exp { color: var(--ink-mute, #5f5c56); font-size: 11px; font-family: var(--mono, monospace); } .ds-pos-nums { margin-left: auto; display: flex; gap: 22px; align-items: baseline; } .ds-pos-nums .ds-k { color: var(--ink-mute, #5f5c56); font-family: var(--sans, Archivo, sans-serif); font-size: 10px; letter-spacing: 0.1em; text-transform: uppercase; display: block; } .ds-pos-nums .ds-v { font-family: var(--mono, monospace); font-size: 14px; font-variant-numeric: tabular-nums; } .ds-credit { color: var(--credit, #86b06b); } .ds-res { color: var(--reserved, #d8b26a); } .ds-floors { display: flex; justify-content: space-between; gap: 16px; flex-wrap: wrap; margin-top: 8px; font-size: 11.5px; color: var(--ink-mute, #5f5c56); } .ds-floors b { font-family: var(--mono, monospace); font-weight: 500; font-variant-numeric: tabular-nums; } .ds-win b { color: var(--credit, #86b06b); } .ds-cap b { color: var(--reserved, #d8b26a); }"
+    },
+    {
+      "name": "Scrub Control",
+      "kind": "input",
+      "refersTo": "scrub-knob",
+      "description": "The landing signature control. 19px visual knob over a 44px invisible touch target; the rail shares its top edge with the curve above because they share a price axis. Pointer and keyboard.",
+      "html": "<div class=\"ds-scrub-rail\"><div class=\"ds-scrub-corridor\" style=\"left:28%; width:44%\"></div><button class=\"ds-scrub-knob\" style=\"left:52%\" aria-label=\"Underlying price\" role=\"slider\" aria-valuenow=\"512\"></button></div>",
+      "css": ".ds-scrub-rail { position: relative; height: 34px; cursor: ew-resize; border-top: 1px solid var(--hair, #21212a); touch-action: none; } .ds-scrub-corridor { position: absolute; top: -1px; height: 3px; background: var(--credit, #86b06b); opacity: .55; } .ds-scrub-knob { position: absolute; top: -9px; width: 19px; height: 19px; margin-left: -9.5px; padding: 0; cursor: grab; touch-action: none; background: var(--ink, #ece9e3); border: 0; border-radius: 50%; box-shadow: 0 2px 10px rgba(0,0,0,.55); transition: transform .16s ease, background .16s ease; } .ds-scrub-knob::after { content: \"\"; position: absolute; left: 50%; top: 50%; width: 44px; height: 44px; transform: translate(-50%, -50%); } .ds-scrub-knob:hover { transform: scale(1.14); } .ds-scrub-knob:active { cursor: grabbing; transform: scale(1.06); } .ds-scrub-knob:focus-visible { outline: 1px solid var(--reserved, #d8b26a); outline-offset: 3px; } @media (prefers-reduced-motion: reduce) { .ds-scrub-knob { transition: none; } }"
+    },
+    {
+      "name": "Receipt Disclosure",
+      "kind": "custom",
+      "refersTo": "panel-surface",
+      "description": "Folded proof. Closed by default; open reveals the literal CLI command that placed the structure.",
+      "html": "<div class=\"ds-receipt\"><button class=\"ds-receipt-toggle\"><span class=\"ds-chev\">▸</span> receipt <span class=\"ds-coid\">vig-8f21c4</span></button><div class=\"ds-receipt-body\"><div class=\"ds-rk\">submitted <b>2026-09-02 14:31:07Z</b> via <code>--dry-run</code> then live</div><pre class=\"ds-rcmd\">alpaca options order --symbol SPY --legs 4 \\\n  --strategy iron_condor --qty 5</pre></div></div>",
+      "css": ".ds-receipt { border-top: 1px solid var(--hair, #21212a); margin-top: 10px; } .ds-receipt-toggle { appearance: none; background: none; border: 0; cursor: pointer; display: flex; align-items: center; gap: 7px; width: 100%; padding: 9px 0 0; color: var(--ink-mute, #5f5c56); font-family: var(--sans, Archivo, sans-serif); font-size: 10.5px; letter-spacing: 0.12em; text-transform: uppercase; } .ds-receipt-toggle:hover { color: var(--ink-dim, #918d85); } .ds-receipt-toggle:focus-visible { outline: 1px solid var(--reserved, #d8b26a); outline-offset: 3px; } .ds-chev { font-size: 9px; } .ds-coid { margin-left: auto; font-family: var(--mono, monospace); letter-spacing: 0; text-transform: none; color: var(--ink-mute, #5f5c56); font-size: 10.5px; } .ds-receipt-body { padding: 10px 0 2px; } .ds-rk { color: var(--ink-mute, #5f5c56); font-size: 10.5px; margin-bottom: 6px; } .ds-rk b { color: var(--ink-dim, #918d85); font-family: var(--mono, monospace); font-weight: 400; } .ds-rk code { font-family: var(--mono, monospace); color: var(--reserved, #d8b26a); } .ds-rcmd { margin: 0 0 9px; padding: 11px 13px; background: var(--ground, #0a0a0c); border: 1px solid var(--hair, #21212a); overflow-x: auto; font-family: var(--mono, monospace); font-size: 11px; line-height: 1.6; color: var(--ink-dim, #918d85); white-space: pre; }"
+    },
+    {
+      "name": "Decision Row",
+      "kind": "custom",
+      "refersTo": "panel-surface",
+      "description": "Refusals sit in the same list as fills at the same weight. The verb colour is the entire semantic payload.",
+      "html": "<div class=\"ds-decisions\"><div class=\"ds-dec ds-submitted\"><span class=\"ds-bucket\">SPY:2026-09-04</span><span class=\"ds-verb\">submitted</span><span class=\"ds-why\">qty 5 · credit $365 · reserves $2135</span></div><div class=\"ds-dec ds-refused\"><span class=\"ds-bucket\">IWM:2026-09-03</span><span class=\"ds-verb\">refused</span><span class=\"ds-why\">credit is 8.5% of width, under the 10% floor</span></div><div class=\"ds-dec ds-would\"><span class=\"ds-bucket\">QQQ:2026-09-08</span><span class=\"ds-verb\">would submit</span><span class=\"ds-why\">qty 5 · credit $380 · reserves $2120</span></div></div>",
+      "css": ".ds-decisions { border: 1px solid var(--hair, #21212a); background: var(--panel, #101014); } .ds-dec { display: grid; grid-template-columns: 108px 92px 1fr; gap: 14px; padding: 9px 16px; align-items: baseline; font-size: 12px; font-family: var(--sans, Archivo, sans-serif); } .ds-dec + .ds-dec { border-top: 1px solid var(--hair, #21212a); } .ds-bucket { font-family: var(--mono, monospace); color: var(--ink-dim, #918d85); font-size: 11.5px; } .ds-verb { font-size: 10px; letter-spacing: 0.1em; text-transform: uppercase; } .ds-why { color: var(--ink-dim, #918d85); } .ds-submitted .ds-verb { color: var(--credit, #86b06b); } .ds-refused .ds-verb { color: var(--reserved, #d8b26a); } .ds-would .ds-verb { color: var(--working, #6b8caf); } @media (max-width: 860px) { .ds-dec { grid-template-columns: 1fr auto; row-gap: 3px; } .ds-why { grid-column: 1 / -1; } }"
+    },
+    {
+      "name": "Empty State",
+      "kind": "custom",
+      "refersTo": "panel-surface",
+      "description": "Nothing-yet is a designed state carrying its reason, because the market is shut most of the time these surfaces are read.",
+      "html": "<div class=\"ds-empty\"><b>No structures open.</b><span>Market closed — next open 14:30:00. Decisions below are live, priced against real quotes.</span></div>",
+      "css": ".ds-empty { border: 1px solid var(--hair, #21212a); background: var(--panel, #101014); padding: 18px 20px; color: var(--ink-mute, #5f5c56); font-family: var(--sans, Archivo, sans-serif); font-size: 12px; display: flex; align-items: baseline; gap: 10px; flex-wrap: wrap; border-radius: 0; } .ds-empty b { color: var(--ink-dim, #918d85); font-weight: 500; }"
+    },
+    {
+      "name": "Regime Bar",
+      "kind": "custom",
+      "refersTo": "panel-surface",
+      "description": "The one judgement that is not arithmetic, so its provenance is always shown. Stand-aside turns the panel border and the verdict chip brass.",
+      "html": "<div class=\"ds-regime\"><span class=\"ds-verdict\">conditions normal</span><span class=\"ds-reason\">regime check skipped — no key configured; mechanical gates still apply</span><span class=\"ds-src\">check unavailable</span></div>",
+      "css": ".ds-regime { border: 1px solid var(--hair, #21212a); background: var(--panel, #101014); padding: 11px 16px; display: flex; align-items: baseline; gap: 12px; flex-wrap: wrap; font-family: var(--sans, Archivo, sans-serif); font-size: 12px; border-radius: 0; } .ds-verdict { font-size: 10px; letter-spacing: 0.12em; text-transform: uppercase; padding: 2px 8px; border: 1px solid var(--hair-lit, #31313d); color: var(--ink-dim, #918d85); } .ds-regime.ds-aside { border-color: var(--reserved, #d8b26a); } .ds-regime.ds-aside .ds-verdict { color: var(--reserved, #d8b26a); border-color: var(--reserved, #d8b26a); } .ds-reason { color: var(--ink-dim, #918d85); } .ds-src { margin-left: auto; color: var(--ink-mute, #5f5c56); font-size: 10.5px; }"
+    },
+    {
+      "name": "Tape",
+      "kind": "nav",
+      "refersTo": "panel-surface",
+      "description": "The only persistent chrome on the landing page. Fixed strip of live account conditions; sheds items at 820px and again at 560px.",
+      "html": "<div class=\"ds-tape\"><span class=\"ds-mark\">Vig</span><span class=\"ds-tape-item\"><span class=\"ds-k\">reserved</span><b class=\"ds-res\">$2,135</b></span><span class=\"ds-tape-item\"><span class=\"ds-k\">uncovered</span><b>$0</b></span><span class=\"ds-tape-live ds-on\"><i class=\"ds-dot\"></i><span>live</span></span></div>",
+      "css": ".ds-tape { display: flex; align-items: center; gap: 22px; padding: 11px 22px; background: color-mix(in oklab, var(--ground, #0a0a0c) 88%, transparent); border-bottom: 1px solid var(--hair, #21212a); backdrop-filter: blur(8px); font-family: var(--sans, Archivo, sans-serif); font-size: 11px; color: var(--ink, #ece9e3); } .ds-tape .ds-mark { font-weight: 700; font-size: 15px; letter-spacing: 0.2em; text-transform: uppercase; margin-right: 4px; } .ds-tape-item { display: inline-flex; align-items: baseline; gap: 7px; } .ds-tape .ds-k { color: var(--ink-mute, #5f5c56); letter-spacing: 0.1em; text-transform: uppercase; font-size: 9.5px; } .ds-tape b { font-family: var(--mono, monospace); font-weight: 400; font-size: 12.5px; color: var(--ink-dim, #918d85); font-variant-numeric: tabular-nums; } .ds-tape b.ds-res { color: var(--reserved, #d8b26a); } .ds-tape-live { margin-left: auto; display: inline-flex; align-items: center; gap: 7px; color: var(--ink-mute, #5f5c56); } .ds-dot { width: 6px; height: 6px; border-radius: 50%; background: var(--ink-mute, #5f5c56); } .ds-tape-live.ds-on .ds-dot { background: var(--credit, #86b06b); box-shadow: 0 0 0 3px var(--credit-lo, #86b06b14); }"
+    }
+  ],
+  "narrative": {
+    "northStar": "The Margin Report",
+    "overview": "Vig looks like the document a risk desk prints at the close of the session, not like a trading app. The surfaces are dark because of the scene rather than the category — this is read on a desk beside a broker dashboard, in a room where the screen is the brightest object — and the ink is bone (#ece9e3) rather than white, so the page reads as paper under lamplight instead of as an LCD. Nothing is rounded, nothing is shadowed, nothing is decorated. Structure is carried entirely by one hairline (#21212a) and by two background steps above the ground.\n\nThe system's whole discipline is that colour is not a palette. Every accent is a statement about capital: brass is money set aside, green is money collected, red is a strike that broke, blue-grey is an order still working. There is no brand colour, no gradient, and no hue that means \"primary\". Any surface that adopts these tokens without the mechanic behind them is misusing them.\n\nDensity is high and deliberate. Body type sits at 13px, labels at 10-11px, and the only type allowed to be large is a quantity: the uncovered-exposure figure on the Cover Sheet (up to 84px) and the landing claim. Every number is IBM Plex Mono with tabular figures, because every number on these surfaces is compared against another number and proportional digits make columns drift.",
+    "keyCharacteristics": [
+      "Zero-radius rectangles, hairline rules, no shadow vocabulary except one in-flight chip",
+      "Two accent families with fixed meanings (brass = reserved, green = collected) and one forbidden-elsewhere red",
+      "Mono for all quantities, Archivo for all labels; never the reverse",
+      "Motion only as consequence — nothing loops, nothing idles",
+      "Dark ground with bone ink; browser chrome (selection, caret, scrollbar, focus ring) themed to match"
+    ],
+    "rules": [
+      { "name": "The Mechanic Rule", "body": "Colour is derived from the product mechanic, never chosen as a palette. Before introducing any colour, name the account state it reports. If there is no state, use ink.", "section": "colors" },
+      { "name": "The Red Is Breach Rule", "body": "Red means a breached strike or a realised loss, and it is permitted nowhere else. It is never an error colour for form validation, never a destructive-button colour, never a chart series. A red pixel on a Vig surface is a claim about money.", "section": "colors" },
+      { "name": "The Brass-On-Ground Rule", "body": "Brass is a background only when the foreground is ground (#0a0a0c) — CTA, capital chip, selection. Brass text sits on panel or ground, never on brass.", "section": "colors" },
+      { "name": "The Tabular Rule", "body": "Every quantity carries .n — IBM Plex Mono with font-variant-numeric: tabular-nums. tabular-nums is also set on body as a floor. Figures in adjacent rows must share an advance width; a proportional digit in a blotter is a bug.", "section": "typography" },
+      { "name": "The Two-Job Rule", "body": "Mono is for quantities, Archivo is for language. A label never uses mono (the meter legend explicitly resets .n back to Archivo when its digits are prose, not a column), and a quantity never uses Archivo.", "section": "typography" },
+      { "name": "The Size-Is-Importance Rule", "body": "Type scale is a claim about what matters. Only one figure per surface earns display size, and on the Cover Sheet that figure is uncovered exposure — the number the product exists to show. It never moves and never shrinks at mobile.", "section": "typography" },
+      { "name": "The One Spine Rule", "body": "Every landing block shares the 1180px/24px measure. Narrow reading columns are achieved by capping children (max-width: 68ch), never by centring a smaller container — a shifted left edge reads as a different page.", "section": "layout" },
+      { "name": "The Figure Survives Rule", "body": "Responsive behaviour removes labels and secondary items before it shrinks a number. The uncovered-exposure figure and the reserve state keep their size at every width.", "section": "layout" },
+      { "name": "The Flat Report Rule", "body": "Surfaces are flat. If a new element needs separation, use a hairline or the next tonal step — never a shadow. A shadow is permitted only on something that is literally in motion or something grabbable.", "section": "elevation" },
+      { "name": "The No-Radius Rule", "body": "Radius is 0 unless the element is circular by function (a dot, a knob) or is in flight (the 2px chip). There is no \"rounded card\" in this system.", "section": "shapes" },
+      { "name": "The Outline-State Rule", "body": "A state is shown by recolouring a 1px outline and its label together, never by filling a pill with a background.", "section": "shapes" },
+      { "name": "The Caused-Motion Rule", "body": "Every animation is caused by something that actually happened in the account. Nothing loops, nothing idles, nothing animates to fill silence. Numbers tween with expo-out over 850ms; capital travels on a lifted arc from equity into the reserve meter over 1100ms and the meter brightens on impact; payoff paths draw stroke-first over 900ms; cards enter staggered at 70ms per index. Every one of these is behind prefers-reduced-motion.", "section": "components" },
+      { "name": "The Empty Is Designed Rule", "body": "No component ships without a zero state that says why it is empty. An empty meter changes colour; an empty list states the market's status.", "section": "components" }
+    ],
+    "dos": [
+      "Do name the account state before choosing a colour. Brass = reserved, green = collected, red = breached, blue-grey = working.",
+      "Do set every quantity in IBM Plex Mono with tabular-nums via .n.",
+      "Do keep radius at 0 for everything that is not a dot, a knob, or the in-flight capital chip (2px).",
+      "Do separate surfaces with a 1px hairline (#21212a) or the next tonal step, in that order.",
+      "Do show state by recolouring a 1px outline and its label together.",
+      "Do animate a value only when the account changed it, and always with a prefers-reduced-motion escape.",
+      "Do give small controls an invisible 44px touch target rather than growing the visual control.",
+      "Do hold the 1180px / 24px spine; narrow a column by capping children at a ch measure, not by re-centring.",
+      "Do theme the browser's own surfaces — selection, caret, scrollbar, focus ring — with system tokens.",
+      "Do design the empty state with its reason; the market is closed most of the time."
+    ],
+    "donts": [
+      "Don't use red for anything but a breached strike or a realised loss. It is not an error colour, not a destructive-action colour, not a chart series.",
+      "Don't introduce a colour that has no mechanic behind it, including a \"brand\" hue or any gradient.",
+      "Don't add a shadow to a surface. Shadows belong only to something in motion or something grabbable.",
+      "Don't loop, idle, or pulse an animation on a timer. If the account did nothing, the page is still.",
+      "Don't set a label in mono or a quantity in Archivo.",
+      "Don't shrink a figure to fit a small screen; drop labels and secondary items first.",
+      "Don't fill a tag or chip with a background colour; outline it.",
+      "Don't use pure white — ink is bone (#ece9e3).",
+      "Don't turn refusals into a lesser visual class than fills; they share the list, the grid and the weight."
+    ]
+  }
+}
