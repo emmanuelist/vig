@@ -97,7 +97,15 @@ body {
    means the mark stops meaning anything if the product changes — which is
    the point of a mark rather than a decoration.
    ------------------------------------------------------------------- */
-.mark { display: inline-flex; align-items: center; gap: 9px; }
+.mark {
+  display: inline-flex; align-items: center; gap: 9px;
+  text-decoration: none; color: inherit;
+}
+/* The wordmark is the way back. It has to look like it does something. */
+a.mark { transition: opacity .16s ease; }
+a.mark:hover { opacity: .72; }
+a.mark:focus-visible { outline: 1px solid var(--reserved); outline-offset: 4px; }
+@media (prefers-reduced-motion: reduce) { a.mark { transition: none; } }
 .mark .glyph { width: 30px; height: 18px; display: block; flex: none; }
 
 /* ── Browser surfaces ─────────────────────────────────────────────────
