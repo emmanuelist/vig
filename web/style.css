@@ -1,0 +1,359 @@
+/* Vig — the Cover Sheet.
+   Tokens, reset and browser surfaces live in tokens.css, which both this
+   surface and the landing page load. Everything below is app-only. */
+
+/* ── Masthead ─────────────────────────────────────────────────────── */
+.wrap { max-width: 1180px; margin: 0 auto; padding: 28px 24px 64px; }
+
+.mast { display: flex; align-items: baseline; gap: 16px; flex-wrap: wrap; margin-bottom: 4px; }
+.mark {
+  font-family: var(--sans); font-weight: 700; font-size: var(--t-6);
+  letter-spacing: 0.18em; text-transform: uppercase;
+}
+.claim { color: var(--ink-dim); font-size: var(--t-4); }
+.meta {
+  margin-left: auto; display: flex; gap: 18px; align-items: baseline;
+  color: var(--ink-mute); font-size: var(--t-2);
+}
+.meta b { color: var(--ink-dim); font-weight: 400; }
+
+/* The market label wrapped to two lines in the narrow header and left the dot
+   floating against neither of them. It stays on one line; the meta row wraps
+   between its items instead of inside them. */
+.status { display: inline-flex; align-items: center; gap: 6px; white-space: nowrap; }
+.dot { width: 6px; height: 6px; border-radius: 50%; background: var(--ink-mute); }
+.dot.live { background: var(--credit); box-shadow: 0 0 0 3px var(--credit-lo); }
+
+hr.rule { border: 0; border-top: 1px solid var(--hair); margin: 18px 0 24px; }
+
+/* ── The Cover Sheet ──────────────────────────────────────────────────
+   The hero, and the thesis as an object. Uncovered exposure is the number
+   the product exists to display, so it is set larger than anything else on
+   the page and never moves. If it is ever not zero, the agent is broken.
+   ------------------------------------------------------------------- */
+.cover {
+  display: grid; grid-template-columns: minmax(0, 1.15fr) minmax(0, 1fr);
+  gap: 0; border: 1px solid var(--hair); background: var(--panel);
+}
+.cover > * + * { border-left: 1px solid var(--hair); }
+
+.hero { padding: 32px 34px 30px; }
+.hero .label {
+  font-size: var(--t-2); letter-spacing: 0.16em; text-transform: uppercase;
+  color: var(--ink-mute); margin-bottom: 10px;
+}
+.hero .zero {
+  font-family: var(--mono); font-size: clamp(64px, 10.5vw, 132px); line-height: 0.88;
+  font-weight: 500; letter-spacing: -0.055em; color: var(--ink);
+}
+.hero .zero .cur {
+  color: var(--ink-mute); font-size: 0.38em; vertical-align: 0.62em;
+  margin-right: -0.02em; letter-spacing: 0;
+}
+.hero .against {
+  margin-top: 14px; padding-top: 12px; border-top: 1px solid var(--hair);
+  display: flex; gap: 26px; flex-wrap: wrap;
+}
+.hero .against > div { display: flex; flex-direction: column; gap: 2px; }
+/* The pair is one idea, so it travels as one unit. Left to wrap independently
+   the equals sign orphans onto its own line and the equation stops reading. */
+.hero .against .equation { flex-direction: row; align-items: flex-end; gap: 26px; }
+.hero .against .equation > div { display: flex; flex-direction: column; gap: 2px; }
+/* The two figures either side of this are always identical, and that identity
+   is the entire product. Stating it as an equation says so without a sentence. */
+.hero .against .eq {
+  padding-bottom: 1px; color: var(--ink-mute);
+  font-family: var(--mono); font-size: var(--t-5); margin: 0 -14px;
+}
+.hero .against .k {
+  font-size: var(--t-1); letter-spacing: 0.12em; text-transform: uppercase; color: var(--ink-mute);
+}
+.hero .against .v { font-family: var(--mono); font-size: var(--t-5); }
+.hero .note { margin-top: 14px; color: var(--ink-dim); font-size: var(--t-3); max-width: 46ch; }
+
+.ledger {
+  padding: 26px 30px; display: grid; gap: 18px; align-content: start;
+  background:
+    linear-gradient(180deg,
+      color-mix(in oklab, var(--reserved) 12%, var(--panel)),
+      color-mix(in oklab, var(--reserved) 5%, var(--panel)));
+}
+.cover > .ledger { border-left-color: var(--reserved); }
+.ledger .row .k { color: color-mix(in oklab, var(--reserved) 50%, var(--ink)); }
+.ledger .meter-legend { color: color-mix(in oklab, var(--reserved) 44%, var(--ink)); }
+.row { display: flex; align-items: baseline; justify-content: space-between; gap: 16px; }
+.row .k { color: var(--ink-mute); font-size: var(--t-2); letter-spacing: 0.1em; text-transform: uppercase; }
+.row .v { font-family: var(--mono); font-size: clamp(var(--t-5), 1.9vw, 26px); letter-spacing: -0.02em; }
+.v.credit { color: var(--credit); }
+.v.reserved { color: var(--reserved); }
+.v.loss { color: var(--breached); }
+
+/* Reserved against the ceiling. A meter, because the question is always
+   "how much of the allowance is gone", never "what is the raw number". */
+.meter { height: 9px; background: var(--raised); border: 1px solid var(--hair); position: relative; }
+/* Scaled, not resized. Animating width relayouts the meter on every frame;
+   a horizontal scale from the left edge is composited and reads identically. */
+.meter i {
+  position: absolute; inset: 0 auto 0 0; display: block;
+  width: 100%; transform-origin: left center; transform: scaleX(0);
+  background: var(--reserved);
+  transition: transform .5s cubic-bezier(.22,.61,.36,1);
+}
+.meter i[data-empty="true"] { background: var(--hair-lit); }
+.meter i[data-over="true"] {
+  background: repeating-linear-gradient(
+    -45deg, var(--reserved) 0 6px, color-mix(in oklab, var(--reserved) 55%, var(--ground)) 6px 12px);
+}
+.meter-legend .over { color: var(--reserved); }
+@media (prefers-reduced-motion: reduce) { .meter i { transition: none; } }
+.meter-legend {
+  display: flex; justify-content: space-between;
+  color: var(--ink-mute); font-size: var(--t-2); margin-top: 7px;
+  font-family: var(--sans); font-variant-numeric: normal;
+}
+.meter-legend .n { font-family: var(--sans); letter-spacing: 0; }
+
+/* ── Regime ───────────────────────────────────────────────────────────
+   The one judgement in the system that is not arithmetic, so it is stated
+   separately and its provenance is always shown. A verdict that came from a
+   failed call must never be able to look like a verdict that came from a model.
+   ------------------------------------------------------------------- */
+.regime {
+  margin-top: 14px; border: 1px solid var(--hair); background: var(--panel);
+  padding: 11px 16px; display: flex; align-items: baseline; gap: 12px;
+  flex-wrap: wrap; font-size: var(--t-3);
+}
+.regime .verdict {
+  font-size: var(--t-1); letter-spacing: 0.12em; text-transform: uppercase;
+  padding: 2px 8px; border: 1px solid var(--hair-lit); color: var(--ink-dim);
+}
+/* An unchecked regime is neither a pass nor a warning; it is an absence, and
+   it must not borrow the affirming treatment. */
+.regime.unmeasured .verdict { color: var(--ink-mute); border-style: dashed; }
+.regime.aside { border-color: var(--reserved); }
+.regime.aside .verdict { color: var(--reserved); border-color: var(--reserved); }
+.regime .reason { color: var(--ink-dim); }
+.regime .src { margin-left: auto; color: var(--ink-mute); font-size: var(--t-2); }
+
+/* ── Sections ─────────────────────────────────────────────────────── */
+section { margin-top: 48px; }
+h2 {
+  font-size: var(--t-3); letter-spacing: 0.2em; text-transform: uppercase;
+  color: var(--ink-dim); font-weight: 700; margin: 0 0 16px;
+  display: flex; align-items: baseline; gap: 12px;
+}
+h2 .count { color: var(--ink-mute); font-family: var(--mono); font-weight: 400; }
+h2::after { content: ""; flex: 1; border-top: 1px solid var(--hair); transform: translateY(-3px); }
+
+/* ── A position ───────────────────────────────────────────────────────
+   Each condor is one card, and the range bar is the structure drawn to
+   scale: the two breakevens with spot between them. A judge should be able
+   to see how much room is left without reading a single number.
+   ------------------------------------------------------------------- */
+.pos {
+  border: 1px solid var(--hair); background: var(--panel);
+  padding: 18px 20px; margin-bottom: 12px;
+  transition: border-color .2s ease, background .2s ease;
+}
+.pos:hover { border-color: var(--hair-lit); background: var(--raised); }
+@media (prefers-reduced-motion: reduce) { .pos { transition: none; } }
+#settled .pos { background: transparent; padding: 11px 18px; }
+#settled .pos-head { margin-bottom: 0; }
+#settled .strikes { border-top: 0; padding-top: 8px; margin-top: 6px; opacity: .75; }
+
+/* ── Receipt ──────────────────────────────────────────────────────────
+   Folded away by default: it is proof, not furniture. Open it and the exact
+   command that placed the structure is there to read.
+   ------------------------------------------------------------------- */
+.receipt { border-top: 1px solid var(--hair); margin-top: 10px; }
+.receipt-toggle {
+  appearance: none; background: none; border: 0; cursor: pointer;
+  display: flex; align-items: center; gap: 7px; width: 100%;
+  padding: 9px 0 0; color: var(--ink-mute);
+  font-family: var(--sans); font-size: var(--t-2);
+  letter-spacing: 0.12em; text-transform: uppercase;
+}
+.receipt-toggle:hover { color: var(--ink-dim); }
+.receipt-toggle:focus-visible { outline: 1px solid var(--reserved); outline-offset: 3px; }
+.receipt-toggle .chev { font-size: var(--t-1); }
+.receipt-toggle .coid {
+  margin-left: auto; font-family: var(--mono); letter-spacing: 0; text-transform: none;
+  color: var(--ink-mute); font-size: var(--t-2);
+}
+.receipt-body { padding: 10px 0 2px; }
+.rk { color: var(--ink-mute); font-size: var(--t-2); margin-bottom: 6px; }
+.rk b { color: var(--ink-dim); font-family: var(--mono); font-weight: 400; }
+.rk code { font-family: var(--mono); color: var(--reserved); }
+.rcmd {
+  margin: 0 0 9px; padding: 11px 13px; background: var(--ground);
+  border: 1px solid var(--hair); overflow-x: auto;
+  font-family: var(--mono); font-size: var(--t-2); line-height: 1.6;
+  color: var(--ink-dim); white-space: pre;
+}
+
+.strikes { border-top: 0; padding-top: 8px; margin-top: 6px; opacity: .75; }
+.pos-head { display: flex; align-items: baseline; gap: 12px; margin-bottom: 14px; flex-wrap: wrap; }
+.sym { font-family: var(--mono); font-size: var(--t-5); letter-spacing: 0.02em; }
+.exp { color: var(--ink-mute); font-size: var(--t-2); font-family: var(--mono); }
+.tag {
+  font-size: var(--t-1); letter-spacing: 0.1em; text-transform: uppercase;
+  padding: 2px 7px; border: 1px solid var(--hair-lit); color: var(--ink-dim);
+}
+.tag.covered { color: var(--reserved); border-color: var(--reserved); }
+.tag.settled { color: var(--credit); border-color: var(--credit); }
+.pos-nums { margin-left: auto; display: flex; gap: 22px; align-items: baseline; }
+.pos-nums .k { color: var(--ink-mute); font-size: var(--t-1); letter-spacing: 0.1em; text-transform: uppercase; display: block; }
+.pos-nums .v { font-family: var(--mono); font-size: clamp(var(--t-5), 1.5vw, 21px); letter-spacing: -0.02em; }
+.pos-nums .v.credit { color: var(--credit); }
+.pos-nums .v.res { color: var(--reserved); }
+
+/* ── Capital in transit ───────────────────────────────────────────────
+   The chip that carries a reserved sum from available equity into the
+   reserve meter. It exists for about a second, once per opened structure,
+   and never otherwise.
+   ------------------------------------------------------------------- */
+.capital-chip {
+  position: fixed; z-index: 40; pointer-events: none;
+  font-family: var(--mono); font-size: var(--t-3); font-weight: 500;
+  color: var(--ground); background: var(--reserved);
+  padding: 3px 9px; border-radius: 2px;
+  box-shadow: 0 6px 22px rgba(216,178,106,.28);
+  will-change: transform, opacity;
+}
+
+/* The payoff diagram. Sized so the trapezoid is legible at a glance without
+   dominating the card — the shape carries the meaning, the numbers under it
+   carry the magnitude. */
+.payoff { margin: 4px 0 2px; }
+.payoff svg { display: block; width: 100%; height: clamp(76px, 11vh, 104px); overflow: visible; }
+
+/* Curve tone is the position's state, so it is set once here and swapped by a
+   single class on the card rather than being rebuilt per frame. */
+.payoff .curve   { stroke: var(--credit); }
+.payoff .corridor{ fill: #86b06b1c; }
+.payoff .be      { stroke: var(--hair-lit); }
+.payoff .spotline{ stroke: var(--ink); }
+.payoff .spotdot { fill: var(--credit); }
+
+.pos.breach .payoff .curve    { stroke: var(--breached); }
+.pos.breach .payoff .corridor { fill: #c8574a1c; }
+.pos.breach .payoff .spotline { stroke: var(--breached); }
+.pos.breach .payoff .spotdot  { fill: var(--breached); }
+.pos.breach .floors .cap b    { color: var(--breached); }
+.pos.breach { border-color: var(--breached); }
+.payoff .curve, .payoff .corridor, .payoff .spotdot, .payoff .spotline, .pos {
+  transition: stroke .45s ease, fill .45s ease, border-color .45s ease;
+}
+@media (prefers-reduced-motion: reduce) {
+  .payoff .curve, .payoff .corridor, .payoff .spotdot, .payoff .spotline, .pos { transition: none; }
+}
+
+.axis { position: relative; height: 14px; margin-top: 3px; }
+.axis span {
+  position: absolute; transform: translateX(-50%);
+  font-family: var(--mono); font-size: var(--t-1); color: var(--ink-mute); white-space: nowrap;
+}
+.axis span:first-child { transform: none; }
+.axis span:nth-last-child(1) { transform: translateX(-100%); }
+.axis .now { color: var(--ink); }
+
+.floors {
+  display: flex; justify-content: space-between; gap: 16px; flex-wrap: wrap;
+  margin-top: 8px; font-size: var(--t-3); color: var(--ink-mute);
+}
+.floors b { font-family: var(--mono); font-weight: 500; font-size: var(--t-4); }
+.floors .win b { color: var(--credit); }
+.floors .cap b { color: var(--reserved); }
+
+/* ── Receipt ──────────────────────────────────────────────────────────
+   Folded away by default: it is proof, not furniture. Open it and the exact
+   command that placed the structure is there to read.
+   ------------------------------------------------------------------- */
+.receipt { border-top: 1px solid var(--hair); margin-top: 10px; }
+.receipt-toggle {
+  appearance: none; background: none; border: 0; cursor: pointer;
+  display: flex; align-items: center; gap: 7px; width: 100%;
+  padding: 9px 0 0; color: var(--ink-mute);
+  font-family: var(--sans); font-size: var(--t-2);
+  letter-spacing: 0.12em; text-transform: uppercase;
+}
+.receipt-toggle:hover { color: var(--ink-dim); }
+.receipt-toggle:focus-visible { outline: 1px solid var(--reserved); outline-offset: 3px; }
+.receipt-toggle .chev { font-size: var(--t-1); }
+.receipt-toggle .coid {
+  margin-left: auto; font-family: var(--mono); letter-spacing: 0; text-transform: none;
+  color: var(--ink-mute); font-size: var(--t-2);
+}
+.receipt-body { padding: 10px 0 2px; }
+.rk { color: var(--ink-mute); font-size: var(--t-2); margin-bottom: 6px; }
+.rk b { color: var(--ink-dim); font-family: var(--mono); font-weight: 400; }
+.rk code { font-family: var(--mono); color: var(--reserved); }
+.rcmd {
+  margin: 0 0 9px; padding: 11px 13px; background: var(--ground);
+  border: 1px solid var(--hair); overflow-x: auto;
+  font-family: var(--mono); font-size: var(--t-2); line-height: 1.6;
+  color: var(--ink-dim); white-space: pre;
+}
+
+.strikes {
+  display: flex; gap: 0; font-family: var(--mono); font-size: var(--t-2);
+  color: var(--ink-dim); border-top: 1px solid var(--hair); padding-top: 10px; margin-top: 8px;
+}
+.strikes div { flex: 1; }
+.strikes .k { color: var(--ink-mute); font-size: var(--t-1); letter-spacing: 0.08em; text-transform: uppercase; display: block; font-family: var(--sans); }
+
+/* ── Decisions ────────────────────────────────────────────────────────
+   The refusals matter as much as the fills. An agent that only shows what
+   it did is hiding half of its judgement.
+   ------------------------------------------------------------------- */
+.decisions { border: 1px solid var(--hair); background: var(--panel); }
+.dec {
+  display: grid; grid-template-columns: 108px 92px 1fr; gap: 14px;
+  padding: 9px 16px; align-items: baseline; font-size: var(--t-3);
+}
+.dec + .dec { border-top: 1px solid var(--hair); }
+.dec .bucket { font-family: var(--mono); color: var(--ink-dim); font-size: var(--t-3); }
+.dec .verb { font-size: var(--t-1); letter-spacing: 0.1em; text-transform: uppercase; }
+.dec .why { color: var(--ink-dim); }
+.dec.submitted .verb { color: var(--credit); }
+.dec.refused   .verb { color: var(--reserved); }
+.dec.would-submit .verb { color: var(--working); }
+.dec.unpriceable .verb, .dec.held .verb { color: var(--ink-mute); }
+
+/* ── Empty and closed states ─────────────────────────────────────────
+   The market is shut most of the time this will be looked at, so "nothing
+   yet" has to be a designed state rather than a blank panel.
+   ------------------------------------------------------------------- */
+.empty {
+  border: 1px solid var(--hair); background: var(--panel);
+  padding: 18px 20px; color: var(--ink-mute); font-size: var(--t-3);
+  display: flex; align-items: baseline; gap: 10px; flex-wrap: wrap;
+}
+.empty b { color: var(--ink-dim); font-weight: 500; }
+.empty .n { color: var(--ink-dim); }
+
+footer {
+  margin-top: 40px; padding-top: 16px; border-top: 1px solid var(--hair);
+  color: var(--ink-mute); font-size: var(--t-2); display: flex; gap: 18px; flex-wrap: wrap;
+}
+
+/* ── Responsive ───────────────────────────────────────────────────────
+   Below 860 the two-column cover sheet stacks, but the hero keeps its size:
+   on a phone the uncovered figure is the only thing worth showing at a
+   glance, so it is what survives. Position cards drop their inline number
+   cluster to a wrapped row rather than shrinking the type.
+   ------------------------------------------------------------------- */
+@media (max-width: 860px) {
+  .wrap { padding: 20px 16px 48px; }
+  .cover { grid-template-columns: 1fr; }
+  .cover > * + * { border-left: 0; border-top: 1px solid var(--hair); }
+  .meta { margin-left: 0; width: 100%; gap: 10px 14px; row-gap: 6px; }
+  .hero .against { gap: 16px; }
+  .hero .against .equation { gap: 22px; }
+  .hero .note { margin-top: 12px; }
+  .pos-nums { margin-left: 0; width: 100%; gap: 18px; flex-wrap: wrap; }
+  .dec { grid-template-columns: 1fr auto; row-gap: 3px; }
+  .dec .why { grid-column: 1 / -1; }
+}
+
+

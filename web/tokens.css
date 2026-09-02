@@ -1,0 +1,116 @@
+/* ── Vig, the shared world ────────────────────────────────────────────
+   Both surfaces load this: the landing page at / and the Cover Sheet at
+   /app. Colour is derived from the mechanic, never chosen from a palette.
+   Vig asks one question of every position — is the loss already covered? —
+   so the vocabulary is CAPITAL RESERVED (brass, money standing behind a
+   trade), PREMIUM COLLECTED (green, what the house was paid to stand
+   there), and BREACHED (red, the one state that costs anything, and the
+   only place red is permitted). None of it would transfer to a product
+   that is not about collateral.
+
+   Dark because of the scene, not the category: this is read on a trading
+   desk beside a broker dashboard, in a room where the screen is the
+   brightest object.
+   ------------------------------------------------------------------- */
+:root {
+  color-scheme: dark;
+
+  --ground:   #0a0a0c;
+  --panel:    #101014;
+  --raised:   #16161b;
+  --hair:     #21212a;
+  --hair-lit: #31313d;
+
+  /* Bone rather than white. This is a printed margin report, not a screen. */
+  --ink:      #ece9e3;
+  --ink-dim:  #918d85;
+  --ink-mute: #7d7a74;
+
+  /* the mechanic */
+  --reserved:    #d8b26a;
+  --reserved-lo: #d8b26a14;
+  --reserved-lit: #e6c489;   /* brass raised, for the primary action's hover */
+  --credit:      #86b06b;
+  --credit-lo:   #86b06b14;
+  --breached:    #c8574a;
+  --working:     #6b8caf;
+
+  /* IBM Plex Mono carries every number: drawn for institutional systems,
+     it reads as infrastructure rather than as a code editor. Archivo
+     handles labels — a grotesque with enough character to stop the page
+     looking like a template, tight enough to stay out of the way. */
+  /* Type ramp. Six steps, and nothing between them. The surfaces had grown
+     nine distinct sizes inside a 3.5px band (9, 9.5, 9.6, 10, 10.5, 11, 11.5,
+     12, 12.5), which is drift rather than a scale: differences that small
+     carry no hierarchy and only cost the system its discipline. */
+  --t-1: 10px;   /* tracked uppercase labels */
+  --t-2: 11px;   /* legends, fine print */
+  --t-3: 12px;   /* secondary text, table rows */
+  --t-4: 13px;   /* body */
+  --t-5: 15px;   /* lede, emphasised figures */
+  --t-6: 20px;   /* wordmark */
+
+  /* Display. The claim is the product; it gets the size the product deserves.
+     Band headings step down from it hard rather than gently, so the scroll has
+     peaks instead of an even grey. */
+  --d-claim: clamp(39px, 7vw, 96px);
+  --d-band:  clamp(28px, 4.2vw, 54px);
+
+  /* Inverted ground. One band on this page runs bone-on-black reversed —
+     black-on-bone — because the section that states what we do NOT claim
+     should read like the plain page of a prospectus, not another dark panel. */
+  --paper:      #ece9e3;
+  --paper-ink:  #14140f;
+  --paper-dim:  #4a4740;
+  --paper-hair: #cdc8bd;
+
+  --mono: "IBM Plex Mono", ui-monospace, SFMono-Regular, Menlo, monospace;
+  --sans: "Archivo", ui-sans-serif, system-ui, -apple-system, sans-serif;
+}
+
+* { box-sizing: border-box; }
+[hidden] { display: none !important; }
+
+html, body { height: 100%; }
+body {
+  margin: 0;
+  background: var(--ground);
+  color: var(--ink);
+  font-family: var(--sans);
+  font-size: 13px;
+  line-height: 1.45;
+  -webkit-font-smoothing: antialiased;
+  font-variant-numeric: tabular-nums;
+}
+
+/* Every number on these surfaces is compared against another number, so
+   they all share one advance width. Non-negotiable in a blotter. */
+.n { font-family: var(--mono); font-variant-numeric: tabular-nums; letter-spacing: -0.01em; }
+
+/* ── Wordmark ─────────────────────────────────────────────────────────
+   The glyph is the product: two flat floors in brass with the plateau
+   between them. It is the payoff of an iron condor at logo scale, which
+   means the mark stops meaning anything if the product changes — which is
+   the point of a mark rather than a decoration.
+   ------------------------------------------------------------------- */
+.mark { display: inline-flex; align-items: center; gap: 9px; }
+.mark .glyph { width: 30px; height: 18px; display: block; flex: none; }
+
+/* ── Browser surfaces ─────────────────────────────────────────────────
+   The parts we did not draw still carry the design. Left alone, selection,
+   caret, scrollbars and focus rings ship in colours that belong to no
+   design system and quietly announce that a page was assembled.
+   ------------------------------------------------------------------- */
+::selection { background: var(--reserved); color: var(--ground); }
+::-moz-selection { background: var(--reserved); color: var(--ground); }
+
+html { caret-color: var(--reserved); scrollbar-color: var(--hair-lit) var(--ground); scrollbar-width: thin; }
+::-webkit-scrollbar { width: 10px; height: 10px; }
+::-webkit-scrollbar-track { background: var(--ground); }
+::-webkit-scrollbar-thumb { background: var(--hair-lit); border: 3px solid var(--ground); }
+::-webkit-scrollbar-thumb:hover { background: var(--ink-mute); }
+
+:focus-visible { outline: 1px solid var(--reserved); outline-offset: 3px; }
+
+a { color: inherit; text-underline-offset: 3px; text-decoration-thickness: 1px; }
+a:hover { text-decoration-color: var(--reserved); }
