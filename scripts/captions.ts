@@ -88,15 +88,15 @@ export const CAPTION_RUNTIME = `
     @media (max-width:1200px){#__cap{left:0;right:0;padding-bottom:46px;}}
     #__cap .__cap-in{
       max-width:52ch;margin:0;padding:14px 22px;text-align:center;
-      background:rgba(6,7,9,.90);border:1px solid rgba(79,209,197,.30);
+      background:rgba(10,10,12,.92);border:1px solid rgba(216,178,106,.28);
       border-radius:2px;backdrop-filter:blur(10px);
       box-shadow:0 18px 60px rgba(0,0,0,.6);
       opacity:0;transform:translateY(9px);
       transition:opacity .40s cubic-bezier(.2,.7,.2,1),transform .40s cubic-bezier(.2,.7,.2,1);}
     #__cap.on .__cap-in{opacity:1;transform:none;}
     #__cap .__cap-t{font-size:17px;line-height:1.52;letter-spacing:-.02em;color:#e8ebf0;}
-    #__cap.beat .__cap-in{border-color:rgba(79,209,197,.62);
-      box-shadow:0 0 0 1px rgba(79,209,197,.12),0 18px 70px rgba(0,0,0,.65);}
+    #__cap.beat .__cap-in{border-color:rgba(216,178,106,.6);
+      box-shadow:0 0 0 1px rgba(216,178,106,.12),0 18px 70px rgba(0,0,0,.65);}
     #__cap.beat .__cap-t{color:#d8b26a;}
   \`;
   document.head.appendChild(css);
