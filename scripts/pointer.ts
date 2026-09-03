@@ -100,19 +100,19 @@ export const POINTER_RUNTIME = `
                  top 1.05s cubic-bezier(.33,.02,.2,1);}
     #__ptr.on{opacity:1;}
     #__ptr .__ptr-l{position:absolute;left:22px;top:12px;white-space:nowrap;
-      font-family:"Azeret Mono",ui-monospace,Menlo,monospace;font-size:11px;
-      letter-spacing:-.01em;color:#4fd1c5;background:rgba(6,7,9,.92);
-      border:1px solid rgba(79,209,197,.34);padding:3px 8px;border-radius:2px;
+      font-family:"IBM Plex Mono",ui-monospace,Menlo,monospace;font-size:11px;
+      letter-spacing:-.01em;color:#d8b26a;background:rgba(10,10,12,.94);
+      border:1px solid rgba(216,178,106,.42);padding:3px 8px;border-radius:0;
       opacity:0;transition:opacity .3s ease;}
     #__ptr.labelled .__ptr-l{opacity:1;}
     #__ptr::after{content:"";position:absolute;left:1px;top:1px;width:26px;height:26px;
-      margin:-13px 0 0 -13px;border:1.5px solid rgba(79,209,197,.9);border-radius:50%;
+      margin:-13px 0 0 -13px;border:1.5px solid rgba(216,178,106,.9);border-radius:50%;
       opacity:0;transform:scale(.35);}
     #__ptr.ping::after{animation:ptrPing .62s cubic-bezier(.2,.7,.2,1);}
     @keyframes ptrPing{0%{opacity:.95;transform:scale(.35)}100%{opacity:0;transform:scale(1.9)}}
     /* A press ring, so a real click reads as a click. */
     #__ptr.press::before{content:"";position:absolute;left:1px;top:1px;width:16px;height:16px;
-      margin:-8px 0 0 -8px;border-radius:50%;background:rgba(79,209,197,.55);
+      margin:-8px 0 0 -8px;border-radius:50%;background:rgba(216,178,106,.6);
       animation:ptrPress .34s ease-out;}
     @keyframes ptrPress{0%{opacity:.9;transform:scale(.2)}100%{opacity:0;transform:scale(1.5)}}
   \`;
@@ -136,6 +136,15 @@ export const POINTER_RUNTIME = `
     p.classList.add('on');
     lab.textContent = m.label || '';
     p.classList.toggle('labelled', !!m.label);
+    /* Flip the label to the left of the cursor when it would otherwise run off
+       the right edge and cover the very thing it is pointing at. */
+    if (m.label) {
+      lab.style.left = '22px'; lab.style.right = 'auto';
+      requestAnimationFrame(() => {
+        const r = lab.getBoundingClientRect();
+        if (r.right > innerWidth - 12) { lab.style.left = 'auto'; lab.style.right = '22px'; }
+      });
+    }
     p.classList.remove('ping');
     setTimeout(() => p.classList.add('ping'), 1050);
 

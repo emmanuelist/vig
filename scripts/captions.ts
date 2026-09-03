@@ -84,7 +84,7 @@ export const CAPTION_RUNTIME = `
        the demo points at, so captions sit clear of it, not over it. */
     #__cap{position:fixed;left:560px;right:400px;bottom:0;z-index:99999;pointer-events:none;
       display:flex;justify-content:center;padding:0 0 34px;
-      font-family:"Azeret Mono",ui-monospace,Menlo,monospace;}
+      font-family:"IBM Plex Mono",ui-monospace,Menlo,monospace;}
     @media (max-width:1200px){#__cap{left:0;right:0;padding-bottom:46px;}}
     #__cap .__cap-in{
       max-width:52ch;margin:0;padding:14px 22px;text-align:center;
@@ -97,7 +97,7 @@ export const CAPTION_RUNTIME = `
     #__cap .__cap-t{font-size:17px;line-height:1.52;letter-spacing:-.02em;color:#e8ebf0;}
     #__cap.beat .__cap-in{border-color:rgba(79,209,197,.62);
       box-shadow:0 0 0 1px rgba(79,209,197,.12),0 18px 70px rgba(0,0,0,.65);}
-    #__cap.beat .__cap-t{color:#4fd1c5;}
+    #__cap.beat .__cap-t{color:#d8b26a;}
   \`;
   document.head.appendChild(css);
   // Outside body: body carries the zoom transform, and a transformed ancestor
