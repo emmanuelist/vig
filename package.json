@@ -16,7 +16,8 @@
     "film:music": "bash scripts/film-music.sh",
     "film:mix": "bash scripts/film-mix.sh",
     "snapshot": "tsx scripts/snapshot.ts",
-    "rebuild-ledger": "tsx scripts/rebuild-ledger.ts"
+    "rebuild-ledger": "tsx scripts/rebuild-ledger.ts",
+    "film:master": "bash scripts/film-master.sh"
   },
   "dependencies": {
     "dotenv": "^17.4.2"

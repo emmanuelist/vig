@@ -115,7 +115,17 @@ UUID, if the form wants that form instead:
 
 ## Video presentation
 
-`film/vig-demo.mp4` — 2m22s. Upload to YouTube unlisted, paste the link.
+Upload **`film/vig-demo-master.mp4`** — not `vig-demo.mp4`. Same picture
+(PSNR 47.5 dB, visually identical), but yuv420p instead of yuv444p, and the
+index is at the front so it streams instead of downloading first. 4:4:3 chroma
+is outside what some players and platforms handle cleanly.
+
+**Set it to Unlisted, not Private.** Private means only accounts you invite can
+watch it, and judges are not on that list — it is the most common way a
+submission video ends up unviewable.
+
+After uploading, open the link in a private window while signed out. That is
+the only check that proves a judge can see it.
 
 ## Slide presentation
 
