@@ -73,6 +73,30 @@ async function main() {
 
   let cursor = 0;
   const parts: string[] = [];
+
+  /**
+   * Silence for any filmed segment that carries no narration.
+   *
+   * The film opens on a title card. NARRATION has no block for it, so the voice
+   * began at t=0 while the picture was still on the card, and every word and
+   * every caption ran the card's whole length ahead of the image — 5.4 seconds,
+   * for the entire film. The manifest is the authority on what was filmed, so
+   * anything in it without a block gets its duration as silence, in order.
+   */
+  const spoken = new Set(NARRATION.map((b) => b.segment));
+  const silenceFor = (name: string, secs: number) => {
+    const f = `${OUT}/${name}-silence.mp3`;
+    execFileSync("ffmpeg", ["-y", "-loglevel", "error", "-f", "lavfi",
+      "-i", "anullsrc=r=44100:cl=mono", "-t", secs.toFixed(3),
+      "-c:a", "libmp3lame", "-b:a", "192k", f]);
+    return f;
+  };
+  for (const [name, secs] of Object.entries(measured)) {
+    if (spoken.has(name)) break;          // narration starts here
+    parts.push(silenceFor(name, secs as number));
+    cursor += secs as number;
+    console.log(`  ${name.padEnd(16)} ${(secs as number).toFixed(1)}s silence (no narration block)`);
+  }
   // Sentence-level timings, so captions can be cut to what is ACTUALLY said
   // rather than to a words-per-second guess. Estimates drift within a segment
   // and the caption stops matching the voice.

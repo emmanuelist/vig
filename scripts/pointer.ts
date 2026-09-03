@@ -96,10 +96,10 @@ export const POINTER_RUNTIME = `
   css.textContent = \`
     /* Zoom lives on body; the cursor lives outside it so a transformed
        ancestor cannot capture its fixed positioning. */
-    body{transition:transform 1.15s cubic-bezier(.3,.02,.2,1);will-change:transform;}
+    body{transition:transform 3.1s cubic-bezier(.16,.62,.16,1);will-change:transform;}
     #__ptr{position:fixed;left:0;top:0;z-index:100000;pointer-events:none;opacity:0;
       transform:translate(-50%,-50%);
-      transition:opacity .45s ease, left 1.05s cubic-bezier(.33,.02,.2,1),
+      transition:opacity .45s ease, left 1.45s cubic-bezier(.28,.5,.16,1),
                  top 1.05s cubic-bezier(.33,.02,.2,1);}
     #__ptr.on{opacity:1;}
     #__ptr .__ptr-l{position:absolute;left:22px;top:12px;white-space:nowrap;
