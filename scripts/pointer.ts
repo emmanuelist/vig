@@ -73,7 +73,7 @@ export const MOVES: Record<string, Move[]> = {
   // Closes on the landing page's reversed band, where this copy lives.
   // The close names the incident and points at what it cost, live.
   "05-limits": [
-    { at: 5.0, sel: "#pnl", label: "what the bug cost" },
+    { at: 5.0, sel: "#pnl" },
     { at: 13.0, sel: ".hero .zero", label: "and what never moved", zoom: 1.7 },
     { at: 21.0, sel: ".hero .equation", zoom: 1 },
   ],
