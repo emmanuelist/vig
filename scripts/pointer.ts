@@ -50,8 +50,8 @@ export const MOVES: Record<string, Move[]> = {
 
   "02-cover": [
     { at: 3.0, sel: ".hero .label" },
-    { at: 6.5, sel: ".hero .zero", label: "uncovered exposure", zoom: 1.9 },
-    { at: 16.0, sel: ".hero .equation", label: "these two always match", zoom: 1.5 },
+    { at: 6.5, sel: ".hero .zero", label: "uncovered exposure", zoom: 1.35 },
+    { at: 16.0, sel: ".hero .equation", label: "these two always match", zoom: 1.28 },
     { at: 26.0, sel: "#hero-worst" },
     { at: 30.0, sel: "#hero-res" },
     { at: 36.0, sel: "footer", zoom: 1 },
@@ -60,7 +60,7 @@ export const MOVES: Record<string, Move[]> = {
   "03-structure": [
     { at: 3.5, sel: "#positions .pos:first-child .sym" },
     { at: 9.0, sel: "#positions .pos:first-child .payoff svg" },
-    { at: 17.0, sel: "#positions .pos:first-child .floors .cap", label: "the loss cannot get deeper", zoom: 1.7 },
+    { at: 17.0, sel: "#positions .pos:first-child .floors .cap", label: "the loss cannot get deeper", zoom: 1.4 },
     { at: 28.0, sel: "#positions .pos:first-child .payoff", zoom: 1 },
     { at: 34.0, sel: "#positions .pos:first-child .axis .now", label: "where the market is now" },
     { at: 40.0, sel: "#positions .pos:nth-child(2)" },
@@ -69,7 +69,7 @@ export const MOVES: Record<string, Move[]> = {
   "04-decision": [
     { at: 4.0, sel: "#positions .pos:first-child .receipt-toggle", label: "the command that placed it", click: true },
     { at: 10.0, sel: "#positions .pos:first-child .rcmd" },
-    { at: 18.0, sel: "#decisions .dec.refused, #decisions .dec:last-child", label: "every gate saying no", zoom: 1.6 },
+    { at: 18.0, sel: "#decisions .dec.refused, #decisions .dec:last-child", label: "every gate saying no", zoom: 1.35 },
     { at: 24.0, sel: "#decisions", zoom: 1 },
   ],
 
@@ -77,7 +77,7 @@ export const MOVES: Record<string, Move[]> = {
   // The close names the incident and points at what it cost, live.
   "05-limits": [
     { at: 5.0, sel: "#pnl" },
-    { at: 13.0, sel: ".hero .zero", label: "and what never moved", zoom: 1.7 },
+    { at: 13.0, sel: ".hero .zero", label: "and what never moved", zoom: 1.4 },
     { at: 21.0, sel: ".hero .equation", zoom: 1 },
   ],
 };
@@ -103,7 +103,7 @@ export const POINTER_RUNTIME = `
                  top 1.05s cubic-bezier(.33,.02,.2,1);}
     #__ptr.on{opacity:1;}
     #__ptr .__ptr-l{position:absolute;left:22px;top:12px;white-space:nowrap;
-      font-family:"IBM Plex Mono",ui-monospace,Menlo,monospace;font-size:11px;
+      font-family:"IBM Plex Mono",ui-monospace,Menlo,monospace;font-size:19px;
       letter-spacing:-.01em;color:#d8b26a;background:rgba(10,10,12,.94);
       border:1px solid rgba(216,178,106,.42);padding:3px 8px;border-radius:0;
       opacity:0;transition:opacity .3s ease;}
@@ -158,6 +158,8 @@ export const POINTER_RUNTIME = `
     // space, so the thing being discussed stays put while everything else grows.
     if (m.zoom !== undefined) {
       const b = document.body;
+      /* Keep the label visually proportionate to the magnified page. */
+      lab.style.fontSize = (19 * (m.zoom === 1 ? 1 : m.zoom)).toFixed(1) + 'px';
       if (m.zoom === 1) { b.style.transform = ''; b.style.transformOrigin = ''; }
       else {
         const cx = r.left + r.width / 2 + scrollX;
