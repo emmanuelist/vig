@@ -151,6 +151,44 @@ spread the long wing still caps the loss when the short leg is assigned, so the
 position stays covered — early assignment is a capital-mechanics nuisance, not an
 uncovered loss. European exercise would have removed the nuisance, not a risk.
 
+## The incident, 2 September 23:48 UTC
+
+At 23:48 a single call to `position list` failed to reach the API. The tick
+caught the error and substituted an empty array, which `reconcile()` cannot
+distinguish from an account that genuinely holds nothing. It marked all twelve
+open structures settled, booked their credit as realised profit, and reset
+`reserved` to zero.
+
+With reserved reading zero, `book-full` saw an entire ceiling of headroom
+against a book that was already full. The agent opened twelve more. Twenty-four
+structures and **$53,453 reserved against a $21,532 ceiling** — 62% of equity at
+risk where the design permits 25%. The market then rallied through the short
+calls and the doubled book took double the loss.
+
+**What held.** Every structure's loss stayed inside its own width. The long
+wings paid for exactly what they were bought for, and **uncovered exposure never
+left zero through the entire drawdown** — the receipts show it tick by tick. The
+per-position claim is intact and was never in question.
+
+**What failed.** Portfolio discipline. The ceiling was not overridden by a
+decision; it was defeated by a bug that made the agent forget what it held. A
+risk limit computed from state is only as good as the state, and this state
+could be silently erased by one failed read.
+
+**The fix**, in `src/agent.ts` and `src/ledger.ts`, is two redundant guards. A
+tick that cannot read the account returns without reconciling and without
+trading — staleness is recoverable, an amnesiac ledger is not. And `reconcile()`
+independently refuses to settle an open book against zero live legs, because a
+whole book closing between two ticks is possible in principle and a failed read
+is not.
+
+`npm run rebuild-ledger` restores the ledger from broker positions, which are
+the truth whenever the two disagree.
+
+This is in the README rather than in a postmortem nobody reads because the
+project's claim is that its numbers are checkable. A drawdown this size is the
+most checkable thing here.
+
 ## Limits, stated plainly
 
 - **Paper trading only.** Results are hypothetical and do not represent real trading.

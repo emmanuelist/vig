@@ -236,20 +236,18 @@ async function main() {
     // The receipt has to be on screen before the cursor is sent to click it,
     // so the page walks down to the first structure ahead of that beat.
     void p.evaluate(choreograph([
-      [0.5, ".cover", 0.10],
-      [9.5, "#positions .pos:first-child", 0.20],
-      [22.0, "#decisions", 0.22],
+      [0.5, "#positions .pos:first-child", 0.18],
+      [13.0, "#decisions", 0.20],
     ])).catch(() => {});
   });
 
   // 5. The limits, and the claim again. Back where we started.
   await segment("05-limits", windowFor("05-limits", 38), async (p) => {
-    await p.goto(LANDING, { waitUntil: "domcontentloaded" });
+    await p.goto(SHEET, { waitUntil: "domcontentloaded" });
     await untilPainted(p, 500);
     await wait(1200);
     void p.evaluate(choreograph([
-      [1.0, ".band.plain", 0.16],
-      [20.0, ".hero", 0.02],
+      [0.5, ".cover", 0.06],
     ])).catch(() => {});
   });
 

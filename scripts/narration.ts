@@ -56,29 +56,21 @@ export const NARRATION: Block[] = [
   },
   {
     segment: "04-decision",
-    secs: 40,
+    secs: 27,
     text:
       "Here is the part worth watching. " +
-      "When a structure clears the gates, the capital moves first. " +
-      "You are watching the maximum loss leave available equity and go into reserve, " +
-      "before the order reaches the market. " +
       "Every order is submitted twice. Once as a dry run, which renders the exact request without sending it. " +
-      "Then again, as the identical command, for real. " +
-      "The proof and the order are the same request. " +
-      "And the refusals matter as much as the fills. " +
-      "Credit too thin against the width. One underlying too concentrated. The book already full. " +
-      "Eight gates, and every one of them can say no.",
+      "Then again, as the identical command. The proof and the order are the same request. " +
+      "And right now the agent is refusing. The book is full, and every gate says no by name."
   },
   {
     segment: "05-limits",
-    secs: 28,
+    secs: 27,
     text:
-      "What this does not claim. " +
-      "This is paper trading, and roughly two and a half sessions of it. " +
-      "That is not a sample size that proves an edge, so we are not going to pretend it is one. " +
-      "Selling premium wins often and loses occasionally larger. That skew is real. " +
-      "What we set out to prove is narrower, and it is checkable. " +
-      "Every position is covered before it exists. " +
-      "Vig never takes a position it can't cover.",
+      "One more thing, and it is the honest part. " +
+      "Last night one network read failed. The agent lost track of what it held and opened twice the book it should have. " +
+      "The number on screen is what that cost. " +
+      "Every position stayed covered. Uncovered exposure never left zero. " +
+      "Vig never takes a position it can't cover."
   },
 ];

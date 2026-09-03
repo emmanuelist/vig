@@ -64,22 +64,18 @@ export const MOVES: Record<string, Move[]> = {
   ],
 
   "04-decision": [
-    { at: 3.0, sel: ".meter" },
-    { at: 8.0, sel: "#reserved", label: "reserved before the order" },
-    // The one real interaction in the film, and it lands on the sentence that
-    // needs proving: the cursor opens the receipt and the exact command that
-    // placed the structure is there to read.
-    { at: 13.0, sel: "#positions .pos:first-child .receipt-toggle", label: "the command that placed it", click: true },
-    { at: 19.0, sel: "#positions .pos:first-child .rcmd" },
-    { at: 27.5, sel: "#decisions .dec.refused, #decisions .dec:last-child", label: "a gate saying no", zoom: 1.6 },
-    { at: 35.0, sel: "#decisions", zoom: 1 },
+    { at: 4.0, sel: "#positions .pos:first-child .receipt-toggle", label: "the command that placed it", click: true },
+    { at: 10.0, sel: "#positions .pos:first-child .rcmd" },
+    { at: 18.0, sel: "#decisions .dec.refused, #decisions .dec:last-child", label: "every gate saying no", zoom: 1.6 },
+    { at: 24.0, sel: "#decisions", zoom: 1 },
   ],
 
   // Closes on the landing page's reversed band, where this copy lives.
+  // The close names the incident and points at what it cost, live.
   "05-limits": [
-    { at: 6.0, sel: ".band.plain h2" },
-    { at: 17.0, sel: ".band.plain p:last-of-type" },
-    { at: 26.0, sel: "h1" },
+    { at: 5.0, sel: "#pnl", label: "what the bug cost" },
+    { at: 13.0, sel: ".hero .zero", label: "and what never moved", zoom: 1.7 },
+    { at: 21.0, sel: ".hero .equation", zoom: 1 },
   ],
 };
 
