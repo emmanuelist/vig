@@ -87,16 +87,16 @@ export const CAPTION_RUNTIME = `
       font-family:"IBM Plex Mono",ui-monospace,Menlo,monospace;}
     
     #__cap .__cap-in{
-      max-width:46ch;margin:0 auto;padding:22px 38px;text-align:center;
-      background:rgba(10,10,12,.94);border:1px solid rgba(216,178,106,.34);
-      border-radius:0;backdrop-filter:blur(14px);
-      box-shadow:0 26px 90px rgba(0,0,0,.72);
+      max-width:52ch;margin:0 auto;padding:14px 26px;text-align:center;
+      background:rgba(10,10,12,.82);border:1px solid rgba(255,255,255,.07);
+      border-radius:0;backdrop-filter:blur(12px);
+      box-shadow:0 18px 60px rgba(0,0,0,.5);
       opacity:0;transform:translateY(14px);
       transition:opacity .48s cubic-bezier(.2,.7,.2,1),transform .48s cubic-bezier(.2,.7,.2,1);}
     #__cap.on .__cap-in{opacity:1;transform:none;}
-    #__cap .__cap-t{font-size:34px;line-height:1.34;letter-spacing:-.025em;color:#ece9e3;
-      text-shadow:0 2px 18px rgba(0,0,0,.8);}
-    #__cap.beat .__cap-in{border-color:rgba(216,178,106,.6);
+    #__cap .__cap-t{font-size:23px;line-height:1.4;letter-spacing:-.015em;color:#cdc8bd;
+      text-shadow:0 2px 14px rgba(0,0,0,.75);}
+    #__cap.beat .__cap-in{border-color:rgba(216,178,106,.34);
       box-shadow:0 0 0 1px rgba(216,178,106,.12),0 18px 70px rgba(0,0,0,.65);}
     #__cap.beat .__cap-t{color:#d8b26a;}
   \`;

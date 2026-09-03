@@ -103,9 +103,10 @@ export const POINTER_RUNTIME = `
                  top 1.05s cubic-bezier(.33,.02,.2,1);}
     #__ptr.on{opacity:1;}
     #__ptr .__ptr-l{position:absolute;left:22px;top:12px;white-space:nowrap;
-      font-family:"IBM Plex Mono",ui-monospace,Menlo,monospace;font-size:19px;
-      letter-spacing:-.01em;color:#d8b26a;background:rgba(10,10,12,.94);
-      border:1px solid rgba(216,178,106,.42);padding:3px 8px;border-radius:0;
+      font-family:"IBM Plex Mono",ui-monospace,Menlo,monospace;font-size:17px;
+      letter-spacing:.02em;color:#d8b26a;background:none;
+      border:0;border-bottom:1px solid rgba(216,178,106,.5);padding:0 0 3px 0;
+      text-shadow:0 1px 10px rgba(0,0,0,.95),0 0 22px rgba(0,0,0,.8);
       opacity:0;transition:opacity .3s ease;}
     #__ptr.labelled .__ptr-l{opacity:1;}
     #__ptr::after{content:"";position:absolute;left:1px;top:1px;width:26px;height:26px;
@@ -159,7 +160,7 @@ export const POINTER_RUNTIME = `
     if (m.zoom !== undefined) {
       const b = document.body;
       /* Keep the label visually proportionate to the magnified page. */
-      lab.style.fontSize = (19 * (m.zoom === 1 ? 1 : m.zoom)).toFixed(1) + 'px';
+      lab.style.fontSize = (17 * (m.zoom === 1 ? 1 : m.zoom)).toFixed(1) + 'px';
       if (m.zoom === 1) { b.style.transform = ''; b.style.transformOrigin = ''; }
       else {
         const cx = r.left + r.width / 2 + scrollX;

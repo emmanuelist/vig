@@ -41,16 +41,26 @@ export function cardHTML(c: Card): string {
   html,body{height:100%;margin:0;background:${t.ground};overflow:hidden}
   body{display:grid;place-items:center;font-family:${t.sans};color:${t.ink}}
   .w{max-width:60ch;padding:0 60px;text-align:center}
-  .glyph{width:76px;height:46px;display:block;margin:0 auto;opacity:0;
-     animation:up .7s cubic-bezier(.2,.7,.2,1) .1s forwards}
-  .k{font-family:${t.sans};font-size:11px;letter-spacing:.22em;text-transform:uppercase;
-     color:${t.dim};opacity:0;margin-top:34px;
-     animation:up .7s cubic-bezier(.2,.7,.2,1) .9s forwards}
+  .glyph{width:104px;height:62px;display:block;margin:0 auto}
+  .glyph path{stroke-dasharray:var(--len);stroke-dashoffset:var(--len);
+     animation:draw 1.5s cubic-bezier(.16,.7,.2,1) forwards}
+  .glyph .f1{animation-delay:.25s} .glyph .f2{animation-delay:.45s}
+  .glyph .pl{animation-delay:.85s;animation-duration:1.7s}
+  @keyframes draw{to{stroke-dashoffset:0}}
+  .k{font-family:${t.sans};font-size:14px;letter-spacing:.26em;text-transform:uppercase;
+     color:${t.dim};opacity:0;margin-top:30px;
+     animation:up 1.1s cubic-bezier(.2,.7,.2,1) 3.4s forwards}
   h1{font-family:${t.sans};font-weight:700;letter-spacing:-.05em;line-height:1;
-     font-size:clamp(46px,7vw,86px);margin:26px 0 0;opacity:0;
-     animation:up .85s cubic-bezier(.2,.7,.2,1) .32s forwards}
-  p{font-size:19px;color:${t.dim};margin:22px 0 0;opacity:0;
-    animation:up .8s cubic-bezier(.2,.7,.2,1) .58s forwards}
+     font-size:clamp(56px,8.5vw,124px);margin:34px 0 0;opacity:0;
+     animation:settle 1.9s cubic-bezier(.16,.62,.16,1) 1.5s forwards}
+  @keyframes settle{
+    0%{opacity:0;transform:scale(1.09);filter:blur(9px);letter-spacing:.02em}
+    100%{opacity:1;transform:none;filter:none;letter-spacing:-.05em}}
+  p{font-size:25px;color:${t.dim};margin:26px 0 0;opacity:0;
+    animation:up 1.2s cubic-bezier(.2,.7,.2,1) 2.5s forwards}
+  .rule{height:1px;width:0;margin:34px auto 0;background:${t.accent};opacity:.45;
+    animation:open 1.5s cubic-bezier(.16,.62,.16,1) 2.9s forwards}
+  @keyframes open{to{width:210px}}
   @keyframes up{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
   /* A faint field, so a card is not a flat colour next to a lit product. */
   body::before{content:"";position:fixed;inset:0;pointer-events:none;
@@ -58,12 +68,13 @@ export function cardHTML(c: Card): string {
 </style>
 <div class="w">
   <svg class="glyph" viewBox="0 0 40 24" fill="none" aria-hidden="true">
-    <path d="M1 18H8" stroke="${t.accent}" stroke-width="2.6" stroke-linecap="square"/>
-    <path d="M32 18H39" stroke="${t.accent}" stroke-width="2.6" stroke-linecap="square"/>
-    <path d="M8 18L14 6H26L32 18" stroke="${t.credit}" stroke-width="2.2" stroke-linejoin="round"/>
+    <path class="f1" style="--len:7"  d="M1 18H8"  stroke="${t.accent}" stroke-width="2.6" stroke-linecap="square"/>
+    <path class="f2" style="--len:7"  d="M32 18H39" stroke="${t.accent}" stroke-width="2.6" stroke-linecap="square"/>
+    <path class="pl" style="--len:41" d="M8 18L14 6H26L32 18" stroke="${t.credit}" stroke-width="2.2" stroke-linejoin="round" fill="none"/>
   </svg>
   <h1>${c.title}</h1>
   ${c.subtitle ? `<p>${c.subtitle}</p>` : ""}
+  <div class="rule"></div>
   ${c.kicker ? `<div class="k">${c.kicker}</div>` : ""}
 </div>`;
 }
@@ -75,6 +86,6 @@ export const CARDS: Card[] = [
     kicker: "Alpaca AI Trading Agents Hackathon",
     title: "Vig",
     subtitle: "It never takes a position it can't cover.",
-    secs: 6,
+    secs: 9,
   },
 ];
