@@ -115,6 +115,13 @@ export const bucketKey = (underlying: string, expiry: string) => `${underlying}:
  * condor simply stops appearing in `position list`; nothing announces it.
  */
 export function reconcile(l: Ledger, liveSymbols: Set<string>): OpenPosition[] {
+  // A second guard, independent of the caller. If the ledger believes it holds
+  // structures and the account reports no legs at all, that is far more likely
+  // to be a failed read than a whole book settling between two ticks. Refusing
+  // to act on it costs one tick of staleness; acting on it costs the ledger.
+  if (liveSymbols.size === 0 && l.positions.some(isOpen)) {
+    throw new Error("refusing to reconcile an open book against zero live legs");
+  }
   const justClosed: OpenPosition[] = [];
   for (const p of l.positions) {
     if (!isOpen(p)) continue;

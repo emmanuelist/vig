@@ -61,7 +61,21 @@ async function tick(): Promise<void> {
   const account = await alpaca<Account>("account", "get");
   const equity = Number(account.equity);
 
-  const positions = await alpaca<Position[]>("position", "list").catch(() => [] as Position[]);
+  // FAIL CLOSED. `.catch(() => [])` here cannot distinguish "the account holds
+  // nothing" from "I could not ask", and reconcile() treats an empty set as
+  // proof that every structure has settled. On 2026-09-02 at 23:48 a single
+  // network error on this call marked all 12 open structures closed, booked
+  // their credit as realised profit, and reset `reserved` to zero — after which
+  // book-full saw unlimited headroom and the agent doubled its own book.
+  //
+  // A tick that cannot see the account does not reconcile and does not trade.
+  let positions: Position[];
+  try {
+    positions = await alpaca<Position[]>("position", "list");
+  } catch (e) {
+    log(`positions unreadable — skipping tick without reconciling: ${(e as Error).message}`);
+    return;
+  }
   const liveSymbols = new Set(positions.map((p) => p.symbol));
 
   const book = ledger.load();

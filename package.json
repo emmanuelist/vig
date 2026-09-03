@@ -15,7 +15,8 @@
     "voice": "tsx scripts/voice.ts",
     "film:music": "bash scripts/film-music.sh",
     "film:mix": "bash scripts/film-mix.sh",
-    "snapshot": "tsx scripts/snapshot.ts"
+    "snapshot": "tsx scripts/snapshot.ts",
+    "rebuild-ledger": "tsx scripts/rebuild-ledger.ts"
   },
   "dependencies": {
     "dotenv": "^17.4.2"
