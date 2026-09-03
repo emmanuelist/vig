@@ -133,6 +133,12 @@ proves a judge can see it.
 
 `deck/vig-deck.pdf` — 7 slides.
 
+## One-page write-up
+
+`WRITEUP.md` — 809 words, structured to the three things the brief names: AI
+logic, risk gates, Alpaca infrastructure implementation. Paste the text or
+attach the PDF at `deck/vig-writeup.pdf`.
+
 ## Cover image
 
 `web/og.png` — 1200x630.
@@ -142,6 +148,8 @@ proves a judge can see it.
 ## Before you submit
 
 - [ ] Refresh figures: `npm run snapshot`
+- [ ] One-page write-up attached — it is a required field, listed beside the
+      cover image, video and slides
 - [ ] Video uploaded and the link opens in a private window
 - [ ] Both app URLs open on your phone, on cellular data, not wifi
 - [ ] Account ID matches the account the agent actually traded

@@ -49,6 +49,7 @@ coverage/
 
 # Deck frames are rendered from deck/index.html; the assembled PDF ships.
 deck/slide-*.png
+deck/vig-writeup.png
 
 # ── OS ───────────────────────────────────────────────────────────────
 .DS_Store
