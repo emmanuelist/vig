@@ -1,0 +1,25 @@
+{
+  "generatedAt": "2026-09-03T20:28:52.212361+00:00",
+  "account": "PA3PLCOVLR4I",
+  "structures": {
+    "total": 24,
+    "open": 24
+  },
+  "reserved": 53453.0,
+  "creditCollected": 7447.0,
+  "uncoveredExposure": 0,
+  "cliInvocations": 4594,
+  "orderSubmissions": 48,
+  "dryRunProofs": 24,
+  "byUnderlying": {
+    "SPY": 10,
+    "QQQ": 11,
+    "IWM": 3
+  },
+  "byExpiry": {
+    "2026-09-03": 6,
+    "2026-09-04": 9,
+    "2026-09-08": 9
+  },
+  "note": "Every structure carries the argv that placed it and the dry-run body rendered immediately before. Uncovered exposure is zero by construction: no order is submitted whose maximum loss is not already reserved."
+}
