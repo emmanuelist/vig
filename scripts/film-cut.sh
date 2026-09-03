@@ -25,7 +25,7 @@ import json
 try: print(json.load(open('$OUT/setup.json')).get('$(basename "$dir")', 1.6))
 except Exception: print(1.6)")
   ffmpeg -y -loglevel error -ss "$trim" -i "$src" \
-    -vf "fps=30,scale=1440:900:flags=lanczos,format=yuv420p" \
+    -vf "fps=30,scale=${FILM_W:-1920}:${FILM_H:-1080}:flags=lanczos,format=yuv420p" \
     -c:v libx264 -preset slow -crf 18 -an "$dst"
   dur=$(ffprobe -v error -show_entries format=duration -of csv=p=0 "$dst")
   printf "  %-22s %6.1fs\n" "$(basename "$dir")" "$dur"
