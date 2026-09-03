@@ -39,7 +39,10 @@ export const MOVES: Record<string, Move[]> = {
   // nausea, and it spends the emphasis the four real moments need.
 
   // Filmed on the landing page, so these are landing selectors.
+  // The 1.06 push here is a drift, not a beat: it runs the whole segment and is
+  // never released, so the opening breathes instead of sitting still.
   "01-open": [
+    { at: 0.4, sel: "h1", zoom: 1.06 },
     { at: 4.0, sel: ".mark" },
     { at: 10.5, sel: "#p-eq", label: "a live brokerage account" },
     { at: 18.0, sel: "#p-unc", label: "but what does it cost when it's wrong?" },

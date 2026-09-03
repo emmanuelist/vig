@@ -45,7 +45,7 @@ const SHEET = process.env.SHEET_URL ?? "http://localhost:5174/app";
 const SITE = process.env.SITE_URL ?? LANDING;
 const TX = "https://shannon-explorer.somnia.network/tx/0xb785b4f03a6f0fcc68be476ad4dd617dd667ef21d6d3fac1531d91cb1116afd3";
 const OUT = "film";
-const W = 1440, H = 900;
+const W = 1920, H = 1080;   // 16:9. Anything else gets pillarboxed.
 
 const wait = (ms: number) => new Promise((r) => setTimeout(r, ms));
 
