@@ -136,14 +136,17 @@ export const POINTER_RUNTIME = `
     p.classList.add('on');
     lab.textContent = m.label || '';
     p.classList.toggle('labelled', !!m.label);
-    /* Flip the label to the left of the cursor when it would otherwise run off
-       the right edge and cover the very thing it is pointing at. */
+    /* Flip the label to the left of the cursor when it would otherwise run past
+       the right edge and cover the value it is describing.
+       Decided from where the cursor is GOING, not where it is: the cursor
+       travels on a 1.05s transition, so measuring the label now measures it at
+       the previous position and always concludes there is room. */
     if (m.label) {
-      lab.style.left = '22px'; lab.style.right = 'auto';
-      requestAnimationFrame(() => {
-        const r = lab.getBoundingClientRect();
-        if (r.right > innerWidth - 12) { lab.style.left = 'auto'; lab.style.right = '22px'; }
-      });
+      const targetX = Math.round(r.left + Math.min(r.width * 0.5, 90));
+      const need = lab.textContent.length * 6.6 + 40;   // mono ~6.6px/char + padding
+      const flip = targetX + need > innerWidth - 12;
+      lab.style.left = flip ? 'auto' : '22px';
+      lab.style.right = flip ? '22px' : 'auto';
     }
     p.classList.remove('ping');
     setTimeout(() => p.classList.add('ping'), 1050);
