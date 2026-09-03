@@ -124,8 +124,10 @@ is outside what some players and platforms handle cleanly.
 watch it, and judges are not on that list — it is the most common way a
 submission video ends up unviewable.
 
-After uploading, open the link in a private window while signed out. That is
-the only check that proves a judge can see it.
+Uploaded: **https://youtu.be/VvQHkqJHcDk**
+
+Open it in a private window while signed out — that is the only check that
+proves a judge can see it.
 
 ## Slide presentation
 

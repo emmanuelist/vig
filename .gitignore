@@ -32,6 +32,9 @@ film/
 .impeccable/review/
 .impeccable/mocks/
 
+# Reference notes gathered while building — working material, not documentation.
+anything-to-take.md
+
 # Internal competitive notes: event research and a read on other entrants.
 # Working material, and not for a public repo.
 see.md

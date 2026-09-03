@@ -13,7 +13,7 @@ order is never sent.
 | **Live** | **[emmanuelist.github.io/vig](https://emmanuelist.github.io/vig/)** — the Cover Sheet is at [`/app.html`](https://emmanuelist.github.io/vig/app.html) |
 | **Mirror** | [vig-six.vercel.app](https://vig-six.vercel.app) — the Cover Sheet is at [`/app`](https://vig-six.vercel.app/app) |
 | **Repository** | [github.com/emmanuelist/vig](https://github.com/emmanuelist/vig) |
-| **Demo video** | _recorded once the competition window closes_ |
+| **Demo video** | [https://youtu.be/VvQHkqJHcDk](https://youtu.be/VvQHkqJHcDk) — 2m25s |
 | **Alpaca CLI** | `0.0.14` (alpha preview) |
 | **Environment** | Paper trading only. No real capital. |
 
