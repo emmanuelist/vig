@@ -8,8 +8,10 @@ submitting if you want them refreshed.
 ## Project title
 
 ```
-Vig
+Vig — it never takes a position it can't cover
 ```
+
+_46 chars. The form requires 5–50, so the name alone is rejected._
 
 ## Short description
 
@@ -19,59 +21,20 @@ An autonomous options agent on Alpaca that computes and reserves every position'
 
 ## Long description
 
+_Form limit 2,000 characters. This is 1979._
+
 ```
-Vig sells iron condors on SPY, QQQ and IWM through Alpaca's paper trading
-account. Before any order is submitted, the structure's maximum loss is
-computed and reserved. If the account cannot cover that loss, the order is
-never sent — uncovered exposure reads zero, by construction.
+Vig sells iron condors on SPY, QQQ and IWM through Alpaca's paper account. Before any order is submitted, the structure's maximum loss is computed and reserved. If the account cannot cover it, the order is never sent — uncovered exposure reads zero by construction.
 
-THE CLI IS THE EXECUTION PATH
+THE CLI IS THE EXECUTION PATH. Every read and write goes through the Alpaca CLI, the tool Alpaca built for AI agents and automation pipelines. Each order is submitted twice: once with --dry-run, which renders the exact request without sending it, then again as the identical argv for real. The proof and the order are the same request. Across the window: 4,594 CLI invocations, 48 submissions, 24 dry-run proofs, committed under evidence/.
 
-Every read and every write goes through the Alpaca CLI, the tool Alpaca
-describes as designed for AI agents and automation pipelines. Each order is
-submitted twice: once with --dry-run, which renders the exact request body
-without sending it, then again as the identical argv for real. The proof and
-the order are the same request. Across the competition window that is 4,594 CLI
-invocations, 48 order submissions, and 24 dry-run proofs — one for every
-structure, all committed under evidence/.
+WHY IRON CONDORS. Alpaca's --legs accepts at most four and a condor is exactly four. Only one side can ever be breached, so maximum loss is width minus credit — the structure is self-covering. It is also delta-neutral, the honest posture when the window is too short for a directional edge to be real.
 
-WHY IRON CONDORS
+EIGHT GATES, EVERY ONE ABLE TO REFUSE: illiquid, thin-credit, position-too-large, bucket-full, book-full, no-wing, inverted, and a news-driven regime check that can only veto. Refusals are shown beside the fills, because an agent that reports only what it did is hiding half its judgement.
 
-Three constraints converge on the same instrument. Alpaca's --legs flag accepts
-at most four, and a condor is exactly four. Only one side can ever be breached,
-so maximum loss is width minus credit and the structure is self-covering. And
-it is delta-neutral, which is the honest posture when 2.6 trading sessions
-prove nothing about direction.
+WHAT HAPPENED. The account finished down 13%. On 2 September at 23:48 a position list call failed and the tick substituted an empty array, which the reconciler could not tell from an account holding nothing. It marked every structure settled and reset reserved to zero — book-full then saw a full ceiling against a book already full, and the agent doubled its position count before the market rallied.
 
-Credit is priced against us — sell at the bid, buy at the ask — so the reserve
-is what we would collect if every fill went the wrong way.
-
-EIGHT GATES, EVERY ONE ABLE TO REFUSE
-
-illiquid, thin-credit, position-too-large, bucket-full, book-full, no-wing,
-inverted, and a news-driven regime check that can only ever veto. The
-refusals are shown beside the fills, because an agent that reports only what it
-did is hiding half its judgement.
-
-WHAT HAPPENED, AND WHY IT IS IN THE README
-
-The account finished the window down 13.0%. On 2 September at 23:48 a single
-`position list` call failed to reach the API. The tick substituted an empty
-array, which the reconciler cannot distinguish from an account holding nothing.
-It marked every open structure settled and reset reserved to zero — after which
-the book-full gate saw a full ceiling of headroom against a book that was
-already full, and the agent doubled its own position count. The market then
-rallied through the short calls.
-
-Every individual structure stayed inside its own bounded loss. The long wings
-paid for exactly what they were bought for, and uncovered exposure never left
-zero — the receipts show it. The per-position guarantee held. The portfolio
-ceiling did not, and it was defeated by a bug rather than overridden by a
-decision. Both the failure and the two-guard fix are in the repository history.
-
-We are submitting that rather than hiding it, because the claim this project
-makes is that its numbers are checkable, and a drawdown is the most checkable
-thing in it.
+Every structure stayed inside its bounded loss and uncovered exposure never left zero; the receipts show it. The per-position guarantee held; the portfolio ceiling did not, defeated by a bug rather than a decision. The failure and the fix are both in the repository history.
 ```
 
 ## Technology tags
