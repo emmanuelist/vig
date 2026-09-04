@@ -78,7 +78,8 @@ UUID, if the form wants that form instead:
 
 ## Video presentation
 
-Upload **`film/vig-demo-master.mp4`** — not `vig-demo.mp4`. Same picture
+**Step 2 uploads a FILE, not a link.** Upload **`film/vig-demo-master.mp4`** (30MB) —
+not `vig-demo.mp4`. Same picture
 (PSNR 47.5 dB, visually identical), but yuv420p instead of yuv444p, and the
 index is at the front so it streams instead of downloading first. 4:4:3 chroma
 is outside what some players and platforms handle cleanly.
@@ -104,7 +105,9 @@ attach the PDF at `deck/vig-writeup.pdf`.
 
 ## Cover image
 
-`web/og.png` — 1200x630.
+`deck/vig-cover.png` — **1920x1080, true 16:9**, which is what the form asks
+for. `web/og.png` is 1200x630 (1.905:1), the Open Graph standard — right for a
+link preview, wrong for this field.
 
 ---
 
